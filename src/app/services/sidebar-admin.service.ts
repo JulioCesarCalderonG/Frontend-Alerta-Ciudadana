@@ -9,6 +9,7 @@ export class SidebarAdminService {
       titulo: 'admin',
       icono: 'mdi mdi-gauge',
       submenu: [
+        { titulo: 'Centro de Atencion', url: 'centro-atencion' },
         { titulo: 'Gráficas', url: 'grafica1' },
         { titulo: 'ProgressBar', url: 'progress' },
       ]

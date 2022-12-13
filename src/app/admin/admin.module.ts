@@ -8,6 +8,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
 import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
+import { CentroCiudadanoComponent } from './centro-ciudadano/centro-ciudadano.component';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     DashboardComponent,
     ProgressComponent,
     Grafica1Component,
-    AdminComponent
+    AdminComponent,
+    CentroCiudadanoComponent
   ],
   exports:[
     DashboardComponent,
