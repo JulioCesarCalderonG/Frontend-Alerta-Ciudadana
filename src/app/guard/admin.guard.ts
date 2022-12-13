@@ -1,15 +1,41 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import jwtDecode from 'jwt-decode';
+import { LoginService } from '../services/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+export class AdminGuard implements CanActivateChild {
+  constructor(private authService: LoginService, private router: Router){
+  }
+  canActivateChild(next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean {
+    if (this.authService.getToken() !== null) {
+      const dataDecode: any = this.decodeToken();
+      const date = new Date();
+      // Comprobar que no esta caducado el token
+      if (dataDecode.exp < date.getTime() / 1000) {
+        return this.redirect();
+      }
+      if (dataDecode.cargo !== 'UA') {
+        return this.redirect();
+      }
+      return true;
+    }
+    return this.redirect();
+    /* if (this.authService.loggedIn()) {
     return true;
+  }
+  this.router.navigate(['/login']);
+  return false; */
+  }
+  redirect() {
+    this.router.navigate(['/']);
+    return false;
+  }
+  decodeToken() {
+    return jwtDecode(`${this.authService.getToken()}`);
   }
   
 }
