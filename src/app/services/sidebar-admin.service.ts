@@ -6,20 +6,17 @@ import { Injectable } from '@angular/core';
 export class SidebarAdminService {
   menu: any[] = [
     {
-      titulo: 'admin',
-      icono: 'mdi mdi-gauge',
+      titulo: 'Lugar de Atencion',
+      icono: 'mdi mdi-ambulance',
       submenu: [
+        { titulo: 'Tipo de Atencion', url: 'tipo-atencion' },
         { titulo: 'Centro de Atencion', url: 'centro-atencion' },
-        { titulo: 'Gráficas', url: 'grafica1' },
-        { titulo: 'ProgressBar', url: 'progress' },
       ]
     },
     {
-      titulo: 'usuario',
+      titulo: 'admin',
       icono: 'mdi mdi-gauge',
       submenu: [
-        { titulo: 'Gráficas', url: 'grafica1' },
-        { titulo: 'ProgressBar', url: 'progress' },
         { titulo: 'Gráficas', url: 'grafica1' },
         { titulo: 'ProgressBar', url: 'progress' },
       ]

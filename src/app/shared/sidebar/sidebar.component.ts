@@ -10,8 +10,7 @@ import { SidebarAdminService } from 'src/app/services/sidebar-admin.service';
 export class SidebarComponent implements OnInit {
   menuItems?: any[];
   constructor(private sidebarService: SidebarAdminService) {
-    this.menuItems = sidebarService.menu;
-    console.log(this.menuItems)
+    this.menuItems = this.sidebarService.menu;
   }
 
   ngOnInit(): void {
