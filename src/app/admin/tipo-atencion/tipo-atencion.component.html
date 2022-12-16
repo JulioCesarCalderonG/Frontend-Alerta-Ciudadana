@@ -19,17 +19,14 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Imagen</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             <tr *ngFor="let tipoAtencion of listTipoAtencion">
                 <td><a href="javascript:void(0)">{{tipoAtencion.id}}</a></td>
                 <td>{{tipoAtencion.nombre}}</td>
-                <td> <img class="imgTipoAtencion" src="{{loadImage}}/{{tipoAtencion.id}}" alt=""> </td>
-
                 <td *ngIf="tipoAtencion.estado === 0">
                     <div class="label label-table label-danger">Inactivo</div>
                 </td>
@@ -60,9 +57,13 @@ data-keyboard="false" data-backdrop="static"
                 <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4> </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <div class="col-md-12 m-b-20">
-                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Upload Contact Image</span>
-                            <input type="file" class="upload"> </div>
+                    <div class="col-md-12 m-b-30 text-center">
+                        <img src="{{loadImage}}" alt="..." class="modal-img">
+                    </div>
+                    <div class="col-md-12 m-b-20 text-center">
+                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir Imagen</span>
+                            <input type="file" #fileInput class="upload loadimage" accept=".jpeg,.jpg,.png" (change)="capturarFile($event)" > 
+                        </div>
                     </div>
                 </div>
                 <form class="form-horizontal form-material" [formGroup]="tipoAtencionForm">

@@ -13,6 +13,7 @@ import { TipoAtencionComponent } from './tipo-atencion/tipo-atencion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 
@@ -23,7 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     Grafica1Component,
     AdminComponent,
     CentroCiudadanoComponent,
-    TipoAtencionComponent
+    TipoAtencionComponent,
+    UsuarioComponent
   ],
   exports:[
     DashboardComponent,

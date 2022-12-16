@@ -6,3 +6,13 @@
 .btnAction{
     cursor: pointer;
 }
+.modal-img{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 25%;
+}
+.loadimage{
+    width: 100%;
+    height: 100%;
+}

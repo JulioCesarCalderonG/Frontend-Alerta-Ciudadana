@@ -34,10 +34,8 @@ export class LoginComponent implements OnInit {
       (data:ResultLogin)=>{
        console.log(data);
        if (data.ok === false) {
-        console.log(data.msg);
         this.toastr.warning(data.msg, 'Mensaje');
        }else if(data.ok===true){
-        console.log(data);
         sessionStorage.setItem('carga','0');
         sessionStorage.setItem('x-token', data.token);  
         sessionStorage.setItem('usuario', data.usuario.nombre);
