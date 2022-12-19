@@ -7,6 +7,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { AdminGuard } from '../guard/admin.guard';
 import { CentroCiudadanoComponent } from './centro-ciudadano/centro-ciudadano.component';
 import { TipoAtencionComponent } from './tipo-atencion/tipo-atencion.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
         component: AdminComponent,
         children: [
             { path: '', component: DashboardComponent },
+            { path: 'usuario', component: UsuarioComponent },
             { path: 'tipo-atencion', component: TipoAtencionComponent },
             { path: 'centro-atencion', component: CentroCiudadanoComponent },
             { path: 'progress', component: ProgressComponent },

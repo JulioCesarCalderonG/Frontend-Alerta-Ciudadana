@@ -11,9 +11,11 @@ import { SharedModule } from '../shared/shared.module';
 import { CentroCiudadanoComponent } from './centro-ciudadano/centro-ciudadano.component';
 import { TipoAtencionComponent } from './tipo-atencion/tipo-atencion.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { CiudadanoComponent } from './ciudadano/ciudadano.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 
 
@@ -25,7 +27,9 @@ import { UsuarioComponent } from './usuario/usuario.component';
     AdminComponent,
     CentroCiudadanoComponent,
     TipoAtencionComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    CiudadanoComponent,
+    AlertasComponent
   ],
   exports:[
     DashboardComponent,
@@ -39,6 +43,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot(),
   ]
 })

@@ -1,1 +1,112 @@
-<p>usuario works!</p>
+<h4 class="card-title">Responsive Table </h4>
+<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
+    <code>.table-responsive </code>
+</h6>
+<div class="row justify-content-end">
+    <div class="col-lg-4 text-right">
+        <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+        </select>
+    </div>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><i
+                class="fa fa-plus-square"></i> Crear</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cargo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of listUsuario">
+                <td><a href="javascript:void(0)">{{usuario.id}}</a></td>
+                <td>{{usuario.dni}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellido}}</td>
+                <td *ngIf="usuario.Cargo.cargo === 'UN'">
+                    <div class="label label-table label-warning">Usuario Normal</div>
+                </td>
+                <td *ngIf="usuario.Cargo.cargo === 'UA'">
+                    <div class="label label-table label-info">Usuario Administrador</div>
+                </td>
+                <td *ngIf="usuario.estado === 0">
+                    <div class="label label-table label-danger">Inactivo</div>
+                </td>
+                <td *ngIf="usuario.estado === 1">
+                    <div class="label label-table label-success">Activo</div>
+                </td>
+                <td class="text-nowrap">
+                    <a class="btn btn-circle btn-secondary" *ngIf="usuario.estado === 1"
+                        (click)="borrarusuario(usuario.id, '0')"> <i class="fas fa-lock"></i>
+                    </a>
+                    <a class="btn btn-circle btn-secondary" *ngIf="usuario.estado === 0"
+                        (click)="borrarusuario(usuario.id, '1')"> <i class="fas fa-lock-open"></i>
+                    </a>
+                    <a class="btn btn-circle btn-warning ml-2" data-toggle="modal" data-target="#exampleModal"
+                        (click)="obtenerDatos(usuario.id)"> <i class="fa fa-pencil"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">{{titulo}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form #forma="ngForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="DNI" #dni="ngModel"
+                            [(ngModel)]="usuarioForm.dni" name="dni" autocomplete="off" #dniInput>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success" type="button" id="button-addon2"
+                                (click)="validarSunat()"> <i class="mdi mdi-account-search"></i> </button>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Nombre</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Nombre" #nombre="ngModel"
+                        [(ngModel)]="usuarioForm.nombre" name="nombre" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Apellido</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Apellido" #apellido="ngModel"
+                        [(ngModel)]="usuarioForm.apellido" name="apellido" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Contraseña</label>
+                        <input type="password" class="form-control" id="recipient-name1" placeholder="Password" #password="ngModel"
+                        [(ngModel)]="usuarioForm.password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccionar Tipo de Cargo</label>
+                        <select class="form-control" id="exampleFormControlSelect1" #cargo="ngModel"
+                        [(ngModel)]="usuarioForm.cargo" name="cargo">
+                          <option value="">Seleccione una opcion</option>
+                          <option *ngFor="let cargo of listCargo" value={{cargo.id}}>{{cargo.descripcion}}</option>
+                        </select>
+                      </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>                
+            </div>
+        </div>
+    </div>
+</div>
