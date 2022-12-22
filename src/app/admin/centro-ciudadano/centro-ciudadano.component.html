@@ -3,3 +3,61 @@
 <div id="mapa">
 
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Crear Centro de atencion</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form #forma="ngForm">
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Titulo</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Titulo"
+                            #titulo="ngModel" [(ngModel)]="centroForm.titulo" name="titulo">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Direccion</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Direccion"
+                            #direccion="ngModel" [(ngModel)]="centroForm.direccion" name="direccion">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Celular</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Celular"
+                            #celular="ngModel" [(ngModel)]="centroForm.celular" name="celular">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Telefono</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Telefono"
+                            #telefono="ngModel" [(ngModel)]="centroForm.telefono" name="telefono">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Latitud</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Latitud"
+                            #lat="ngModel" [(ngModel)]="centroForm.lat" name="lat" disabled>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleFormControlSelect1">Longitud</label>
+                        <input type="text" class="form-control" id="recipient-name1" placeholder="Longitud"
+                            #lng="ngModel" [(ngModel)]="centroForm.lng" name="lng" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Seleccionar Tipo de Atencion</label>
+                        <select class="form-control" id="exampleFormControlSelect1" #tipoAtencion="ngModel"
+                            [(ngModel)]="centroForm.tipoAtencion" name="Atencion">
+                            <option value="">Seleccione una opcion</option>
+                            <option *ngFor="let tipo of listTipo" value={{tipo.id}}>{{tipo.nombre}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" (click)="crearEditarCentro()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

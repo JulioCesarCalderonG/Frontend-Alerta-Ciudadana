@@ -1,1 +1,45 @@
-<p>ciudadano works!</p>
+<h4 class="card-title">Responsive Table </h4>
+<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
+    <code>.table-responsive </code>
+</h6>
+<div class="row justify-content-end">
+    <div class="col-lg-2">
+        <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+        </select>
+    </div>
+    <div class="col-lg-4">
+        <app-search (search)="buscar($event)"></app-search>
+    </div>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>dni</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ciudadano of listCiudadano">
+                <td>{{ciudadano.id}}</td>
+                <td>{{ciudadano.nombre}}</td>
+                <td>{{ciudadano.apellido}}</td>
+                <td>{{ciudadano.dni}}</td>
+                <td>
+                    <a class="btn btn-circle btn-secondary" *ngIf="ciudadano.estado === 1"
+                        (click)="borrarciudadano(ciudadano.id, '0')"> <i class="fas fa-lock"></i>
+                    </a>
+                    <a class="btn btn-circle btn-secondary" *ngIf="ciudadano.estado === 0"
+                        (click)="borrarciudadano(ciudadano.id, '1')"> <i class="fas fa-lock-open"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

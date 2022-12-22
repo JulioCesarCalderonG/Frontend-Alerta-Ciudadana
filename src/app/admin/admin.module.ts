@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { CiudadanoComponent } from './ciudadano/ciudadano.component';
 import { AlertasComponent } from './alertas/alertas.component';
+import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
 
 
 
@@ -29,7 +30,8 @@ import { AlertasComponent } from './alertas/alertas.component';
     TipoAtencionComponent,
     UsuarioComponent,
     CiudadanoComponent,
-    AlertasComponent
+    AlertasComponent,
+    AlertaDerivadaComponent
   ],
   exports:[
     DashboardComponent,

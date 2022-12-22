@@ -6,3 +6,15 @@ export interface Lugar{
     lat:number,
     color: string
 }
+export interface Centro{
+    id:number,
+    lat:number,
+    lng:number,
+    celular:string,
+    telefono:string,
+    direccion:string,
+    nombre:string,
+    img:string,
+    estado:string,
+    titulo:string
+}

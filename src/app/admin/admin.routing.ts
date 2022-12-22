@@ -8,6 +8,9 @@ import { AdminGuard } from '../guard/admin.guard';
 import { CentroCiudadanoComponent } from './centro-ciudadano/centro-ciudadano.component';
 import { TipoAtencionComponent } from './tipo-atencion/tipo-atencion.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { CiudadanoComponent } from './ciudadano/ciudadano.component';
+import { AlertasComponent } from './alertas/alertas.component';
+import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
 
 
 const routes: Routes = [
@@ -17,6 +20,9 @@ const routes: Routes = [
         children: [
             { path: '', component: DashboardComponent },
             { path: 'usuario', component: UsuarioComponent },
+            { path: 'ciudadano', component: CiudadanoComponent },
+            { path: 'alerta', component: AlertasComponent },
+            { path: 'alerta-derivada', component: AlertaDerivadaComponent },
             { path: 'tipo-atencion', component: TipoAtencionComponent },
             { path: 'centro-atencion', component: CentroCiudadanoComponent },
             { path: 'progress', component: ProgressComponent },

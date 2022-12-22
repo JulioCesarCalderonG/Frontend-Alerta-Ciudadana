@@ -6,10 +6,25 @@ import { Injectable } from '@angular/core';
 export class SidebarAdminService {
   menu: any[] = [
     {
+      titulo: 'Alerta Ciudadana',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' },
+        { titulo: 'Mostrar alertas', url: 'alerta' },
+      ]
+    },
+    {
       titulo: 'Usuarios',
       icono: 'mdi mdi-account-circle',
       submenu: [
         { titulo: 'Usuarios del sistema', url: 'usuario' },
+      ]
+    },
+    {
+      titulo: 'Ciudadano',
+      icono: 'mdi mdi-account-card-details',
+      submenu: [
+        { titulo: 'Ciudadanos Registrados', url: 'ciudadano' },
       ]
     },
     {
@@ -20,6 +35,7 @@ export class SidebarAdminService {
         { titulo: 'Centro de Atencion', url: 'centro-atencion' },
       ]
     },
+    
     {
       titulo: 'admin',
       icono: 'mdi mdi-gauge',

@@ -211,8 +211,6 @@ export class UsuarioComponent implements OnInit {
       if (result.isConfirmed) {
         this.usuarioService.deleteUsuario(id, estado).subscribe(
           (data) => {
-            console.log(data);
-
             Swal.fire(
               estado === '1' ? 'Desbloqueado' : 'Bloqueado',
               data.msg,
