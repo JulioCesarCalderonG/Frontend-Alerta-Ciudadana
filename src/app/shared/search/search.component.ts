@@ -9,14 +9,14 @@ import { FormControl } from '@angular/forms';
 
 export class SearchComponent implements OnInit {
   
-  
+  search=new FormControl('');
   constructor() { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(value=>this.searchEmiter.emit(value));
     
   }
-  search=new FormControl('');
+  
   //tipo=new FormControl('');
   //@Input() dataEntrante:any;
   @Output('search') searchEmiter = new EventEmitter<string>()

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchAlertaComponent } from './search-alerta/search-alerta.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -29,7 +30,8 @@ import { SearchAlertaComponent } from './search-alerta/search-alerta.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule
   ]
 })
 export class SharedModule { }

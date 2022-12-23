@@ -52,4 +52,8 @@ export class AlertasComponent implements OnInit {
       }
     )
   }
+  funFiltro(data:any){
+    console.log(data);
+    
+  }
 }
