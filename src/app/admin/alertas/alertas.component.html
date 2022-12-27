@@ -5,39 +5,27 @@
 
         </div>
     </div>
-    <div class="col-lg-3 scroll">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates veniam earum. Temporibus nulla
-        consequuntur quam provident? Magnam minus, praesentium, earum nisi totam, deleniti ipsum alias consectetur rem
-        iste voluptatibus?  
+    <div class="col-md-3 scroll mt-3">
+        <div class="row">
+            <div class="col-md-12" *ngFor="let alerta of listAlerta">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">{{alerta.nombre_tipo}}</h4></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Ciudadano: {{alerta.nombre}} {{alerta.apellido}}</h5>
+                        <h5>DNI: {{alerta.dni}}</h5>
+                        <h5>Fecha: {{alerta.fecha}}</h5>
+                        <h5>Hora: {{alerta.hora}}</h5>
+                        <h5>Latitud: {{alerta.lat}}</h5>
+                        <h5>Longitud: {{alerta.lng}}</h5>
+                        <p class="card-text">{{alerta.descripcion}}</p>
+                        
+                        <button type="button" class="btn btn-outline-secondary">Mostrar Ruta</button>
+                        <button type="button" class="btn btn-outline-info ml-2">Derivar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
     </div>
 </div>

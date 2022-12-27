@@ -1,15 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, EventEmitter, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ResultTipoAlerta, Tipoalerta } from 'src/app/interface/tipo-alerta';
 import { TipoAlertaService } from 'src/app/services/tipo-alerta.service';
 import { ToastrService } from 'ngx-toastr';
-
-interface FiltroForm{
-  tipo:string;
-  fechaUno:string;
-  fechaDos:string;
-  datoTipo:string
-}
+import { FiltroForm } from 'src/app/interface/search-form';
 
 @Component({
   selector: 'app-search-alerta',
@@ -56,26 +50,51 @@ export class SearchAlertaComponent implements OnInit {
       });
   }
   onClick(){
-    //console.log(this.tipo.value);
-    
-    if (this.tipo.value.length>=1) {
-      console.log('hola');
-      this.filtroEmiter.emit({
-        fechaDos:this.fechaDosForm.value,
-        fechaUno:this.fechaUnoForm.value,
-        tipo:this.tipo.value,
-        datoTipo:this.datoTipo.value
-      });
-    }else{
-      this.toastr.warning('Seleccione un tipo de filtro','Mensaje')
+    switch (this.tipo.value) {
+      case '1':
+        this.filtroEmiter.emit({
+          fechaDos:this.fechaDosForm.value,
+          fechaUno:this.fechaUnoForm.value,
+          tipo:this.tipo.value,
+          datoTipo:this.datoTipo.value
+        });
+        break;
+      case '2':
+          if (this.fechaUnoForm.value !=='' && this.fechaDosForm.value !== '') {
+            if (this.fechaUnoForm.value<this.fechaDosForm.value) {
+              this.filtroEmiter.emit({
+                fechaDos:this.fechaDosForm.value,
+                fechaUno:this.fechaUnoForm.value,
+                tipo:this.tipo.value,
+                datoTipo:this.datoTipo.value
+              });
+            }else{
+              this.toastr.warning('Fecha de inicio debe ser menor a fecha final','Mensaje');
+            }
+          }else{
+            this.toastr.warning('Ingresa las fechas correspondientes','Mensaje');
+          }
+        break;
+      case '3':
+          if (this.datoTipo.value !=='') {
+            this.filtroEmiter.emit({
+              fechaDos:this.fechaDosForm.value,
+              fechaUno:this.fechaUnoForm.value,
+              tipo:this.tipo.value,
+              datoTipo:this.datoTipo.value
+            });
+          }else{
+            this.toastr.warning('Seleccione tipo de alerta para filtrar','Mensaje');
+          }
+        break;
+      default:
+        this.toastr.warning('Seleccione un tipo de filtro','Mensaje')
+        break;
     }
-    
-    
   }
   mostrarTipoAtencion(){
     this.tipoAlertaService.getTipoAlerta('1').subscribe(
       (data:ResultTipoAlerta)=>{
-        console.log(data);
         this.listTipoAlerta = data.tipoalerta;
       },
       (error)=>{

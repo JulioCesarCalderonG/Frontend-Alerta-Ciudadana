@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { Alerta } from 'src/app/interface/alerta';
+import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
+import { AlertaMapa } from 'src/app/interface/alerta-form';
+import { EnvioAlertGet, FiltroForm } from 'src/app/interface/search-form';
 import { AlertaService } from 'src/app/services/alerta.service';
+import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-alertas',
   templateUrl: './alertas.component.html',
@@ -10,11 +14,25 @@ import { AlertaService } from 'src/app/services/alerta.service';
 export class AlertasComponent implements OnInit {
   mapa?: mapboxgl.Map;
   listAlerta?:Array<Alerta>;
-  constructor(private alertaService:AlertaService) { }
+  constructor(private alertaService:AlertaService, private renderer2:Renderer2) { }
 
   ngOnInit(): void {
-    this.crearMapa();
+    //this.crearMapa();
     this.mostrarAlerta();
+  }
+ 
+  mostrarAlerta(){
+   this.alertaService.getAlerta({fechaDos:'',fechaUno:'',tipoAlerta:''},'4').subscribe(
+      (data:ResultAlertas)=>{
+        //console.log(data);
+        this.listAlerta= data.results;
+        this.crearMapa();
+      },
+      (error)=>{
+        console.log(error);
+        
+      }
+    )
   }
   crearMapa() {
     this.mapa = new mapboxgl.Map({
@@ -24,26 +42,56 @@ export class AlertasComponent implements OnInit {
       center: [-74.569187, -8.389846],
       zoom: 12
     });
-    /* this.listCentro?.map((resp) => {
-      const marcador: Centro = {
-        celular: resp.celular,
-        direccion: resp.direccion,
-        id: resp.id,
-        lat: Number(resp.lat),
-        lng: Number(resp.lng),
-        nombre: resp.TipoAtencion.nombre,
-        telefono: resp.telefono,
-        img: `${environment.backendURL}/uploadgeneral/tipo-atencion/${resp.id_tipo_atencion}`,
-        estado: `${resp.estado}`,
-        titulo: resp.titulo
-      }
-      this.mostrarMarcadores(marcador);
-    }); */
+    if (this.listAlerta!.length>=1) {
+      this.listAlerta?.map((resp)=>{
+        const envioMapa:AlertaMapa={
+          id:resp.id,
+          lat:resp.lat,
+          lng:resp.lng,
+          descripcion:resp.descripcion,
+          color:`#${resp.color}`,
+          fecha:resp.fecha,
+          hora:resp.hora,
+          ciudadano:`${resp.nombre} ${resp.apellido}`,
+          foto:`${environment.backendURL}/tipoalerta/mostrar/imagen/${resp.id_tipo}`
+        }
+        this.mostrarMarcadores(envioMapa);
+      });
+    }
+    
   }
-  mostrarAlerta(){
-    this.alertaService.getAlerta().subscribe(
-      (data)=>{
-        console.log(data);
+  mostrarMarcadores(marcador: AlertaMapa) {
+    /* Creando el popup */
+    const div = this.renderer2.createElement('div');
+    
+    /* Terminando el diseño del marcador */
+    const customPopup = new mapboxgl.Popup({
+      offset: 25,
+      closeOnClick: false,
+      maxWidth: '350px',
+      
+    }).setDOMContent(div);
+    const marker = new mapboxgl.Marker({
+      draggable:false,
+      color:marcador.color
+    })
+      .setLngLat([marcador.lng, marcador.lat])
+      .setPopup(customPopup)
+      .addTo(this.mapa!)
+    
+
+  }
+  funFiltro(data:FiltroForm){
+    const envio:EnvioAlertGet ={
+      fechaUno:data.fechaUno,
+      fechaDos:data.fechaDos,
+      tipoAlerta:data.datoTipo
+    }
+    this.alertaService.getAlerta(envio,data.tipo).subscribe(
+      (data:ResultAlertas)=>{
+        //console.log(data);
+        this.listAlerta= data.results;
+        this.crearMapa();
         
       },
       (error)=>{
@@ -52,8 +100,6 @@ export class AlertasComponent implements OnInit {
       }
     )
   }
-  funFiltro(data:any){
-    console.log(data);
-    
+  buscar(){
   }
 }

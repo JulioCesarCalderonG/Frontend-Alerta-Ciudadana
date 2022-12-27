@@ -1,0 +1,46 @@
+<h4 class="card-title">Responsive Table </h4>
+<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
+    <code>.table-responsive </code>
+</h6>
+<div class="row justify-content-end">
+    <div class="col-lg-2">
+        <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+        </select>
+    </div>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><i
+                class="fa fa-plus-square"></i> Crear</button>
+    </div>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Icono</th>
+                <th>Opcion Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tipoAlerta of listTipoAlerta">
+                <td>{{tipoAlerta.id}}</td>
+                <td>{{tipoAlerta.nombre}}</td>
+                <td>{{tipoAlerta.icono}}</td>
+                <td>{{tipoAlerta.OpcionFoto.nombre}}</td>
+                <td>
+                    <a class="btn btn-circle btn-secondary" *ngIf="tipoAlerta.estado === 1"
+                        (click)="borrartipoAlerta(tipoAlerta.id, '0')"> <i class="fas fa-lock"></i>
+                    </a>
+                    <a class="btn btn-circle btn-secondary" *ngIf="tipoAlerta.estado === 0"
+                        (click)="borrartipoAlerta(tipoAlerta.id, '1')"> <i class="fas fa-lock-open"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

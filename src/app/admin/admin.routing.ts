@@ -11,6 +11,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { CiudadanoComponent } from './ciudadano/ciudadano.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
+import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
             { path: 'usuario', component: UsuarioComponent },
             { path: 'ciudadano', component: CiudadanoComponent },
             { path: 'alerta', component: AlertasComponent },
+            { path: 'tipo-alerta', component: TipoAlertaComponent },
             { path: 'alerta-derivada', component: AlertaDerivadaComponent },
             { path: 'tipo-atencion', component: TipoAtencionComponent },
             { path: 'centro-atencion', component: CentroCiudadanoComponent },

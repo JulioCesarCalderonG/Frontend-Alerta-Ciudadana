@@ -17,6 +17,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { CiudadanoComponent } from './ciudadano/ciudadano.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
+import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 
 
 
@@ -31,7 +32,8 @@ import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.compo
     UsuarioComponent,
     CiudadanoComponent,
     AlertasComponent,
-    AlertaDerivadaComponent
+    AlertaDerivadaComponent,
+    TipoAlertaComponent
   ],
   exports:[
     DashboardComponent,

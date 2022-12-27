@@ -14,6 +14,13 @@ export class SidebarAdminService {
       ]
     },
     {
+      titulo: 'Tipo de Alerta',
+      icono: 'mdi mdi-alert-box',
+      submenu: [
+        { titulo: 'Mostrar tipo de alertas', url: 'tipo-alerta' },
+      ]
+    },
+    {
       titulo: 'Usuarios',
       icono: 'mdi mdi-account-circle',
       submenu: [
