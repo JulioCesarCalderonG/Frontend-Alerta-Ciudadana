@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ResultTipoAlerta, Tipoalerta } from 'src/app/interface/tipo-alerta';
+import { ResultTipoAlerta, ResultTipoAlertas, Tipoalerta } from 'src/app/interface/tipo-alerta';
 import { TipoAlertaService } from 'src/app/services/tipo-alerta.service';
 import { ToastrService } from 'ngx-toastr';
 import { FiltroForm } from 'src/app/interface/search-form';
@@ -93,8 +93,8 @@ export class SearchAlertaComponent implements OnInit {
     }
   }
   mostrarTipoAtencion(){
-    this.tipoAlertaService.getTipoAlerta('1').subscribe(
-      (data:ResultTipoAlerta)=>{
+    this.tipoAlertaService.getTipoAlertas('1').subscribe(
+      (data:ResultTipoAlertas)=>{
         this.listTipoAlerta = data.tipoalerta;
       },
       (error)=>{
