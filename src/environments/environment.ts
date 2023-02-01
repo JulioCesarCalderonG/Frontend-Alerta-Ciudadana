@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  backendURL: 'https://gongalsoft.com/api'
+  backendURL: 'http://192.168.100.51:4000/api'
 };
 
 /*
