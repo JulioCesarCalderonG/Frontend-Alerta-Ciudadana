@@ -1,1 +1,6 @@
-<p>grafica1 works!</p>
+<app-loading *ngIf="!isAdminLocation; else mapListo"></app-loading>
+
+<ng-template #mapListo>
+    <app-map-view></app-map-view>
+</ng-template>
+

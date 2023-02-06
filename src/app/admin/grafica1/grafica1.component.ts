@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalizacionService } from 'src/app/services/localizacion.service';
 
 @Component({
   selector: 'app-grafica1',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Grafica1Component implements OnInit {
 
-  constructor() { }
+  constructor(
+    private locationService:LocalizacionService
+  ) { }
 
   ngOnInit(): void {
+  }
+  
+  get isAdminLocation(){
+    return this.locationService.isUserLocationReady;
   }
 
 }

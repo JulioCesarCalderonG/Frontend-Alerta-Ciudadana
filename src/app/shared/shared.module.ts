@@ -8,6 +8,8 @@ import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchAlertaComponent } from './search-alerta/search-alerta.component';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingComponent } from './loading/loading.component';
+import { MapViewComponent } from './map-view/map-view.component';
 
 
 
@@ -17,14 +19,18 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent,
     HeaderComponent,
     SearchComponent,
-    SearchAlertaComponent
+    SearchAlertaComponent,
+    LoadingComponent,
+    MapViewComponent
   ],
   exports:[
     BreadcrumbsComponent,
     SidebarComponent,
     HeaderComponent,
     SearchComponent,
-    SearchAlertaComponent
+    SearchAlertaComponent,
+    LoadingComponent,
+    MapViewComponent
   ],
   imports: [
     CommonModule,
