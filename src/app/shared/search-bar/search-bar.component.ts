@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Alerta, AlertaFiltrada } from 'src/app/interface/alerta-filtrada';
+import { AlertaService } from 'src/app/services/alerta.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,15 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class SearchBarComponent implements OnInit {
 
   private debounceTimer?:NodeJS.Timeout;
-  constructor() { }
+  
+  buscar=''
+  constructor(
+    private alertaService:AlertaService
+  ) { }
 
   ngOnInit(): void {
+    this.mostrarAlerta();
   }
   onQueryChanged(query:string=''){
     if(this.debounceTimer) clearTimeout(this.debounceTimer);
     this.debounceTimer=setTimeout(() => {
-      console.log('Mandar este query', query);
+      this.buscar = query;
+      this.mostrarAlerta();
 
     }, 350);
+  }
+  mostrarAlerta(){
+    this.alertaService.getFiltroAlerta(this.buscar);
   }
 }

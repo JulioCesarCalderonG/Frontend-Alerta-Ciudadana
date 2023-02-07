@@ -1,15 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalizacionService {
+  
   public useLocation?:[number,number];
-
+ 
   get isUserLocationReady():boolean{
     return !!this.useLocation;
   }
-  constructor() { 
+  constructor(private http:HttpClient) { 
     this.getUserLocation();
   }
 
@@ -33,5 +35,6 @@ export class LocalizacionService {
 
     })
   }
+  
 
 }
