@@ -10,6 +10,10 @@ import { SearchAlertaComponent } from './search-alerta/search-alerta.component';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingComponent } from './loading/loading.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { BtnMiLocacionComponent } from './btn-mi-locacion/btn-mi-locacion.component';
+import { AngularLogoComponent } from './angular-logo/angular-logo.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 
@@ -21,7 +25,11 @@ import { MapViewComponent } from './map-view/map-view.component';
     SearchComponent,
     SearchAlertaComponent,
     LoadingComponent,
-    MapViewComponent
+    MapViewComponent,
+    BtnMiLocacionComponent,
+    AngularLogoComponent,
+    SearchBarComponent,
+    SearchResultsComponent
   ],
   exports:[
     BreadcrumbsComponent,
@@ -30,7 +38,11 @@ import { MapViewComponent } from './map-view/map-view.component';
     SearchComponent,
     SearchAlertaComponent,
     LoadingComponent,
-    MapViewComponent
+    MapViewComponent,
+    BtnMiLocacionComponent,
+    AngularLogoComponent,
+    SearchBarComponent,
+    SearchResultsComponent
   ],
   imports: [
     CommonModule,
