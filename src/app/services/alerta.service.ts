@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { EnvioAlertGet } from '../interface/search-form';
 import { Alerta, AlertaFiltrada } from '../interface/alerta-filtrada';
+import { MapService } from './map.service';
+import { LocalizacionService } from './localizacion.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +14,13 @@ import { Alerta, AlertaFiltrada } from '../interface/alerta-filtrada';
 export class AlertaService {
   url = `${environment.backendURL}/alerta`;
   public isCargaDatos:boolean=false;
-  public listAlertas?: Alerta[];
-  constructor(private http: HttpClient, private router: Router) {}
+  public listAlertas: Alerta[]=[];
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private mapService:MapService,
+    private locationService:LocalizacionService
+  ) {}
   getAlerta(data: EnvioAlertGet, tipo: string): Observable<any> {
     return this.http.post(`${this.url}/filtro/alerta`, data, { params: { tipo } });
   }
@@ -23,10 +30,10 @@ export class AlertaService {
       resp=>{
         this.isCargaDatos = false;
         this.listAlertas = resp.alerta;
-        console.log(this.listAlertas);
-        
+        this.mapService.createMarkerAlerta(this.listAlertas, this.locationService.useLocation!);
+
       }
     )
   }
-  
+
 }
