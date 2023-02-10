@@ -14,6 +14,7 @@ import { BtnMiLocacionComponent } from './btn-mi-locacion/btn-mi-locacion.compon
 import { AngularLogoComponent } from './angular-logo/angular-logo.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo.component';
 
 
 
@@ -29,7 +30,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     BtnMiLocacionComponent,
     AngularLogoComponent,
     SearchBarComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SidebarSerenazgoComponent
   ],
   exports:[
     BreadcrumbsComponent,
@@ -42,7 +44,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     BtnMiLocacionComponent,
     AngularLogoComponent,
     SearchBarComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SidebarSerenazgoComponent
   ],
   imports: [
     CommonModule,

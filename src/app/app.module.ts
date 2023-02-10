@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdminGuard } from './guard/admin.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
+import { SerenazgoModule } from './serenazgo/serenazgo.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
     AppRoutingModule,
     AdminModule,
     AuthModule,
+    SerenazgoModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
