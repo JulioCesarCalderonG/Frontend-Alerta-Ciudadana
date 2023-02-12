@@ -15,6 +15,7 @@ import { AngularLogoComponent } from './angular-logo/angular-logo.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo.component';
+import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.component';
 
 
 
@@ -31,7 +32,8 @@ import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo
     AngularLogoComponent,
     SearchBarComponent,
     SearchResultsComponent,
-    SidebarSerenazgoComponent
+    SidebarSerenazgoComponent,
+    MapViewSerenoComponent
   ],
   exports:[
     BreadcrumbsComponent,
@@ -45,7 +47,8 @@ import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo
     AngularLogoComponent,
     SearchBarComponent,
     SearchResultsComponent,
-    SidebarSerenazgoComponent
+    SidebarSerenazgoComponent,
+    MapViewSerenoComponent
   ],
   imports: [
     CommonModule,

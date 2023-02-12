@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SerenazgoComponent } from './serenazgo.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
+import { SerenazgoGuard } from '../guard/serenazgo.guard';
 
 
 const routes: Routes = [
@@ -11,6 +12,9 @@ const routes: Routes = [
     children:[
       {path:'', component:DashboardComponent},
       {path:'alertas', component:AlertaDerivadaComponent}
+    ],
+    canActivateChild:[
+      SerenazgoGuard
     ]
   },
 

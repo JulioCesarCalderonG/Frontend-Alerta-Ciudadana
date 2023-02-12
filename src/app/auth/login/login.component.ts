@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
         this.toastr.warning(data.msg, 'Mensaje');
        }else if(data.ok===true){
         sessionStorage.setItem('carga','0');
-        sessionStorage.setItem('x-token', data.token);  
+        sessionStorage.setItem('x-token', data.token);
         sessionStorage.setItem('usuario', data.usuario.nombre);
         sessionStorage.setItem('rol', String(data.usuario.id_cargo));
         if (data.usuario.Cargo.cargo==='UN') {
-          this.router.navigateByUrl('/normal');
+          this.router.navigateByUrl('/serenazgo');
          }
         if (data.usuario.Cargo.cargo==='UA') {
           this.router.navigateByUrl('/admin');

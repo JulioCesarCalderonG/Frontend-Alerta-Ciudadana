@@ -13,6 +13,7 @@ import { AdminGuard } from './guard/admin.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { SerenazgoModule } from './serenazgo/serenazgo.module';
+import { SerenazgoGuard } from './guard/serenazgo.guard';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SerenazgoModule } from './serenazgo/serenazgo.module';
   ],
   providers: [
     AdminGuard,
+    SerenazgoGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorInterceptor,
