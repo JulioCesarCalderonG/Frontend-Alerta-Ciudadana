@@ -11,6 +11,9 @@ export class LocalizacionService {
   get isUserLocationReady():boolean{
     return !!this.useLocation;
   }
+  get isUserLocationWatchReady():boolean{
+    return !!this.useLocationWatch;
+  }
   constructor(private http:HttpClient) {
     this.getUserLocation();
     this.getUserLocationWatch();
@@ -22,6 +25,7 @@ export class LocalizacionService {
       navigator.geolocation.getCurrentPosition(
         ({coords})=>{
           this.useLocation = [coords.longitude,coords.latitude];
+          console.log(this.useLocation);
 
           resolve(this.useLocation);
         },
@@ -41,7 +45,6 @@ export class LocalizacionService {
       navigator.geolocation.watchPosition(
         ({coords})=>{
           this.useLocationWatch = [coords.longitude,coords.latitude];
-
           resolve(this.useLocationWatch);
         },
         (err)=>{
