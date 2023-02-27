@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
+import { MapSerenazgoService } from '../../services/map-serenazgo.service';
 
 @Component({
   selector: 'app-alerta-derivada',
   templateUrl: './alerta-derivada.component.html',
   styleUrls: ['./alerta-derivada.component.css']
 })
-export class AlertaDerivadaComponent implements OnInit {
+export class AlertaDerivadaComponent implements AfterViewInit {
 
   constructor(
     private locationService:LocalizacionService
   ) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+
   }
   get isAdminLocation(){
     return this.locationService.isUserLocationReady;

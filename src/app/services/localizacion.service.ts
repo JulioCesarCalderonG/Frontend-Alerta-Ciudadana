@@ -44,6 +44,8 @@ export class LocalizacionService {
 
       navigator.geolocation.watchPosition(
         ({coords})=>{
+          console.log(coords);
+
           this.useLocationWatch = [coords.longitude,coords.latitude];
           resolve(this.useLocationWatch);
         },
