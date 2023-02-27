@@ -4,27 +4,22 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalizacionService {
-
-  public useLocation?:[number,number];
-  
-  get isUserLocationReady():boolean{
-    return !!this.useLocation;
+export class LocalizacionWatchService {
+  public useLocationWatch?:[number,number];
+  get isUserLocationWatchReady():boolean{
+    return !!this.useLocationWatch;
   }
-  
   constructor(private http:HttpClient) {
-    this.getUserLocation();
-    
+    this.getUserLocationWatch();
   }
-
-  public async getUserLocation():Promise<[number,number]>{
+  public async getUserLocationWatch():Promise<[number,number]>{
     return new Promise((resolve, reject)=>{
 
-      navigator.geolocation.getCurrentPosition(
+      navigator.geolocation.watchPosition(
         ({coords})=>{
-          this.useLocation = [coords.longitude,coords.latitude];
 
-          resolve(this.useLocation);
+          this.useLocationWatch = [coords.longitude, coords.latitude];
+          resolve(this.useLocationWatch);
         },
         (err)=>{
           alert('No se pudo obtener la geolocalizacion');
@@ -36,6 +31,4 @@ export class LocalizacionService {
 
     })
   }
-
-
 }

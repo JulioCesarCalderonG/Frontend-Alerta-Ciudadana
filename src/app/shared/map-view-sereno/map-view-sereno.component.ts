@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Map, Marker, Popup } from 'mapbox-gl';
+import { LocalizacionWatchService } from 'src/app/services/localizacion-watch.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
 import { MapService } from 'src/app/services/map.service';
 
@@ -10,13 +11,14 @@ import { MapService } from 'src/app/services/map.service';
 })
 export class MapViewSerenoComponent implements AfterViewInit {
   @ViewChild('mapDiv') mapDivElement!: ElementRef;
-  map?:Map;
+  map?: Map;
+  marker?:Marker;
+  divGeneral = document.querySelector('#listado');
   constructor(
     private locationService: LocalizacionService,
-    private mapService:MapService
+    private locationWatchService: LocalizacionWatchService,
+    private mapService: MapService
   ) {
-    console.log(locationService.useLocationWatch);
-
   }
   ngAfterViewInit(): void {
 
@@ -28,8 +30,12 @@ export class MapViewSerenoComponent implements AfterViewInit {
       center: this.locationService.useLocation!, // starting position [lng, lat]
       zoom: 14, // starting zoom
     });
-
-    const popup = new Popup().setHTML(`
+    this.mostrarMarcador();
+    setInterval(() => {
+      this.marker?.remove();
+      this.mostrarMarcador();
+    }, 5000);
+    /* const popup = new Popup().setHTML(`
             <h6>Aqui estoy</h6>
             <span>Estoy en este lugar del mundo</span>
           `);
@@ -38,6 +44,22 @@ export class MapViewSerenoComponent implements AfterViewInit {
       .setPopup(popup)
       .addTo(this.map);
 
-    this.mapService.setMap(this.map);
+    this.mapService.setMap(this.map); */
+
+  }
+
+  mostrarMarcador() {
+    this.locationService.getUserLocation();
+    const popup = new Popup().setHTML(`
+    <h6>Aqui estoy</h6>
+    <span>Estoy en este lugar del mundo</span>
+  `);
+     this.marker = new Marker({ color: 'red' })
+      .setLngLat(this.locationService.useLocation!)
+      .setPopup(popup)
+      .addTo(this.map!);
+
+    this.mapService.setMap(this.map!);
+
   }
 }

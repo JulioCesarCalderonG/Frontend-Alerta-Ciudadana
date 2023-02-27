@@ -6,3 +6,11 @@
   right: 0px;
 
 }
+.listado{
+  position: absolute;
+  z-index: 999;
+  color: 'white';
+  width: 150px;
+  height: 150px;
+  background-color: black;
+}
