@@ -10,7 +10,11 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   url = `${environment.backendURL}/authusuario`;
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(
+    private http: HttpClient, 
+    private router:Router,
+    
+  ) { }
   login(data:FormData):Observable<any>{
     return this.http.post(this.url, data);
   }
@@ -18,8 +22,17 @@ export class LoginService {
     return !!sessionStorage.getItem('x-token');
   }
   loggoud(){
-    sessionStorage.removeItem('x-token');
-    this.router.navigate(['/login']);
+    this.http.put(this.url,{}).subscribe(
+      (data)=>{
+        console.log(data);
+        sessionStorage.removeItem('x-token');
+        this.router.navigate(['/login']);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+    
   }
   getToken(){
     return sessionStorage.getItem('x-token');

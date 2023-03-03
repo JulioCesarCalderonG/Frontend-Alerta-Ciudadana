@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,13 @@ import { FormControl } from '@angular/forms';
 export class HeaderComponent implements OnInit {
 
   
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.loginService.loggoud();
+  }
 }
