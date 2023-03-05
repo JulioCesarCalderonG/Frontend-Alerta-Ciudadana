@@ -9,8 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UsuarioService {
   url = `${environment.backendURL}/usuarios`;
-  constructor(private http: HttpClient, private router:Router) { }
-  
+  constructor(private http: HttpClient, private router:Router) {
+  }
+
   getUsuarios(estado:string):Observable<any>{
     return this.http.get(this.url,{params:{estado}});
   }
@@ -25,5 +26,8 @@ export class UsuarioService {
   }
   deleteUsuario(id:number, estado:string):Observable<any>{
     return this.http.delete(`${this.url}/${id}`,{params:{estado}});
+  }
+  getSerenazgo():Observable<any>{
+   return this.http.get(`${this.url}/mostrar/serenazgo`);
   }
 }

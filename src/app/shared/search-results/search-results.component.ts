@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Alerta, AlertaFiltrada } from 'src/app/interface/alerta-filtrada';
 import { AlertaService } from 'src/app/services/alerta.service';
 import { MapService } from 'src/app/services/map.service';
@@ -12,6 +12,7 @@ import { LocalizacionService } from '../../services/localizacion.service';
 export class SearchResultsComponent {
 
   selectId:number=0;
+  @Output('codigo') codigoEmiter = new EventEmitter<any>();
   constructor(
     private alertaService:AlertaService,
     private mapService:MapService,
@@ -34,5 +35,8 @@ export class SearchResultsComponent {
     const start =this.locationService.useLocation;
     const end = [alerta.lng,alerta.lat] as [number,number]
     this.mapService.getRutaAlerta(start,end)
+  }
+  codigoAlerta(codigos:any){
+    this.codigoEmiter.emit(codigos);
   }
 }

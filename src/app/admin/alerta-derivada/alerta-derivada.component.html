@@ -1,1 +1,39 @@
-<p>alerta-derivada works!</p>
+<h4 class="card-title">Responsive Table </h4>
+<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
+    <code>.table-responsive </code>
+</h6>
+<div class="row justify-content-end">
+    <div class="col-lg-2">
+        <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
+            <option value="0">Sin Atencion</option>
+            <option value="1">Atendido</option>
+        </select>
+    </div>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DNI Ciudadano</th>
+                <th>Ciudadano</th>
+                <th>Descripcion</th>
+                <th>Derivado A:</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alerta of listAlertaDerivada">
+                <td>{{alerta.Alertum.Ciudadano.dni}}</td>
+                <td>{{alerta.Alertum.Ciudadano.nombre}} {{alerta.Alertum.Ciudadano.apellido}}</td>
+                <td>{{alerta.Alertum.descripcion}}</td>
+                <td>{{alerta.Usuario.nombre}} {{alerta.Usuario.apellido}}</td>
+                <td>
+                    <a class="btn btn-circle btn-secondary"
+                        (click)="borraralerta(alerta.id)"> <i class="fas fa-lock"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

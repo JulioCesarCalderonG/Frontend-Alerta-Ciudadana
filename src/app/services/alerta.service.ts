@@ -31,7 +31,6 @@ export class AlertaService {
         this.isCargaDatos = false;
         this.listAlertas = resp.alerta;
         this.mapService.createMarkerAlerta(this.listAlertas, this.locationService.useLocation!);
-
       }
     )
   }

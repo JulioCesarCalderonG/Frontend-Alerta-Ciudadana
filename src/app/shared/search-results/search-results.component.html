@@ -4,7 +4,7 @@ class="alert alert-primary mt-2 text-center">
   <span>Espere por favor....</span>
 </div>
 
-<ul class="list-group mt-2" *ngIf="alertaFiltro.length>0">
+<ul class="list-group mt-2" *ngIf="alertaFiltro.length>0" >
   <li *ngFor="let alertas of alertaFiltro"
   class="list-group-item list-group-item-action pointer"
   [class.active]="alertas.id === selectId"
@@ -20,8 +20,13 @@ class="alert alert-primary mt-2 text-center">
     >
       Direcciones
     </button>
-    <button class="btn btn-sm btn-outline-warning ml-2">
+    <button class="btn btn-sm btn-outline-warning ml-2"
+    (click)="codigoAlerta(alertas.id)"
+    data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+    >
       Derivar
     </button>
   </li>
 </ul>
+
+

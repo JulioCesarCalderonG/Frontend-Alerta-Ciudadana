@@ -13,3 +13,7 @@ p{
   font-size: 12px;
   font-weight: bold;
 }
+#modal{
+  z-index: 99999;
+  position: absolute;
+}
