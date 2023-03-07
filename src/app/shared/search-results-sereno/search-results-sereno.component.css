@@ -1,0 +1,19 @@
+.pointer{
+  cursor: pointer;
+}
+h6{
+  font-weight: bold;
+}
+ul{
+  height: 700px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+p{
+  font-size: 12px;
+  font-weight: bold;
+}
+#modal{
+  z-index: 99999;
+  position: absolute;
+}

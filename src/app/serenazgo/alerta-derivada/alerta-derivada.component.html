@@ -1,9 +1,8 @@
 <app-loading *ngIf="!isAdminLocation; else mapListo"></app-loading>
-
-
     <ng-template #mapListo>
         <app-map-view-sereno></app-map-view-sereno>
+        <app-btn-mi-locacion></app-btn-mi-locacion>
+        <app-search-bar-sereno></app-search-bar-sereno>
     </ng-template>
-
 <app-angular-logo></app-angular-logo>
 

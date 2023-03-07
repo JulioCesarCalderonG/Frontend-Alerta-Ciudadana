@@ -1,0 +1,31 @@
+<div *ngIf="isLoadingAlertas"
+  class="alert alert-primary mt-2 text-center">
+  <h6>Cargando</h6>
+  <span>Espere por favor....</span>
+</div>
+
+<ul class="list-group mt-2" *ngIf="alertaFiltro.length>0" >
+  <li *ngFor="let alertas of alertaFiltro"
+  class="list-group-item list-group-item-action pointer"
+  [class.active]="alertas.id === selectId"
+  (click)="flyTo(alertas)"
+  >
+    <h6>{{alertas.Alertum.TipoAlertum.nombre}}</h6>
+    <p>
+      {{alertas.Alertum.descripcion}}
+    </p>
+    <button
+      class="btn btn-sm btn-outline-primary"
+      (click)="mostrarRuta(alertas)"
+    >
+      Direcciones
+    </button>
+    <button class="btn btn-sm btn-outline-warning ml-2"
+    data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+    >
+      Atender
+    </button>
+  </li>
+</ul>
+
+

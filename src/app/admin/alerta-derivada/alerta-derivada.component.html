@@ -28,12 +28,48 @@
                 <td>{{alerta.Alertum.Ciudadano.nombre}} {{alerta.Alertum.Ciudadano.apellido}}</td>
                 <td>{{alerta.Alertum.descripcion}}</td>
                 <td>{{alerta.Usuario.nombre}} {{alerta.Usuario.apellido}}</td>
-                <td>
+                <td class="text-nowrap" *ngIf="alerta.atencion === 0">
+                  <a class="btn btn-circle btn-warning mr-2"
+                  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+                  (click)="obtenerDatos(alerta.id)"> <i class="fa fa-pencil"></i> </a>
                     <a class="btn btn-circle btn-secondary"
                         (click)="borraralerta(alerta.id)"> <i class="fas fa-lock"></i>
+                    </a>
+                </td>
+                <td class="text-nowrap" *ngIf="alerta.atencion === 1" disabled="disabled">
+                  <a class="btn btn-circle btn-warning mr-2 deshabilitar"> <i class="fa fa-pencil"></i> </a>
+                    <a class="btn btn-circle btn-secondary deshabilitar"> <i class="fas fa-lock"></i>
                     </a>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Derivacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="serenoForm">
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Seleccionar el serenazgo</label>
+            <select class="form-control" id="exampleFormControlSelect2" formControlName="sereno">
+              <option *ngFor="let usuario of listUsuario" value="{{usuario.id}}">{{usuario.dni}} - {{usuario.nombre}} {{usuario.apellido}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="actualizarAlerta()" [disabled]="!serenoForm.valid">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

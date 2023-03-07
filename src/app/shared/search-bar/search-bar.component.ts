@@ -83,4 +83,10 @@ export class SearchBarComponent implements OnInit {
       }
     )
   }
+  cancelar(){
+    this.codigoAlerta = 0;
+    this.serenoForm.setValue({
+      sereno:''
+    })
+  }
 }

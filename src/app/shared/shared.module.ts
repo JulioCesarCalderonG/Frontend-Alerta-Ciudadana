@@ -16,6 +16,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo.component';
 import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.component';
+import { SearchBarSerenoComponent } from './search-bar-sereno/search-bar-sereno.component';
+import { SearchResultsSerenoComponent } from './search-results-sereno/search-results-sereno.component';
 
 
 
@@ -33,7 +35,9 @@ import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.compon
     SearchBarComponent,
     SearchResultsComponent,
     SidebarSerenazgoComponent,
-    MapViewSerenoComponent
+    MapViewSerenoComponent,
+    SearchBarSerenoComponent,
+    SearchResultsSerenoComponent
   ],
   exports:[
     BreadcrumbsComponent,
@@ -48,7 +52,8 @@ import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.compon
     SearchBarComponent,
     SearchResultsComponent,
     SidebarSerenazgoComponent,
-    MapViewSerenoComponent
+    MapViewSerenoComponent,
+    SearchBarSerenoComponent
   ],
   imports: [
     CommonModule,
