@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebsocketService } from './socket/websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'adminpro';
+  constructor(private wsService: WebsocketService){
+    wsService.checkStatus();
+  }
 }

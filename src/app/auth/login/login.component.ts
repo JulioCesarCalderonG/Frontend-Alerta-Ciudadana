@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('x-token', data.token);
         sessionStorage.setItem('usuario', data.usuario.nombre);
         sessionStorage.setItem('rol', String(data.usuario.id_cargo));
+        sessionStorage.setItem('id_usuario',String(data.usuario.id));
         if (data.usuario.Cargo.cargo==='UN') {
           this.router.navigateByUrl('/serenazgo');
          }

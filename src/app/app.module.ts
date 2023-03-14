@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://192.168.0.108:4000', options: {} };
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
@@ -29,6 +33,7 @@ import { SerenazgoGuard } from './guard/serenazgo.guard';
     SerenazgoModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     AdminGuard,

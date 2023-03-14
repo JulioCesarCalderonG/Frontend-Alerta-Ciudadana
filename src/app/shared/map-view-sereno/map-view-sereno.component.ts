@@ -34,7 +34,7 @@ export class MapViewSerenoComponent implements AfterViewInit {
     setInterval(() => {
       this.marker?.remove();
       this.mostrarMarcador();
-    }, 5000);
+    }, 3000);
     /* const popup = new Popup().setHTML(`
             <h6>Aqui estoy</h6>
             <span>Estoy en este lugar del mundo</span>

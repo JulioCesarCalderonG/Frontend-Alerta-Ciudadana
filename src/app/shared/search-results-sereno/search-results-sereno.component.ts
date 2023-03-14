@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AlertaDerivadaService } from '../../services/alerta-derivada.service';
 import { AlertaDerivada } from 'src/app/interface/alerta-derivada-filtrada';
 import { MapService } from '../../services/map.service';
@@ -11,6 +11,7 @@ import { LocalizacionService } from '../../services/localizacion.service';
 })
 export class SearchResultsSerenoComponent {
   selectId:number=0;
+  @Output('alerta') codigoEmiter = new EventEmitter<any>();
   constructor(
     private alertaService: AlertaDerivadaService,
     private mapService:MapService,
@@ -33,5 +34,8 @@ export class SearchResultsSerenoComponent {
     const start =this.locationService.useLocation;
     const end = [alerta.Alertum.lng,alerta.Alertum.lat] as [number,number]
     this.mapService.getRutaAlerta(start,end)
+  }
+  actualizarAlerta(id:number){
+    this.codigoEmiter.emit(id);
   }
 }

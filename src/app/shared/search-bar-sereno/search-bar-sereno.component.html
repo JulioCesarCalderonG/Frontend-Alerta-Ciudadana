@@ -6,5 +6,5 @@
     #txtQuery
     (keyup)="onQueryChanged(txtQuery.value)"
   >
-  <app-search-results-sereno></app-search-results-sereno>
+  <app-search-results-sereno (alerta)="actualizarAlerta($event)"></app-search-results-sereno>
 </div>

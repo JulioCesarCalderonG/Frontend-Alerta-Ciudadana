@@ -5,88 +5,103 @@ import { AlertaService } from 'src/app/services/alerta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertaDerivadaService } from '../../services/alerta-derivada.service';
 import Swal from 'sweetalert2';
+import { WebsocketService } from 'src/app/socket/websocket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
-
-  private debounceTimer?:NodeJS.Timeout;
-  public isCargaDatos:boolean=false;
+  private debounceTimer?: NodeJS.Timeout;
+  public isCargaDatos: boolean = false;
   public listUsuario: Usuario[] = [];
-  codigoAlerta:number = 0;
-  buscar='';
-  serenoForm:FormGroup;
+  codigoAlerta: number = 0;
+  buscar = '';
+  serenoForm: FormGroup;
   constructor(
-    private alertaService:AlertaService,
+    private alertaService: AlertaService,
     private usuarioService: UsuarioService,
-    private alertaDerivada:AlertaDerivadaService,
-    private fb:FormBuilder
+    private alertaDerivada: AlertaDerivadaService,
+    private fb: FormBuilder,
+    private ws: WebsocketService,
+    private toastr: ToastrService
   ) {
     this.serenoForm = this.fb.group({
-      sereno:['', Validators.required]
-    })
+      sereno: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
     this.mostrarAlerta();
     this.mostrarSereno();
+    this.mostrarAlertaSocket();
   }
-  onQueryChanged(query:string=''){
-    if(this.debounceTimer) clearTimeout(this.debounceTimer);
-    this.debounceTimer=setTimeout(() => {
+  onQueryChanged(query: string = '') {
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => {
       this.buscar = query;
       this.mostrarAlerta();
-
     }, 350);
   }
-  mostrarAlerta(){
+  mostrarAlerta() {
     this.alertaService.getFiltroAlerta(this.buscar);
   }
-  clickEvent(event:number){
+  clickEvent(event: number) {
     this.codigoAlerta = event;
   }
-  mostrarSereno(){
-    this.usuarioService.getSerenazgo().subscribe(
-      (resp:ResultUsuarios)=>{
-
-        this.listUsuario = resp.usuario;
-        console.log(this.listUsuario);
-
-      }
-    )
+  mostrarSereno() {
+    this.usuarioService.getSerenazgo().subscribe((resp: ResultUsuarios) => {
+      this.listUsuario = resp.usuario;
+      console.log(this.listUsuario);
+    });
   }
-  derivarAlerta(){
+  derivarAlerta() {
     console.log(this.serenoForm.get('sereno')?.value);
     const formData = new FormData();
-    formData.append('id_alerta',String(this.codigoAlerta));
-    formData.append('id_usuario',this.serenoForm.get('sereno')?.value);
+    formData.append('id_alerta', String(this.codigoAlerta));
+    formData.append('id_usuario', this.serenoForm.get('sereno')?.value);
     this.alertaDerivada.postAlertaDerivada(formData).subscribe(
-      (resp)=>{
+      (resp) => {
         console.log(resp);
         Swal.fire(
           'Derivado!',
           'La alerta ha sido derivado con exito, verifica en alertas derivadas!',
           'success'
-        )
+        );
+        this.ws.emit(`alerta-derivada`, {
+          titulo: 'Alerta Nueva',
+          msg: 'Porfavor verifica su ubicacion y acerquese al lugar',
+          usuario: `${this.serenoForm.get('sereno')?.value}`,
+        },(data:any)=>{
+          console.log(data);
+        });
       },
-      (error)=>{
+      (error) => {
         console.log(error.error.errors[0].msg);
-        Swal.fire(
-          'Ya derivado!',
-          error.error.errors[0].msg,
-          'error'
-        )
-
+        Swal.fire('Ya derivado!', error.error.errors[0].msg, 'error');
       }
-    )
+    );
   }
-  cancelar(){
+  cancelar() {
     this.codigoAlerta = 0;
     this.serenoForm.setValue({
-      sereno:''
-    })
+      sereno: '',
+    });
+  }
+  mostrarAlertaSocket() {
+    this.ws.listen('actualizar-alerta-general').subscribe(
+      (data) => {
+        this.mostrarAlerta();
+        this.toastr.success(
+          'Tienes una alerta ciudadana entrante',
+          'Alerta Ciudadana'
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
