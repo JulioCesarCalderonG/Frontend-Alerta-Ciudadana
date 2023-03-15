@@ -39,6 +39,7 @@ export class TipoAlertaComponent implements OnInit {
     opcionFoto: '',
     imagenDefault: ''
   };
+  p: number = 1;
   @ViewChild('fileInput', { static: false }) fileInput?: ElementRef;
   uploadFiles?: File;
   constructor(

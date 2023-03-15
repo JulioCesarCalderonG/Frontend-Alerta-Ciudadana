@@ -1,7 +1,4 @@
-<h4 class="card-title">Responsive Table </h4>
-<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
-    <code>.table-responsive </code>
-</h6>
+
 <div class="row justify-content-end">
     <div class="col-lg-2">
         <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
@@ -26,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let ciudadano of listCiudadano">
+            <tr *ngFor="let ciudadano of listCiudadano! | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{ciudadano.id}}</td>
                 <td>{{ciudadano.nombre}}</td>
                 <td>{{ciudadano.apellido}}</td>
@@ -42,4 +39,5 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
 </div>

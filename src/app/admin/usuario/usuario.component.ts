@@ -40,6 +40,7 @@ export class UsuarioComponent implements OnInit {
   titulo = 'Agregar Usuario';
   ids?: number;
   cargar = true;
+  p: number = 1;
   @ViewChild('dniInput', { static: false }) dniTip?: ElementRef;
   constructor(
     private usuarioService: UsuarioService,

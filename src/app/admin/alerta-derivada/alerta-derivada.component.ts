@@ -19,6 +19,7 @@ export class AlertaDerivadaComponent implements OnInit {
   tipo:string='0';
   serenoForm:FormGroup;
   codigoAlerta:number = 0;
+  p: number = 1;
   constructor(
     private alertaDerivadaService:AlertaDerivadaService,
     private usuarioService: UsuarioService,

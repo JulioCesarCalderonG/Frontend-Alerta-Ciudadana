@@ -13,6 +13,7 @@ export class CiudadanoComponent implements OnInit {
   listCiudadano?:Array<Ciudadano>;
   estado:string="1";
   inputBuscar:string="";
+  p: number = 1;
   constructor(private ciudadanoService:CiudadanoService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class CiudadanoComponent implements OnInit {
         this.listCiudadano = data.ciudadano;
       },(error)=>{
         console.log(error);
-        
+
       }
     )
   }
@@ -36,7 +37,7 @@ export class CiudadanoComponent implements OnInit {
           this.listCiudadano = data.ciudadano;
         },(error)=>{
           console.log(error);
-          
+
         }
       )
     }
@@ -77,7 +78,7 @@ export class CiudadanoComponent implements OnInit {
           },
           (error)=>{
             console.log(error);
-            
+
           }
         )
       }

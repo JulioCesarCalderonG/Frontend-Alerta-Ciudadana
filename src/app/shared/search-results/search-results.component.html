@@ -14,6 +14,12 @@ class="alert alert-primary mt-2 text-center">
     <p>
       {{alertas.descripcion}}
     </p>
+    <p style="margin-bottom: -3px;">
+      Fecha: {{alertas.fecha}}
+    </p>
+    <p>
+      Hora: {{alertas.hora}}
+    </p>
     <button
       class="btn btn-sm btn-outline-primary"
       (click)="mostrarRuta(alertas)"

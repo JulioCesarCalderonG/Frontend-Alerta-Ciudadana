@@ -1,7 +1,4 @@
-<h4 class="card-title">Responsive Table </h4>
-<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
-    <code>.table-responsive </code>
-</h6>
+
 <div class="row justify-content-end">
     <div class="col-lg-4 text-right">
         <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
@@ -24,7 +21,7 @@
             </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let tipoAtencion of listTipoAtencion">
+            <tr *ngFor="let tipoAtencion of listTipoAtencion! | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td><a href="javascript:void(0)">{{tipoAtencion.id}}</a></td>
                 <td>{{tipoAtencion.nombre}}</td>
                 <td *ngIf="tipoAtencion.estado === 0">
@@ -46,6 +43,7 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
 </div>
 <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 data-keyboard="false" data-backdrop="static"
@@ -62,7 +60,7 @@ data-keyboard="false" data-backdrop="static"
                     </div>
                     <div class="col-md-12 m-b-20 text-center">
                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir Imagen</span>
-                            <input type="file" #fileInput class="upload loadimage" accept=".jpeg,.jpg,.png" (change)="capturarFile($event)" > 
+                            <input type="file" #fileInput class="upload loadimage" accept=".jpeg,.jpg,.png" (change)="capturarFile($event)" >
                         </div>
                     </div>
                 </div>
@@ -70,10 +68,10 @@ data-keyboard="false" data-backdrop="static"
                     <div class="form-group">
                         <div class="col-md-12 m-b-20">
                             <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre"></div>
-                       
+
                     </div>
                 </form>
-            </div>  
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info waves-effect" [disabled]="tipoAtencionForm.invalid" (click)="agregarEditarTipoAtencion()">Guardar</button>
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" (click)="cancelar()">Cancelar</button>

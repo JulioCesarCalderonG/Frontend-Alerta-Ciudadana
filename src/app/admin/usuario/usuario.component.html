@@ -1,7 +1,4 @@
-<h4 class="card-title">Responsive Table </h4>
-<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
-    <code>.table-responsive </code>
-</h6>
+
 <div class="row justify-content-end">
     <div class="col-lg-4 text-right">
         <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
@@ -28,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let usuario of listUsuario">
+            <tr *ngFor="let usuario of listUsuario! | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td><a href="javascript:void(0)">{{usuario.id}}</a></td>
                 <td>{{usuario.dni}}</td>
                 <td>{{usuario.nombre}}</td>
@@ -58,6 +55,7 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-keyboard="false" data-backdrop="static">
@@ -101,11 +99,11 @@
                           <option *ngFor="let cargo of listCargo" value={{cargo.id}}>{{cargo.descripcion}}</option>
                         </select>
                       </div>
-                    
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" (click)="agregarEditarUsuario()">Guardar</button>                
+                <button type="submit" class="btn btn-primary" (click)="agregarEditarUsuario()">Guardar</button>
             </div>
         </div>
     </div>

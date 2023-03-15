@@ -23,6 +23,7 @@ export class TipoAtencionComponent implements OnInit {
   titulo = 'Agregar Tipo de Atencion';
   tipoAtencionForm: FormGroup;
   uploadFiles?: File;
+  p: number = 1;
   @ViewChild('fileInput', { static: false }) fileInput?: ElementRef;
   @ViewChild('asTable', { static: false }) tableTip?: ElementRef;
   constructor(private tipoAtencionService: TipoAtencionService, private fb: FormBuilder, private sanitizer: DomSanitizer, private toastr: ToastrService, private renderer2: Renderer2) {

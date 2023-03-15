@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/serenazgo/alertas');
          }
         if (data.usuario.Cargo.cargo==='UA') {
-          this.router.navigateByUrl('/admin');
+          this.router.navigateByUrl('/admin/ultimas-24-horas');
          }
        }
       },

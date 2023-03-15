@@ -18,7 +18,7 @@ import { CiudadanoComponent } from './ciudadano/ciudadano.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
 import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -49,6 +49,7 @@ import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

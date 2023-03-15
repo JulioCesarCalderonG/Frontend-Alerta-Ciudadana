@@ -1,7 +1,4 @@
-<h4 class="card-title">Responsive Table </h4>
-<h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in
-    <code>.table-responsive </code>
-</h6>
+
 <div class="row justify-content-end">
     <div class="col-lg-2">
         <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
@@ -23,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let alerta of listAlertaDerivada">
+            <tr *ngFor="let alerta of listAlertaDerivada | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{alerta.Alertum.Ciudadano.dni}}</td>
                 <td>{{alerta.Alertum.Ciudadano.nombre}} {{alerta.Alertum.Ciudadano.apellido}}</td>
                 <td>{{alerta.Alertum.descripcion}}</td>
@@ -44,6 +41,7 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
