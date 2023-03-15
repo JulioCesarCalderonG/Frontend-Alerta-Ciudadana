@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('id_usuario',String(data.usuario.id));
         this.ws.emit('inicio-sesion');
         if (data.usuario.Cargo.cargo==='UN') {
-          this.router.navigateByUrl('/serenazgo/alertas');
+          this.router.navigateByUrl('/serenazgo');
          }
         if (data.usuario.Cargo.cargo==='UA') {
-          this.router.navigateByUrl('/admin/ultimas-24-horas');
+          this.router.navigateByUrl('/admin');
          }
        }
       },
