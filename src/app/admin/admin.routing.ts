@@ -28,13 +28,13 @@ const routes: Routes = [
             { path: 'tipo-atencion', component: TipoAtencionComponent },
             { path: 'centro-atencion', component: CentroCiudadanoComponent },
             { path: 'progress', component: ProgressComponent },
-            { path: 'grafica1', component: Grafica1Component },
+            { path: 'ultimas-24-horas', component: Grafica1Component },
         ],
         canActivateChild: [
             AdminGuard
         ]
     },
-    
+
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
     //{ path: '**', component: ... },

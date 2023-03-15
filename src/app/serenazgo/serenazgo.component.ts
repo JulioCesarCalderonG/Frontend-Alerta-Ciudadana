@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SerenazgoComponent implements OnInit {
 
+  fecha = new Date().getFullYear();
   constructor() { }
 
   ngOnInit(): void {

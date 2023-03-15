@@ -56,7 +56,6 @@ export class TipoAlertaComponent implements OnInit {
     this.tipoAlertaService.getTipoAlertas(this.estado).subscribe(
       (data: ResultTipoAlertas) => {
         this.listTipoAlerta = data.tipoalerta;
-        console.log(this.listTipoAlerta);
       },
       (error) => {
         console.log(error);
@@ -66,7 +65,6 @@ export class TipoAlertaComponent implements OnInit {
   mostrarOpcionFoto() {
     this.opcionFotoService.getOpcionFotos().subscribe(
       (data: ResultOpcionFotos) => {
-        console.log(data);
         this.listOpcionFoto = data.opcionFoto;
       },
       (error) => {

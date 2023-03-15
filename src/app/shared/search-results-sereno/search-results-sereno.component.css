@@ -17,3 +17,8 @@ p{
   z-index: 99999;
   position: absolute;
 }
+@media (max-width:1024px){
+  ul{
+    height: 540px!important;
+  }
+}

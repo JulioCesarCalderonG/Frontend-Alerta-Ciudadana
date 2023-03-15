@@ -40,9 +40,9 @@ export class TipoAtencionComponent implements OnInit {
       (data: ResultTipoAtenciones) => {
         this.listTipoAtencion = data.tipoAtencion;
         for (let i = 0; i < this.listTipoAtencion.length; i++) {
-          this.listTipoAtencion[i].img = `${this.priImage}/${this.listTipoAtencion[i].id}`          
+          this.listTipoAtencion[i].img = `${this.priImage}/${this.listTipoAtencion[i].id}`
         }
-        
+
 
       },
       (error) => {
@@ -108,7 +108,6 @@ export class TipoAtencionComponent implements OnInit {
   }
   agregarEditarTipoAtencion() {
     if (!this.ids) {
-      console.log('estas agregando');
       const formData = new FormData();
       formData.append('nombre', this.tipoAtencionForm.get('nombre')?.value);
       formData.append('archivo', this.fileInput!.nativeElement.files[0]);

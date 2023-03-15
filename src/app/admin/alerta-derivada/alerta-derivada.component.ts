@@ -4,6 +4,7 @@ import { AlertaDerivada, ResultAlertaDerivada, ResultAlertaDerivadas } from 'src
 import { ResultUsuarios, Usuario } from 'src/app/interface/usuario';
 import { AlertaDerivadaService } from 'src/app/services/alerta-derivada.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { WebsocketService } from 'src/app/socket/websocket.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +22,8 @@ export class AlertaDerivadaComponent implements OnInit {
   constructor(
     private alertaDerivadaService:AlertaDerivadaService,
     private usuarioService: UsuarioService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private ws:WebsocketService
   ) {
     this.serenoForm = this.fb.group({
       sereno:['', Validators.required]
@@ -48,7 +50,6 @@ export class AlertaDerivadaComponent implements OnInit {
     )
   }
   actualizarAlerta(){
-    console.log(this.serenoForm.get('sereno')?.value);
     const formData = new FormData();
     formData.append('id_usuario',this.serenoForm.get('sereno')?.value);
     this.alertaDerivadaService.putAlertaDerivada(formData, this.codigoAlerta).subscribe(
@@ -57,7 +58,15 @@ export class AlertaDerivadaComponent implements OnInit {
           'Actualizado!',
           'Se ha actualizado con exito',
           'success'
-        )
+        );
+        this.ws.emit('actualizar-alerta-derivada');
+        this.ws.emit(`alerta-derivada`, {
+          titulo: 'Alerta Nueva',
+          msg: 'Porfavor verifica su ubicacion y acerquese al lugar',
+          usuario: `${this.serenoForm.get('sereno')?.value}`,
+        },(data:any)=>{
+          console.log(data);
+        });
         this.mostrarAlerta();
       }
     )
@@ -75,6 +84,7 @@ export class AlertaDerivadaComponent implements OnInit {
       if (result.isConfirmed) {
         this.alertaDerivadaService.deleteAlerta(id).subscribe(
           (resp)=>{
+            this.ws.emit('borrar-alerta-derivada');
             Swal.fire(
               'Eliminado!',
               'Se elimino la alerta derivada con exito.',

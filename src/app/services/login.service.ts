@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { WebsocketService } from '../socket/websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class LoginService {
 
   url = `${environment.backendURL}/authusuario`;
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router:Router,
-    
+    private ws:WebsocketService
   ) { }
   login(data:FormData):Observable<any>{
     return this.http.post(this.url, data);
@@ -24,15 +25,15 @@ export class LoginService {
   loggoud(){
     this.http.put(this.url,{}).subscribe(
       (data)=>{
-        console.log(data);
         sessionStorage.removeItem('x-token');
+        this.ws.emit('logout-sesion');
         this.router.navigate(['/login']);
       },
       (error)=>{
         console.log(error);
       }
     );
-    
+
   }
   getToken(){
     return sessionStorage.getItem('x-token');

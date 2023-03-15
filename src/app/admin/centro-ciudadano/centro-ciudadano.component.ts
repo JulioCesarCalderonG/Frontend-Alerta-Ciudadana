@@ -41,7 +41,6 @@ export class CentroCiudadanoComponent implements OnInit {
       (data: ResultCentroAtenciones) => {
         this.listCentro = data.centroAtencion;
         this.crearMapa();
-
       },
       (error) => {
         console.log(error);

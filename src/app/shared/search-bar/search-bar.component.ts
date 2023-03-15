@@ -37,6 +37,7 @@ export class SearchBarComponent implements OnInit {
     this.mostrarAlerta();
     this.mostrarSereno();
     this.mostrarAlertaSocket();
+    this.wsSerenazgoLogin();
   }
   onQueryChanged(query: string = '') {
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
@@ -54,7 +55,6 @@ export class SearchBarComponent implements OnInit {
   mostrarSereno() {
     this.usuarioService.getSerenazgo().subscribe((resp: ResultUsuarios) => {
       this.listUsuario = resp.usuario;
-      console.log(this.listUsuario);
     });
   }
   derivarAlerta() {
@@ -64,7 +64,6 @@ export class SearchBarComponent implements OnInit {
     formData.append('id_usuario', this.serenoForm.get('sereno')?.value);
     this.alertaDerivada.postAlertaDerivada(formData).subscribe(
       (resp) => {
-        console.log(resp);
         Swal.fire(
           'Derivado!',
           'La alerta ha sido derivado con exito, verifica en alertas derivadas!',
@@ -79,7 +78,6 @@ export class SearchBarComponent implements OnInit {
         });
       },
       (error) => {
-        console.log(error.error.errors[0].msg);
         Swal.fire('Ya derivado!', error.error.errors[0].msg, 'error');
       }
     );
@@ -103,5 +101,27 @@ export class SearchBarComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  wsSerenazgoLogin(){
+    this.ws.listen('inicio-sesion').subscribe(
+      (resp)=>{
+        this.mostrarSereno();
+      },
+      (error)=>{
+        console.log(error);
+
+      }
+    )
+  }
+  wsSerenazgoLogout(){
+    this.ws.listen('logout-sesion').subscribe(
+      (resp)=>{
+        this.mostrarSereno();
+      },
+      (error)=>{
+        console.log(error);
+
+      }
+    )
   }
 }

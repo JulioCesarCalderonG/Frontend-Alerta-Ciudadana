@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 import { SidebarAdminService } from 'src/app/services/sidebar-admin.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { SidebarAdminService } from 'src/app/services/sidebar-admin.service';
 })
 export class SidebarComponent implements OnInit {
   menuItems?: any[];
-  constructor(private sidebarService: SidebarAdminService) {
+  usuario?:string;
+  constructor(private sidebarService: SidebarAdminService, private loginService: LoginService) {
     this.menuItems = this.sidebarService.menu;
+    this.usuario = sessionStorage.getItem('usuario')!;
   }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.loginService.loggoud();
+  }
 }

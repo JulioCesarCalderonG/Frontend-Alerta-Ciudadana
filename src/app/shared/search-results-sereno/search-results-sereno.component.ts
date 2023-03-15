@@ -33,7 +33,7 @@ export class SearchResultsSerenoComponent {
     if(!this.locationService.useLocation) throw Error('No tenemos la localizacion inicializacion');
     const start =this.locationService.useLocation;
     const end = [alerta.Alertum.lng,alerta.Alertum.lat] as [number,number]
-    this.mapService.getRutaAlerta(start,end)
+    this.mapService.getRutaAlertaDerivada(start,end)
   }
   actualizarAlerta(id:number){
     this.codigoEmiter.emit(id);

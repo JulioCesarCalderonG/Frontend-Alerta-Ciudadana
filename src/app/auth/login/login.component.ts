@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ResultLogin } from 'src/app/interface/login';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { WebsocketService } from 'src/app/socket/websocket.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ws:WebsocketService
   ) {
     this.dataLogin = this.fb.group({
       dni: ['', Validators.required],
@@ -41,8 +43,9 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('usuario', data.usuario.nombre);
         sessionStorage.setItem('rol', String(data.usuario.id_cargo));
         sessionStorage.setItem('id_usuario',String(data.usuario.id));
+        this.ws.emit('inicio-sesion');
         if (data.usuario.Cargo.cargo==='UN') {
-          this.router.navigateByUrl('/serenazgo');
+          this.router.navigateByUrl('/serenazgo/alertas');
          }
         if (data.usuario.Cargo.cargo==='UA') {
           this.router.navigateByUrl('/admin');

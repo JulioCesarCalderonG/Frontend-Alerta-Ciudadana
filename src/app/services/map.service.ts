@@ -203,10 +203,7 @@ export class MapService {
     };
 
     // Limpiar Ruta previa
-    if (this.map.getLayer('RouteAlerta')) {
-      this.map.removeLayer('RouteAlerta');
-      this.map.removeSource('RouteAlerta');
-    }
+    this.limpiarRuta();
     this.map.addSource('RouteAlerta', sourceData);
     this.map.addLayer({
       id: 'RouteAlerta',
@@ -221,5 +218,13 @@ export class MapService {
         'line-width': 3,
       },
     });
+  }
+  public limpiarRuta(){
+    if (!this.map) throw Error('Mapa no incializado');
+    if (this.map.getLayer('RouteAlerta')) {
+      this.map.removeLayer('RouteAlerta');
+      this.map.removeSource('RouteAlerta');
+      console.log('ruta eliminada');
+    }
   }
 }

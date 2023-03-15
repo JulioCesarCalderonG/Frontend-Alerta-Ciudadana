@@ -10,8 +10,7 @@ const routes: Routes = [
   { path: 'serenazgo',
     component: SerenazgoComponent,
     children:[
-      {path:'', component:DashboardComponent},
-      {path:'alertas', component:AlertaDerivadaComponent}
+      {path:'alertas', component:AlertaDerivadaComponent},
     ],
     canActivateChild:[
       SerenazgoGuard

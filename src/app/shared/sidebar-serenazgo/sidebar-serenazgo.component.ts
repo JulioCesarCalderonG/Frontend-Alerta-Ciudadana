@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 import { SidebarSerenazgoService } from 'src/app/services/sidebar-serenazgo.service';
 
 @Component({
@@ -8,12 +9,16 @@ import { SidebarSerenazgoService } from 'src/app/services/sidebar-serenazgo.serv
 })
 export class SidebarSerenazgoComponent implements OnInit {
   menuItems?: any[];
-  constructor(private sidebarService: SidebarSerenazgoService) {
+  usuario?:string;
+  constructor(private sidebarService: SidebarSerenazgoService, private loginService: LoginService) {
     this.menuItems = this.sidebarService.menu;
+    this.usuario = sessionStorage.getItem('usuario')!;
   }
 
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.loginService.loggoud();
+  }
 }

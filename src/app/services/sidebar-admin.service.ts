@@ -9,8 +9,9 @@ export class SidebarAdminService {
       titulo: 'Alerta Ciudadana',
       icono: 'mdi mdi-alert-octagram',
       submenu: [
+        { titulo: 'Ultimas 24 Horas', url: 'ultimas-24-horas' },
+        { titulo: 'Mostrar alertas General', url: 'alerta' },
         { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' },
-        { titulo: 'Mostrar alertas', url: 'alerta' },
       ]
     },
     {
@@ -40,15 +41,6 @@ export class SidebarAdminService {
       submenu: [
         { titulo: 'Tipo de Atencion', url: 'tipo-atencion' },
         { titulo: 'Centro de Atencion', url: 'centro-atencion' },
-      ]
-    },
-    
-    {
-      titulo: 'admin',
-      icono: 'mdi mdi-gauge',
-      submenu: [
-        { titulo: 'Gráficas', url: 'grafica1' },
-        { titulo: 'ProgressBar', url: 'progress' },
       ]
     },
   ];

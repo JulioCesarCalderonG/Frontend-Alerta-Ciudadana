@@ -67,7 +67,6 @@ export class UsuarioComponent implements OnInit {
 
     this.sunatService.postSunat(formData).subscribe(
       (data: ValidarSunat) => {
-        console.log(data);
         this.toastr.success('DNI valido', 'Mensaje');
         this.usuarioForm.dni = data.datos.dni;
         this.usuarioForm.nombre = data.datos.nombre;
@@ -81,7 +80,6 @@ export class UsuarioComponent implements OnInit {
         this.cargar = true;
       },
       (error) => {
-        console.log(error);
         this.toastr.warning('Error de DNI', 'Mensaje');
         this.cargar = false;
         if (!this.cargar) {
@@ -189,7 +187,6 @@ export class UsuarioComponent implements OnInit {
           }
         },
         (error) => {
-          console.log(error.error.errors[0]);
           this.toastr.error(error.error.errors[0].msg, 'Error');
         }
       );

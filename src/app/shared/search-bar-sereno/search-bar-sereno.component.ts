@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AlertaDerivadaService } from 'src/app/services/alerta-derivada.service';
+import { MapService } from 'src/app/services/map.service';
 import { WebsocketService } from 'src/app/socket/websocket.service';
 import Swal from 'sweetalert2';
 
@@ -15,26 +16,27 @@ export class SearchBarSerenoComponent implements OnInit {
   constructor(
     private alertaService:AlertaDerivadaService,
     private ws:WebsocketService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private mapSer:MapService
   ) { }
 
   ngOnInit(): void {
     this.mostrarAlerta();
     this.alertaSocket();
+    this.borrarAlertaSocket();
+    this.actualizarAlertaSocket();
   }
   onQueryChanged(query:string=''){
     if(this.debounceTimer) clearTimeout(this.debounceTimer);
     this.debounceTimer=setTimeout(() => {
       this.buscar = query;
       this.mostrarAlerta();
-
     }, 350);
   }
   mostrarAlerta(){
     this.alertaService.getAlertaDerivadaSereno(this.buscar);
   }
   actualizarAlerta(event:any){
-    console.log(event);
     const formData = new FormData();
     formData.append('atencion','1');
     Swal.fire({
@@ -56,9 +58,10 @@ export class SearchBarSerenoComponent implements OnInit {
               'success'
             )
             this.mostrarAlerta();
+            this.mapSer.limpiarRuta();
           }
         )
-        
+
       }
     })
   }
@@ -67,10 +70,32 @@ export class SearchBarSerenoComponent implements OnInit {
     this.ws.listen(`alerta-derivada-${id}`).subscribe(
       (data:any)=>{
         this.toastr.success(
-          data.titulo,
-          data.msg
-        );   
-        this.mostrarAlerta();   
+          data.msg,
+          data.titulo
+        );
+        this.mostrarAlerta();
+      }
+    )
+  }
+  actualizarAlertaSocket(){
+    this.ws.listen('actualizar-alerta-derivada').subscribe(
+      (resp)=>{
+        this.mostrarAlerta();
+      },
+      (error)=>{
+        console.log(error);
+
+      }
+    )
+  }
+  borrarAlertaSocket(){
+    this.ws.listen('borrar-alerta-derivada').subscribe(
+      (resp)=>{
+        this.mostrarAlerta();
+      },
+      (error)=>{
+        console.log(error);
+
       }
     )
   }

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  fecha = new Date().getFullYear();
   constructor() { }
 
   ngOnInit(): void {
@@ -15,7 +16,7 @@ export class AdminComponent implements OnInit {
   }
   cargar(){
     if (sessionStorage.getItem('carga')==='0') {
-      location.reload(); 
+      location.reload();
       sessionStorage.setItem('carga','1');
       //this.desconectarWs();
     }
