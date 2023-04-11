@@ -76,7 +76,7 @@ export class CentroCiudadanoComponent implements OnInit {
         lng: Number(resp.lng),
         nombre: resp.TipoAtencion.nombre,
         telefono: resp.telefono,
-        img: `${environment.backendURL}/uploadgeneral/tipo-atencion/${resp.id_tipo_atencion}`,
+        img: `${environment.backendURL}/uploadgeneral/tipo-atencion/${(resp.TipoAtencion.img)?resp.TipoAtencion.img:'asaaaaa'}/${resp.id_tipo_atencion}`,
         estado: `${resp.estado}`,
         titulo: resp.titulo
       }

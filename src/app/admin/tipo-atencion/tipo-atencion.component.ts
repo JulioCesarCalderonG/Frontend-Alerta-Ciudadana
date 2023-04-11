@@ -41,7 +41,7 @@ export class TipoAtencionComponent implements OnInit {
       (data: ResultTipoAtenciones) => {
         this.listTipoAtencion = data.tipoAtencion;
         for (let i = 0; i < this.listTipoAtencion.length; i++) {
-          this.listTipoAtencion[i].img = `${this.priImage}/${(this.listTipoAtencion[i].img)?this.listTipoAtencion[i].img:'asaaaaa'}/${this.listTipoAtencion[i].id}`
+          this.listTipoAtencion[i].img = `${this.priImage}/${(!this.listTipoAtencion[i].img)?this.listTipoAtencion[i].img:'asaaaaa'}/${this.listTipoAtencion[i].id}`
         }
 
 
@@ -99,7 +99,7 @@ export class TipoAtencionComponent implements OnInit {
           img: data.tipoAtencion.img
         });
         this.ids = data.tipoAtencion.id;
-        this.loadImage = `${environment.backendURL}/uploadgeneral/tipo-atencion/${data.tipoAtencion.id}`
+        this.loadImage = `${environment.backendURL}/uploadgeneral/tipo-atencion/${(data.tipoAtencion.img)?data.tipoAtencion.img:'asaaaaa'}/${data.tipoAtencion.id}`
       },
       (error) => {
         console.log(error);
