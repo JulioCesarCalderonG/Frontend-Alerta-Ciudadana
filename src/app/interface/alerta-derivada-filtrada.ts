@@ -27,6 +27,7 @@ export interface Alertum {
   tipo_alerta: number;
   derivado:    number;
   TipoAlertum: TipoAlertum;
+  Ciudadano: Usuario;
 }
 
 export interface TipoAlertum {
@@ -46,6 +47,6 @@ export interface Usuario {
   apellido:   string;
   estado:     number;
   password:   string;
-  id_cargo:   number;
-  disponible: number;
+  id_cargo?:   number;
+  disponible?: number;
 }
