@@ -28,7 +28,16 @@ export class MapViewComponent implements AfterViewInit {
             <h6>Aqui estoy</h6>
             <span>Estoy en este lugar del mundo</span>
           `);
-    new Marker({ color: 'red' })
+
+    const div = document.createElement('div');
+    const width = 65;
+    const height= 70;
+    div.className='marker';
+    div.style.backgroundImage=`url(https://res.cloudinary.com/dkxwh94qt/image/upload/v1683831912/coche-de-policia_1_fmjznc.png)`;
+    div.style.width=`${width}px`;
+    div.style.height=`${height}px`;
+
+    new Marker(div)
       .setLngLat(this.locationService.useLocation)
       .setPopup(popup)
       .addTo(map);

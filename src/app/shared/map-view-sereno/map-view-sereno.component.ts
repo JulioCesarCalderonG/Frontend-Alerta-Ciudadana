@@ -34,6 +34,8 @@ export class MapViewSerenoComponent implements AfterViewInit {
     setInterval(() => {
       this.marker?.remove();
       this.mostrarMarcador();
+      console.log(this.locationService.useLocation);
+
     }, 3000);
     /* const popup = new Popup().setHTML(`
             <h6>Aqui estoy</h6>
@@ -54,7 +56,14 @@ export class MapViewSerenoComponent implements AfterViewInit {
     <h6>Aqui estoy</h6>
     <span>Estoy en este lugar del mundo</span>
   `);
-     this.marker = new Marker({ color: 'red' })
+  const div = document.createElement('div');
+  const width = 65;
+  const height= 70;
+  div.className='marker';
+  div.style.backgroundImage=`url(https://res.cloudinary.com/dkxwh94qt/image/upload/v1683831912/coche-de-policia_1_fmjznc.png)`;
+  div.style.width=`${width}px`;
+  div.style.height=`${height}px`;
+     this.marker = new Marker(div)
       .setLngLat(this.locationService.useLocation!)
       .setPopup(popup)
       .addTo(this.map!);
