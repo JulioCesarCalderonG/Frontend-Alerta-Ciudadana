@@ -34,6 +34,8 @@ export class AlertaDerivadaComponent implements OnInit {
   ngOnInit(): void {
     this.mostrarAlerta();
     this.mostrarSereno();
+    this.wsSerenazgoLogin();
+    this.wsSerenazgoLogout();
   }
   mostrarAlerta(){
     this.alertaDerivadaService.getAlertasDerivadas(this.tipo).subscribe(
@@ -69,6 +71,28 @@ export class AlertaDerivadaComponent implements OnInit {
           console.log(data);
         });
         this.mostrarAlerta();
+      }
+    )
+  }
+  wsSerenazgoLogin(){
+    this.ws.listen('inicio-sesion').subscribe(
+      (resp)=>{
+        this.mostrarSereno();
+      },
+      (error)=>{
+        console.log(error);
+
+      }
+    )
+  }
+  wsSerenazgoLogout(){
+    this.ws.listen('logout-sesion').subscribe(
+      (resp)=>{
+        this.mostrarSereno();
+      },
+      (error)=>{
+        console.log(error);
+
       }
     )
   }

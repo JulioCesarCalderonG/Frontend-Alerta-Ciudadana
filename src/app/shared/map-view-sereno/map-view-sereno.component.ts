@@ -36,7 +36,7 @@ export class MapViewSerenoComponent implements AfterViewInit {
       this.mostrarMarcador();
       console.log(this.locationService.useLocation);
 
-    }, 3000);
+    }, 500);
     /* const popup = new Popup().setHTML(`
             <h6>Aqui estoy</h6>
             <span>Estoy en este lugar del mundo</span>
@@ -53,8 +53,8 @@ export class MapViewSerenoComponent implements AfterViewInit {
   mostrarMarcador() {
     this.locationService.getUserLocation();
     const popup = new Popup().setHTML(`
-    <h6>Aqui estoy</h6>
-    <span>Estoy en este lugar del mundo</span>
+    <h6>Serenazgo</h6>
+    <span>Mi Ubicacion</span>
   `);
   const div = document.createElement('div');
   const width = 65;

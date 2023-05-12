@@ -1,7 +1,7 @@
 .search-container{
   position: fixed;
   top: 80px;
-  left: 300px;
+  left: 100px;
   background-color: white;
   padding: 5px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
@@ -12,6 +12,11 @@
 
 @media (max-width:1024px){
   .search-container{
-    left: 100px!important;
+    left: 80px!important;
+  }
+}
+@media (max-width:375px){
+  .search-container{
+    left: 0px!important;
   }
 }

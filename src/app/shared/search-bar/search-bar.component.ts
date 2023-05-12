@@ -38,6 +38,7 @@ export class SearchBarComponent implements OnInit {
     this.mostrarSereno();
     this.mostrarAlertaSocket();
     this.wsSerenazgoLogin();
+    this.wsSerenazgoLogout();
   }
   onQueryChanged(query: string = '') {
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
