@@ -71,9 +71,9 @@ export class SearchBarComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         this.detalleAlerta={
-          celular:data.detalle.celular,
+          celular:(data.detalle)?data.detalle.celular:'',
           ciudadano:`${data.alerta.Ciudadano.nombre} ${data.alerta.Ciudadano.apellido}`,
-          correo:data.detalle.correo,
+          correo:(data.detalle)?data.detalle.correo:'',
           descripcion:data.alerta.descripcion,
           fecha:data.alerta.fecha,
           hora:data.alerta.hora,
