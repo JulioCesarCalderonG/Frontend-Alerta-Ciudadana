@@ -6,7 +6,7 @@
     #txtQuery
     (keyup)="onQueryChanged(txtQuery.value)"
   >
-  <app-search-results (codigo)="clickEvent($event)"></app-search-results>
+  <app-search-results (codigo)="clickEvent($event)" (codigoId)="clickId($event)"></app-search-results>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -30,6 +30,36 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="derivarAlerta()" [disabled]="!serenoForm.valid">Derivar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalVer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{detalleAlerta.tipoAlerta}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="serenoForm" class="text-center">
+          <div class="form-group">
+            <img src={{detalleAlerta.url}} alt="" class="img-thumbnail" style="width: 800px;height: 450px;">
+          </div>
+          <div class="form-group">
+            <label style="font-weight: 400;">Ciudadano: <strong>{{detalleAlerta.ciudadano}}</strong></label><br>
+            <label style="font-weight: 400;">Celular: <strong>{{detalleAlerta.celular}}</strong></label><br>
+            <label style="font-weight: 400;">Correo: <strong>{{detalleAlerta.correo}}</strong></label><br>
+            <label style="font-weight: 400;">Fecha: <strong>{{detalleAlerta.fecha}}</strong></label><br>
+            <label style="font-weight: 400;">Hora: <strong>{{detalleAlerta.hora}}</strong></label><br>
+            <label style="font-weight: 400;">Descripcion: <strong>{{detalleAlerta.descripcion}}</strong></label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cerrar</button>
       </div>
     </div>
   </div>

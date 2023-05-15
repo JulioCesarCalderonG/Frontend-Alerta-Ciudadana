@@ -7,6 +7,7 @@ import { AlertaDerivadaService } from '../../services/alerta-derivada.service';
 import Swal from 'sweetalert2';
 import { WebsocketService } from 'src/app/socket/websocket.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,9 +18,20 @@ export class SearchBarComponent implements OnInit {
   private debounceTimer?: NodeJS.Timeout;
   public isCargaDatos: boolean = false;
   public listUsuario: Usuario[] = [];
+  urlBackend=environment.backendURL;
   codigoAlerta: number = 0;
   buscar = '';
   serenoForm: FormGroup;
+  detalleAlerta={
+    tipoAlerta:'',
+    ciudadano:'',
+    descripcion:'',
+    url:'',
+    fecha:'',
+    hora:'',
+    celular:'',
+    correo:''
+  }
   constructor(
     private alertaService: AlertaService,
     private usuarioService: UsuarioService,
@@ -52,6 +64,29 @@ export class SearchBarComponent implements OnInit {
   }
   clickEvent(event: number) {
     this.codigoAlerta = event;
+  }
+  clickId(event:number){
+    console.log(event);
+    this.alertaService.getAlertaId(event).subscribe(
+      (data:any)=>{
+        console.log(data);
+        this.detalleAlerta={
+          celular:data.detalle.celular,
+          ciudadano:`${data.alerta.Ciudadano.nombre} ${data.alerta.Ciudadano.apellido}`,
+          correo:data.detalle.correo,
+          descripcion:data.alerta.descripcion,
+          fecha:data.alerta.fecha,
+          hora:data.alerta.hora,
+          tipoAlerta:data.alerta.TipoAlertum.nombre,
+          url:`${this.urlBackend}/uploadgeneral/imagen-alerta/${(data.alerta.foto)?data.alerta.foto:'asasaass'}/${data.alerta.id}`
+        }
+        console.log(this.detalleAlerta);
+
+      },(error)=>{
+        console.log(error);
+
+      }
+    )
   }
   mostrarSereno() {
     this.usuarioService.getSerenazgo().subscribe((resp: ResultUsuarios) => {
@@ -93,10 +128,7 @@ export class SearchBarComponent implements OnInit {
     this.ws.listen('actualizar-alerta-general').subscribe(
       (data) => {
         this.mostrarAlerta();
-        this.toastr.success(
-          'Tienes una alerta ciudadana entrante',
-          'Alerta Ciudadana'
-        );
+
       },
       (error) => {
         console.log(error);

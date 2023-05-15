@@ -24,6 +24,9 @@ export class AlertaService {
   getAlerta(data: EnvioAlertGet, tipo: string): Observable<any> {
     return this.http.post(`${this.url}/filtro/alerta`, data, { params: { tipo } });
   }
+  getAlertaId(id:number):Observable<any>{
+    return this.http.get(`${this.url}/${id}`);
+  }
   getFiltroAlerta(buscar:string){
     this.isCargaDatos = true;
     this.http.get<AlertaFiltrada>(`${this.url}/mostrar/filtro/alerta`,{params:{buscar}}).subscribe(
