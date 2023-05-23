@@ -10,10 +10,7 @@ class="alert alert-primary mt-2 text-center">
   [class.active]="alertas.id === selectId"
     (click)="flyTo(alertas)"
   >
-    <h6>{{alertas.TipoAlertum.nombre}}</h6>
-    <p>
-      {{alertas.descripcion}}
-    </p>
+    <h6>{{alertas.Ciudadano.nombre}}</h6>
     <p>
       Ciudadano: {{alertas.Ciudadano.nombre}} {{alertas.Ciudadano.apellido}}
     </p>

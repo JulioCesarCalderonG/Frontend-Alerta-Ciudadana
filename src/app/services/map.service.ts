@@ -44,8 +44,8 @@ export class MapService {
     const newMakers = [];
     for (const alerta of listAlerta) {
       const popup = new Popup().setHTML(`
-                      <h6>${alerta.TipoAlertum.nombre}</h6>
-                      <span>${alerta.descripcion}</span>
+                      <h6>${alerta.Ciudadano.nombre}</h6>
+                      <span>${alerta.Ciudadano.apellido}</span>
                     `);
 
       const newMarker = new Marker()
