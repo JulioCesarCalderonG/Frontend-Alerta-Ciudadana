@@ -10,10 +10,7 @@
   [class.active]="alertas.id === selectId"
   (click)="flyTo(alertas)"
   >
-    <h6>{{alertas.Alertum.TipoAlertum.nombre}}</h6>
-    <p>
-      {{alertas.Alertum.descripcion}}
-    </p>
+    <h6>{{alertas.Alertum.Ciudadano.nombre}} {{alertas.Alertum.Ciudadano.apellido}}</h6>
     <p>
       Ciudadano: {{alertas.Alertum.Ciudadano.nombre}} {{alertas.Alertum.Ciudadano.apellido}}
     </p>

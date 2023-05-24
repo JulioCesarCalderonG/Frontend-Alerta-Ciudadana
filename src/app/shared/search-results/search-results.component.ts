@@ -31,6 +31,8 @@ export class SearchResultsComponent {
     this.selectId = alerta.id;
     const {lat, lng} = alerta;
     this.mapService.flyTo({lng,lat})
+    console.log('me diste click');
+
   }
   mostrarRuta(alerta:Alerta){
     if(!this.locationService.useLocation) throw Error('No tenemos la localizacion inicializacion');

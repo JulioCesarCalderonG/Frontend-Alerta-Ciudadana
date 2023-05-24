@@ -37,6 +37,7 @@ export class MapViewSerenoComponent implements AfterViewInit {
       console.log(this.locationService.useLocation);
 
     }, 500);
+    //this.mostrarMarcador();
     /* const popup = new Popup().setHTML(`
             <h6>Aqui estoy</h6>
             <span>Estoy en este lugar del mundo</span>

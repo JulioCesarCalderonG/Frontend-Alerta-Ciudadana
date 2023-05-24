@@ -16,37 +16,25 @@ export interface AlertaDerivada {
 }
 
 export interface Alertum {
-  id:          number;
-  descripcion: string;
-  lat:         number;
-  lng:         number;
-  foto:        null;
-  fecha:       string;
-  hora:        string;
-  ciudadano:   number;
-  tipo_alerta: number;
-  derivado:    number;
-  TipoAlertum: TipoAlertum;
-  Ciudadano: Usuario;
-}
-
-export interface TipoAlertum {
-  id:          number;
-  nombre:      string;
-  opcion_foto: number;
-  icono:       string;
-  img:         string;
-  color:       string;
-  estado:      number;
+  id:         number;
+  lat:        number;
+  lng:        number;
+  fecha:      string;
+  hora:       string;
+  ciudadano:  number;
+  registrado: number;
+  ano:        string;
+  mes:        string;
+  Ciudadano:  Usuario;
 }
 
 export interface Usuario {
-  id:         number;
-  dni:        string;
-  nombre:     string;
-  apellido:   string;
-  estado:     number;
-  password:   string;
+  id:          number;
+  dni:         string;
+  nombre:      string;
+  apellido:    string;
+  password:    string;
+  estado:      number;
   id_cargo?:   number;
   disponible?: number;
 }
