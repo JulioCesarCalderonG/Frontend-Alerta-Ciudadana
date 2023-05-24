@@ -3,6 +3,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
 import { AlertaMapa } from 'src/app/interface/alerta-form';
 import { EnvioAlertGet, FiltroForm } from 'src/app/interface/search-form';
+import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
 import { AlertaService } from 'src/app/services/alerta.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
 import { environment } from 'src/environments/environment';
@@ -17,7 +18,7 @@ export class AlertasComponent implements OnInit {
   mapa2?: mapboxgl.Map;
   listAlerta?: Array<Alerta>;
   constructor(
-    private alertaService: AlertaService,
+    private alertaService: AlertaGeneradaService,
     private renderer2: Renderer2,
     private locationService:LocalizacionService
   ) {}
@@ -25,22 +26,22 @@ export class AlertasComponent implements OnInit {
   ngOnInit(): void {
     //this.crearMapa();
     this.mostrarAlerta();
-    this.crearMapa2();
+    //this.crearMapa2();
   }
 
   mostrarAlerta() {
-    this.alertaService
-      .getAlerta({ fechaDos: '', fechaUno: '', tipoAlerta: '' }, '4')
-      .subscribe(
-        (data: ResultAlertas) => {
-          //console.log(data);
+    this.alertaService.getAlerta({fechaDos:'',fechaUno:'',tipoAlerta:''},'4').subscribe(
+      (data)=>{
+        //console.log(data);
           this.listAlerta = data.results;
           this.crearMapa();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+          console.log(data);
+
+      },(error)=>{
+        console.log(error);
+
+      }
+    )
   }
   crearMapa() {
     this.mapa = new mapboxgl.Map({

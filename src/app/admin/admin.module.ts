@@ -19,7 +19,7 @@ import { AlertasComponent } from './alertas/alertas.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
 import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    ChartsModule
   ]
 })
 export class AdminModule { }

@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-md-12" *ngFor="let alerta of listAlerta">
                 <div class="card card-outline-info">
-                    <div class="card-header">
-                        <h4 class="m-b-0 text-white">{{alerta.nombre_tipo}}</h4></div>
+                    <div class="card-header" [ngStyle]="{'background-color':'#'+alerta.color}">
+                        <h4 class="m-b-0 text-white">{{alerta.tipo_alerta}}</h4></div>
                     <div class="card-body">
                         <h5 class="card-title">Ciudadano: {{alerta.nombre}} {{alerta.apellido}}</h5>
                         <h5>DNI: {{alerta.dni}}</h5>
@@ -19,19 +19,19 @@
                         <h5>Latitud: {{alerta.lat}}</h5>
                         <h5>Longitud: {{alerta.lng}}</h5>
                         <p class="card-text">{{alerta.descripcion}}</p>
-                        
+
                         <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target=".bs-example-modal-lg" (click)="mostrarMapa2()">Mostrar Ruta</button>
                         <button type="button" class="btn btn-outline-info ml-2">Derivar</button>
                     </div>
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<!-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,7 +45,6 @@
                 <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
             </div>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
+ -->

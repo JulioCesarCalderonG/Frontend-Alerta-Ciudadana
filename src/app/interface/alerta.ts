@@ -18,7 +18,7 @@ export interface Alerta {
     nombre:      string;
     apellido:    string;
     id_tipo:     number;
-    nombre_tipo: string;
+    tipo_alerta: string;
     color:       string;
     estado:      number
 }

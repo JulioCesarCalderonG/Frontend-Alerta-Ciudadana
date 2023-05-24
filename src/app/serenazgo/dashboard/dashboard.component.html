@@ -1,1 +1,49 @@
-<p>dashboard works!</p>
+<h1>Boton de Panico</h1>
+<hr />
+
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block">
+      <canvas baseChart
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [chartType]="'line'"
+      >
+    </canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div style="display: block">
+      <canvas baseChart
+      [datasets]="lineAlertaTotal"
+      [labels]="lineAlertaLabels"
+      [chartType]="'bar'"
+      >
+    </canvas>
+    </div>
+  </div>
+</div>
+  <h1 class="mt-5">Alertas Registradas</h1>
+<hr />
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block">
+      <canvas baseChart
+      [datasets]="lineAlertaGeneradaData"
+      [labels]="lineAlertaGeneradaLabels"
+      [chartType]="'line'"
+      >
+    </canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div style="display: block">
+      <canvas baseChart
+      [datasets]="lineAlertaGeneradaTotal"
+      [labels]="lineAlertaGeneradaTotalLabels"
+      [chartType]="'bar'"
+      >
+    </canvas>
+    </div>
+  </div>
+</div>

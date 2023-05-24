@@ -6,7 +6,7 @@
     #txtQuery
     (keyup)="onQueryChanged(txtQuery.value)"
   >
-  <app-search-results (codigo)="clickEvent($event)" (codigoId)="clickId($event)"></app-search-results>
+  <app-search-results (codigo)="clickEvent($event)" (codigoId)="clickId($event)" (idAlerta)="codigoRegistro($event)"></app-search-results>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -64,3 +64,37 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="modalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{detalleAlerta.tipoAlerta}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="alertaForm" (ngSubmit)="registrarAlerta()">
+          <div class="form-group">
+            <label class="control-label">Ingrese una descripcion</label>
+            <textarea class="form-control" rows="5" formControlName="descripcion"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Selecciona el Tipo de Alerta</label>
+            <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="tipo_alerta">
+              <option value="">Seleccionar</option>
+              <option *ngFor="let tipoalerta of listTipoAlerta" value={{tipoalerta.id}}>{{tipoalerta.nombre}}</option>
+          </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cerrar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="alertaForm.invalid">Registrar Alerta</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

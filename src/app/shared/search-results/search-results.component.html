@@ -21,18 +21,24 @@ class="alert alert-primary mt-2 text-center">
       Hora: {{alertas.hora}}
     </p>
     <button
-      class="btn btn-sm btn-outline-primary"
+      class="btn btn-sm btn-outline-primary ml-2 mb-2"
       (click)="mostrarRuta(alertas)"
     >
       Direcciones
-    </button>
-    <button class="btn btn-sm btn-outline-warning ml-2"
+    </button><br>
+    <button class="btn btn-sm btn-outline-warning ml-2 mb-2"
     (click)="codigoAlerta(alertas.id)"
     data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
     >
       Derivar
-    </button>
-    <button class="btn btn-sm btn-outline-success ml-2"
+    </button><br>
+    <button class="btn btn-sm btn-outline-warning ml-2 mb-2"
+    (click)="registrarAlerta(alertas.id)"
+    data-toggle="modal" data-target="#modalRegistrar" data-whatever="@mdo"
+    >
+      Registrar
+    </button><br>
+    <button class="btn btn-sm btn-outline-success ml-2 mb-2"
     (click)="codigoIdAlerta(alertas.id)"
     data-toggle="modal" data-target="#modalVer" data-whatever="@mdo"
     >

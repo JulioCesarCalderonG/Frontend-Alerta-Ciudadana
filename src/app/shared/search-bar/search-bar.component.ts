@@ -8,6 +8,9 @@ import Swal from 'sweetalert2';
 import { WebsocketService } from 'src/app/socket/websocket.service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
+import { TipoAlertaService } from 'src/app/services/tipo-alerta.service';
+import { ResultTipoAlertas, Tipoalerta } from 'src/app/interface/tipo-alerta';
+import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -22,6 +25,7 @@ export class SearchBarComponent implements OnInit {
   codigoAlerta: number = 0;
   buscar = '';
   serenoForm: FormGroup;
+  alertaForm:FormGroup;
   detalleAlerta={
     tipoAlerta:'',
     ciudadano:'',
@@ -32,9 +36,13 @@ export class SearchBarComponent implements OnInit {
     celular:'',
     correo:''
   }
+  listTipoAlerta?:Tipoalerta[];
+  idAlerta?:number;
   constructor(
     private alertaService: AlertaService,
     private usuarioService: UsuarioService,
+    private tipoAlertaService:TipoAlertaService,
+    private alertaGeneradaService:AlertaGeneradaService,
     private alertaDerivada: AlertaDerivadaService,
     private fb: FormBuilder,
     private ws: WebsocketService,
@@ -43,12 +51,17 @@ export class SearchBarComponent implements OnInit {
     this.serenoForm = this.fb.group({
       sereno: ['', Validators.required],
     });
+    this.alertaForm = this.fb.group({
+      descripcion:['',Validators.required],
+      tipo_alerta:['',Validators.required]
+    })
   }
 
   ngOnInit(): void {
     this.mostrarAlerta();
     this.mostrarSereno();
     this.mostrarAlertaSocket();
+    this.mostrarTipoAlerta();
     this.wsSerenazgoLogin();
     this.wsSerenazgoLogout();
   }
@@ -118,11 +131,46 @@ export class SearchBarComponent implements OnInit {
       }
     );
   }
+  registrarAlerta(){
+    const formData = new FormData();
+    formData.append('descripcion',this.alertaForm.get('descripcion')?.value);
+    formData.append('id_tipo_alerta',this.alertaForm.get('tipo_alerta')?.value);
+    formData.append('id_alerta',`${this.idAlerta}`);
+    this.alertaGeneradaService.postAlertaGenerada(formData).subscribe(
+      (data)=>{
+        console.log(data);
+        Swal.fire(
+          'Derivado!',
+          'La alerta ha sido registrado con exito',
+          'success'
+        );
+        this.ws.emit('registrar-alerta-generada');
+      },(error)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: error.error.errors[0].msg,
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    )
+
+  }
+  codigoRegistro(event:any){
+    console.log(event);
+    this.idAlerta = event
+  }
+
   cancelar() {
     this.codigoAlerta = 0;
     this.serenoForm.setValue({
       sereno: '',
     });
+    this.alertaForm.setValue({
+      descripcion:'',
+      tipo_alerta:''
+    })
   }
   mostrarAlertaSocket() {
     this.ws.listen('actualizar-alerta-general').subscribe(
@@ -134,6 +182,17 @@ export class SearchBarComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  mostrarTipoAlerta(){
+    this.tipoAlertaService.getTipoAlertas("1").subscribe(
+      (data:ResultTipoAlertas)=>{
+        this.listTipoAlerta = data.tipoalerta;
+
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
   wsSerenazgoLogin(){
     this.ws.listen('inicio-sesion').subscribe(

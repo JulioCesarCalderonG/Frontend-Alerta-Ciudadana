@@ -14,6 +14,7 @@ export class SearchResultsComponent {
   selectId:number=0;
   @Output('codigo') codigoEmiter = new EventEmitter<any>();
   @Output('codigoId') codigoEmiterId = new EventEmitter<any>();
+  @Output('idAlerta') codigoEmiterAlerta = new EventEmitter<any>();
   constructor(
     private alertaService:AlertaService,
     private mapService:MapService,
@@ -42,5 +43,9 @@ export class SearchResultsComponent {
   }
   codigoIdAlerta(codigoId:any){
     this.codigoEmiterId.emit(codigoId);
+  }
+  registrarAlerta(idAlerta:any){
+    this.codigoEmiterAlerta.emit(idAlerta)
+
   }
 }

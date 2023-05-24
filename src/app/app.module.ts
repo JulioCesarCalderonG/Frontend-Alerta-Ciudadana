@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'https://gongalsoft.com', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:4000/', options: {} };
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,8 +18,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { SerenazgoModule } from './serenazgo/serenazgo.module';
 import { SerenazgoGuard } from './guard/serenazgo.guard';
-
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,8 @@ import { SerenazgoGuard } from './guard/serenazgo.guard';
     SerenazgoModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ChartsModule
   ],
   providers: [
     AdminGuard,
