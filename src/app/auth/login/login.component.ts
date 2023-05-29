@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('usuario', data.usuario.nombre);
         sessionStorage.setItem('rol', String(data.usuario.id_cargo));
         sessionStorage.setItem('id_usuario',String(data.usuario.id));
+        sessionStorage.setItem('id_control',String(data.id_control));
         this.ws.emit('inicio-sesion');
         if (data.usuario.Cargo.cargo==='UN') {
           this.router.navigateByUrl('/serenazgo');

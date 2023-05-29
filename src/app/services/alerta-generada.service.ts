@@ -10,6 +10,7 @@ import { EnvioAlertGet } from '../interface/search-form';
 })
 export class AlertaGeneradaService {
   url = `${environment.backendURL}/alertagenerada`;
+  url2 = `${environment.backendURL}/reporte`;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -21,5 +22,7 @@ export class AlertaGeneradaService {
   postAlertaGenerada(formData:FormData):Observable<any>{
     return this.http.post(this.url,formData);
   }
-
+  postAlertaReporte(data: EnvioAlertGet, tipo: string): Observable<any> {
+      return this.http.post(`${this.url2}/alertageneral`, data, { params: { tipo } });
+  }
 }

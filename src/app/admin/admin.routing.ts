@@ -12,6 +12,7 @@ import { CiudadanoComponent } from './ciudadano/ciudadano.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.component';
 import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
+import { ControlPersonalComponent } from './control-personal/control-personal.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
             { path: 'centro-atencion', component: CentroCiudadanoComponent },
             { path: 'progress', component: ProgressComponent },
             { path: 'ultimas-24-horas', component: Grafica1Component },
+            { path: 'control-personal', component: ControlPersonalComponent },
         ],
         canActivateChild: [
             AdminGuard

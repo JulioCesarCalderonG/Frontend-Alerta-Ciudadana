@@ -5,6 +5,7 @@ export interface ResultLogin {
     msg:     string;
     usuario: Usuario;
     token:   string;
+    id_control: number
 }
 
 export interface Usuario {

@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SunatService {
-  url = `${environment.backendURL}/validarsunat`;
+export class ControlPersonalService {
+  url = `${environment.backendURL}/controlpersonal`;
   constructor(private http: HttpClient, private router:Router) { }
 
-  postSunat(formData:FormData):Observable<any>{
-    return this.http.post(`${this.url}/usuario`,formData);
+  getControlPersonal():Observable<any>{
+    return this.http.get(this.url);
   }
 }

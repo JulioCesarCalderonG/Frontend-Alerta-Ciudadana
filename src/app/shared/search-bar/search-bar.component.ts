@@ -27,10 +27,7 @@ export class SearchBarComponent implements OnInit {
   serenoForm: FormGroup;
   alertaForm:FormGroup;
   detalleAlerta={
-    tipoAlerta:'',
     ciudadano:'',
-    descripcion:'',
-    url:'',
     fecha:'',
     hora:'',
     celular:'',
@@ -87,11 +84,8 @@ export class SearchBarComponent implements OnInit {
           celular:(data.detalle)?data.detalle.celular:'',
           ciudadano:`${data.alerta.Ciudadano.nombre} ${data.alerta.Ciudadano.apellido}`,
           correo:(data.detalle)?data.detalle.correo:'',
-          descripcion:data.alerta.descripcion,
           fecha:data.alerta.fecha,
-          hora:data.alerta.hora,
-          tipoAlerta:data.alerta.TipoAlertum.nombre,
-          url:`${this.urlBackend}/uploadgeneral/imagen-alerta/${(data.alerta.foto)?data.alerta.foto:'asasaass'}/${data.alerta.id}`
+          hora:data.alerta.hora
         }
         console.log(this.detalleAlerta);
 

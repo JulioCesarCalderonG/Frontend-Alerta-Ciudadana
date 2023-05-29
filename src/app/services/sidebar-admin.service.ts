@@ -36,13 +36,12 @@ export class SidebarAdminService {
       ]
     },
     {
-      titulo: 'Lugar de Atencion',
-      icono: 'mdi mdi-ambulance',
+      titulo: 'Control Personal',
+      icono: 'mdi mdi-account-card-details',
       submenu: [
-        { titulo: 'Tipo de Atencion', url: 'tipo-atencion' },
-        { titulo: 'Centro de Atencion', url: 'centro-atencion' },
+        { titulo: 'Mostrar Personal', url: 'control-personal' },
       ]
-    },
+    }
   ];
   constructor() { }
 }

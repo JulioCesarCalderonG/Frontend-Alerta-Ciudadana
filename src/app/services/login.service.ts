@@ -23,16 +23,22 @@ export class LoginService {
     return !!sessionStorage.getItem('x-token');
   }
   loggoud(){
-    this.http.put(this.url,{}).subscribe(
-      (data)=>{
-        sessionStorage.removeItem('x-token');
-        this.ws.emit('logout-sesion');
-        this.router.navigate(['/login']);
-      },
-      (error)=>{
-        console.log(error);
-      }
-    );
+    const resp = sessionStorage.getItem('id_control');
+    if (resp) {
+      this.http.put(this.url,{},{params:{
+        control:resp
+      }}).subscribe(
+        (data)=>{
+          sessionStorage.removeItem('x-token');
+          this.ws.emit('logout-sesion');
+          this.router.navigate(['/login']);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      );
+    }
+
 
   }
   getToken(){

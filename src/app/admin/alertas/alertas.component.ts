@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
 import { AlertaMapa } from 'src/app/interface/alerta-form';
@@ -17,10 +18,12 @@ export class AlertasComponent implements OnInit {
   mapa?: mapboxgl.Map;
   mapa2?: mapboxgl.Map;
   listAlerta?: Array<Alerta>;
+  url=environment.backendURL;
   constructor(
     private alertaService: AlertaGeneradaService,
     private renderer2: Renderer2,
-    private locationService:LocalizacionService
+    private locationService:LocalizacionService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +106,23 @@ export class AlertasComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  generarReporte(event:FiltroForm){
+    const envio: EnvioAlertGet = {
+      fechaUno: event.fechaUno,
+      fechaDos: event.fechaDos,
+      tipoAlerta: event.datoTipo,
+    };
+    this.alertaService.postAlertaReporte(envio,event.tipo).subscribe(
+      (data)=>{
+        console.log(data);
+        window.location.href=`${this.url}/reporte/alertageneral`
+        //this.router.navigateByUrl()
+      },(error)=>{
+        console.log(error);
+
+      }
+    )
   }
   buscar() {}
   crearMapa2() {

@@ -1,0 +1,28 @@
+
+<div class="table-responsive mt-3">
+  <table class="table">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Usuario</th>
+              <th>Cargo</th>
+              <th>Fecha de ingreso</th>
+              <th>Hora de ingreso</th>
+              <th>Fecha de salida</th>
+              <th>Hora de salida</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let control of listControlPersonal! | paginate: { itemsPerPage: 10, currentPage: p }">
+             <td>{{control.id}}</td>
+             <td>{{control.Usuario.nombre}} {{control.Usuario.apellido}} </td>
+             <td>{{control.Usuario.Cargo.descripcion}}</td>
+             <td>{{control.fechaingreso}}</td>
+             <td>{{control.horaingreso}}</td>
+             <td>{{control.fechasalida}}</td>
+             <td>{{control.horasalida}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
+</div>
