@@ -18,7 +18,6 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Opcion Foto</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,7 +25,6 @@
             <tr *ngFor="let tipoAlerta of listTipoAlerta! | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{tipoAlerta.id}}</td>
                 <td>{{tipoAlerta.nombre}}</td>
-                <td>{{tipoAlerta.OpcionFoto.nombre}}</td>
                 <td>
                     <a class="btn btn-circle btn-secondary" *ngIf="tipoAlerta.estado === 1"
                         (click)="borrartipoAlerta(tipoAlerta.id, '0')"> <i class="fas fa-lock"></i>
@@ -53,18 +51,7 @@
                 <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <div class="col-md-12 m-b-30 text-center">
-                        <img src="{{loadImage}}" alt="..." class="modal-img">
-                    </div>
-                    <div class="col-md-12 m-b-20 text-center">
-                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i
-                                    class="ion-upload m-r-5"></i>Subir Imagen</span>
-                            <input type="file" #fileInput class="upload loadimage" accept=".jpeg,.jpg,.png"
-                                (change)="capturarFile($event)">
-                        </div>
-                    </div>
-                </div>
+
                 <form #forma="ngForm">
                     <div class="form-group">
                         <label class="control-label">Ingresar Nombre</label>
@@ -72,13 +59,7 @@
                         #nombre="ngModel" [(ngModel)]="tipoAlertaForm.nombre" name="nombre"
                         >
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Seleccionar Tipo de Cargo</label>
-                            <select class="form-control" id="exampleFormControlSelect1" #opcionFoto="ngModel" [(ngModel)]="tipoAlertaForm.opcionFoto" name="opcionFoto">
-                              <option value="">Seleccione una opcion</option>
-                              <option *ngFor="let cargo of listOpcionFoto" value={{cargo.id}}>{{cargo.nombre}}</option>
-                            </select>
-                          </div>
+
                 </form>
             </div>
             <div class="modal-footer">

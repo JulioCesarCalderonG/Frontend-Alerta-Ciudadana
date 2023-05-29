@@ -74,12 +74,11 @@ export class TipoAlertaComponent implements OnInit {
     );
   }
   agregarEditarTipoAtencion() {
-    if (this.tipoAlertaForm.nombre !== '' && this.tipoAlertaForm.opcionFoto !== '' && this.tipoAlertaForm.imagenDefault !== '') {
+    if (this.tipoAlertaForm.nombre) {
       if (this.ids === undefined) {
         const formData = new FormData();
         formData.append('nombre', this.tipoAlertaForm.nombre);
         formData.append('opcion', this.tipoAlertaForm.opcionFoto);
-        formData.append('archivo', this.fileInput!.nativeElement.files[0]);
         this.tipoAlertaService.postTipoAlerta(formData).subscribe(
           (data) => {
             this.mostrarTipoAlertas();
@@ -97,7 +96,6 @@ export class TipoAlertaComponent implements OnInit {
       } else {
         const formData = new FormData();
         formData.append('nombre', this.tipoAlertaForm.nombre);
-        formData.append('opcion', this.tipoAlertaForm.opcionFoto);
         this.tipoAlertaService.putTipoAlerta(formData, this.ids).subscribe(
           (data) => {
             this.mostrarTipoAlertas();
