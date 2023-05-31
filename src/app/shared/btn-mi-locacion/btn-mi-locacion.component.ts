@@ -16,7 +16,7 @@ export class BtnMiLocacionComponent {
   goToMyLocation(){
     if(!this.locationService.isUserLocationReady) throw Error('No hay ubicacion del usuario');
     if(!this.mapService.isMapReady) throw Error('No se ha inicializado el mapa')
-    this.mapService.flyTo(this.locationService.useLocation!);
+    this.mapService.flyTo(this.locationService.useLocationAdmin!);
 
   }
 

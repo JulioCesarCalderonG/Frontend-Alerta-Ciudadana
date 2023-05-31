@@ -35,8 +35,8 @@ export class SearchResultsComponent {
 
   }
   mostrarRuta(alerta:Alerta){
-    if(!this.locationService.useLocation) throw Error('No tenemos la localizacion inicializacion');
-    const start =this.locationService.useLocation;
+    if(!this.locationService.useLocationAdmin) throw Error('No tenemos la localizacion inicializacion');
+    const start =this.locationService.useLocationAdmin;
     const end = [alerta.lng,alerta.lat] as [number,number]
     this.mapService.getRutaAlerta(start,end)
   }

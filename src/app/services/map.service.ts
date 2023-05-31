@@ -47,8 +47,14 @@ export class MapService {
                       <h6>${alerta.Ciudadano.nombre}</h6>
                       <span>${alerta.Ciudadano.apellido}</span>
                     `);
-
-      const newMarker = new Marker()
+    const div = document.createElement('div');
+    const width = 35;
+    const height= 32;
+    div.className='marker';
+    div.style.backgroundImage=`url(https://res.cloudinary.com/dkxwh94qt/image/upload/v1685376640/ubicacion_1_kgz64r.png)`;
+    div.style.width=`${width}px`;
+    div.style.height=`${height}px`;
+      const newMarker = new Marker(div)
         .setLngLat([alerta.lng, alerta.lat])
         .setPopup(popup)
         .addTo(this.map);

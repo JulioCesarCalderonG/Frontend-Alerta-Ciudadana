@@ -170,7 +170,10 @@ export class SearchBarComponent implements OnInit {
     this.ws.listen('actualizar-alerta-general').subscribe(
       (data) => {
         this.mostrarAlerta();
-
+        this.toastr.success(
+          'Tienes una alerta ciudadana entrante',
+          'Alerta Ciudadana'
+        );
       },
       (error) => {
         console.log(error);

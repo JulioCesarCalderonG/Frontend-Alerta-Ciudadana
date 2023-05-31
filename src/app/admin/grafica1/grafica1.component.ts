@@ -23,7 +23,7 @@ export class Grafica1Component implements OnInit {
   }
 
   ngOnInit(): void {
-  this.mostrarAlertaSocket();
+  //this.mostrarAlertaSocket();
   }
 
   get isAdminLocation(){

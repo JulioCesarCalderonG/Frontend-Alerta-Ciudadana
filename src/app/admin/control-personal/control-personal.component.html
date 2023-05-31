@@ -3,7 +3,6 @@
   <table class="table">
       <thead>
           <tr>
-              <th>ID</th>
               <th>Usuario</th>
               <th>Cargo</th>
               <th>Fecha de ingreso</th>
@@ -14,7 +13,6 @@
       </thead>
       <tbody>
           <tr *ngFor="let control of listControlPersonal! | paginate: { itemsPerPage: 10, currentPage: p }">
-             <td>{{control.id}}</td>
              <td>{{control.Usuario.nombre}} {{control.Usuario.apellido}} </td>
              <td>{{control.Usuario.Cargo.descripcion}}</td>
              <td>{{control.fechaingreso}}</td>

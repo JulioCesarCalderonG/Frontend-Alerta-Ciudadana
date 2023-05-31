@@ -13,15 +13,16 @@ export class MapViewComponent implements AfterViewInit {
   constructor(
     private locationService: LocalizacionService,
     private mapService:MapService
-  ) {}
+  ) {
+    locationService.useLocationAdmin
+  }
 
   ngAfterViewInit(): void {
-    if (!this.locationService.useLocation)
-      throw Error('No hay Ubicacion del Personal');
+
     const map = new Map({
       container: this.mapDivElement.nativeElement, // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: this.locationService.useLocation, // starting position [lng, lat]
+      center: [-74.544522,-8.38887], // starting position [lng, lat]
       zoom: 14, // starting zoom
     });
     const popup = new Popup().setHTML(`
@@ -38,7 +39,7 @@ export class MapViewComponent implements AfterViewInit {
     div.style.height=`${height}px`;
 
     new Marker(div)
-      .setLngLat(this.locationService.useLocation)
+      .setLngLat([-74.544522,-8.38887])
       .setPopup(popup)
       .addTo(map);
 
