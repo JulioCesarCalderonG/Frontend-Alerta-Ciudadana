@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'https://gongalsoft.com/', options: {} };
+const config: SocketIoConfig = { url: environment.backendURL, options: {} };
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,7 @@ import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { SerenazgoModule } from './serenazgo/serenazgo.module';
 import { SerenazgoGuard } from './guard/serenazgo.guard';
 import { ChartsModule } from 'ng2-charts';
+import { environment } from 'src/environments/environment.prod';
 @NgModule({
   declarations: [
     AppComponent,
