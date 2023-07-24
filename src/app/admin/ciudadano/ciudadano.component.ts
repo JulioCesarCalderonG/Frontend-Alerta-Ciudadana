@@ -31,7 +31,7 @@ export class CiudadanoComponent implements OnInit {
   }
   buscar(valor:any){
     this.inputBuscar = valor;
-    if (this.buscar.length>=1) {
+    if (this.inputBuscar.length>=1) {
       this.ciudadanoService.getCiudadanos(this.estado, this.inputBuscar).subscribe(
         (data:ResultCiudadano)=>{
           this.listCiudadano = data.ciudadano;
