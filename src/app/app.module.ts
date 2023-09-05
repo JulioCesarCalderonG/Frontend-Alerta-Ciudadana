@@ -20,6 +20,7 @@ import { SerenazgoModule } from './serenazgo/serenazgo.module';
 import { SerenazgoGuard } from './guard/serenazgo.guard';
 import { ChartsModule } from 'ng2-charts';
 import { environment } from 'src/environments/environment.prod';
+import { CuentaModule } from './cuenta/cuenta.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { environment } from 'src/environments/environment.prod';
     AdminModule,
     AuthModule,
     SerenazgoModule,
+    CuentaModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SocketIoModule.forRoot(config),

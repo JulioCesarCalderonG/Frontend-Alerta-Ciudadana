@@ -6,6 +6,7 @@ import { AuthRoutingModule } from './auth/auth.routing';
 
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { SerenazgoRoutingModule } from './serenazgo/serenazgo.routing';
+import { CuentaRoutingModule } from './cuenta/cuenta.routing';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes=[
     RouterModule.forRoot(routes),
     AdminRoutingModule,
     AuthRoutingModule,
-    SerenazgoRoutingModule
+    SerenazgoRoutingModule,
+    CuentaRoutingModule
   ],
   exports:[RouterModule]
 })
