@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: environment.backendURL, options: {} };
+const config: SocketIoConfig = { url: environment.backendURL2, options: {} };
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
