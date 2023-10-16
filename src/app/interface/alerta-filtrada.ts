@@ -7,20 +7,17 @@ export interface AlertaFiltrada {
 }
 
 export interface Alerta {
-  id:        number;
-  lat:       number;
-  lng:       number;
-  fecha:     string;
-  hora:      string;
-  ciudadano: number;
-  Ciudadano: Ciudadano;
-}
-
-export interface Ciudadano {
-  id:       number;
-  dni:      string;
-  nombre:   string;
-  apellido: string;
-  password: string;
-  estado:   number;
+  id:         number;
+  lat:        number;
+  lng:        number;
+  fecha:      string;
+  hora:       string;
+  ciudadano:  string;
+  registrado: number;
+  ano:        string;
+  mes:        string;
+  dni:        string;
+  celular:    string;
+  correo:     string;
+  Ciudadano:  null;
 }

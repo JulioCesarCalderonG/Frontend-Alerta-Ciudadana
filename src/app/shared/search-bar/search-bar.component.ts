@@ -76,19 +76,15 @@ export class SearchBarComponent implements OnInit {
     this.codigoAlerta = event;
   }
   clickId(event:number){
-    console.log(event);
     this.alertaService.getAlertaId(event).subscribe(
       (data:any)=>{
-        console.log(data);
         this.detalleAlerta={
-          celular:(data.detalle)?data.detalle.celular:'',
-          ciudadano:`${data.alerta.Ciudadano.nombre} ${data.alerta.Ciudadano.apellido}`,
-          correo:(data.detalle)?data.detalle.correo:'',
+          celular:data.alerta.celular,
+          ciudadano:`${data.alerta.ciudadano}`,
+          correo:data.alerta.correo,
           fecha:data.alerta.fecha,
           hora:data.alerta.hora
         }
-        console.log(this.detalleAlerta);
-
       },(error)=>{
         console.log(error);
 

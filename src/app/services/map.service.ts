@@ -44,8 +44,7 @@ export class MapService {
     const newMakers = [];
     for (const alerta of listAlerta) {
       const popup = new Popup().setHTML(`
-                      <h6>${alerta.Ciudadano.nombre}</h6>
-                      <span>${alerta.Ciudadano.apellido}</span>
+                      <h6>${alerta.Ciudadano}</h6>
                     `);
     const div = document.createElement('div');
     const width = 35;

@@ -10,10 +10,8 @@ class="alert alert-primary mt-2 text-center">
   [class.active]="alertas.id === selectId"
     (click)="flyTo(alertas)"
   >
-    <h6>{{alertas.Ciudadano.nombre}}</h6>
-    <p>
-      Ciudadano: {{alertas.Ciudadano.nombre}} {{alertas.Ciudadano.apellido}}
-    </p>
+    <h6>CIUDADANO: {{alertas.ciudadano}}</h6>
+
     <p style="margin-bottom: -3px;">
       Fecha: {{alertas.fecha}}
     </p>
