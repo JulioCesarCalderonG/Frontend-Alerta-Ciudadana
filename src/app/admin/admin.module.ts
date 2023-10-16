@@ -21,6 +21,7 @@ import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ChartsModule } from 'ng2-charts';
 import { ControlPersonalComponent } from './control-personal/control-personal.component';
+import { VehiculosComponent } from './vehiculos/vehiculos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ControlPersonalComponent } from './control-personal/control-personal.co
     AlertasComponent,
     AlertaDerivadaComponent,
     TipoAlertaComponent,
-    ControlPersonalComponent
+    ControlPersonalComponent,
+    VehiculosComponent
   ],
   exports:[
     DashboardComponent,

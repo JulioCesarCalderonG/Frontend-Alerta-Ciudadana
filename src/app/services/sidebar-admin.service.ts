@@ -15,6 +15,13 @@ export class SidebarAdminService {
       ]
     },
     {
+      titulo: 'Vehiculos',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Vehiculos Activos', url: 'vehiculos' },
+      ]
+    },
+    {
       titulo: 'Tipo de Alerta',
       icono: 'mdi mdi-alert-box',
       submenu: [
