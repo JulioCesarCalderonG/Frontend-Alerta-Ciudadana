@@ -1,45 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { Vehiculo } from 'src/app/interface/vehiculo';
+import { VehiculosService } from 'src/app/services/vehiculos.service';
+import { WebsocketService } from 'src/app/socket/websocket.service';
+
+
+interface RespVehiculo{
+  [key:string]:Vehiculo
+}
+
 @Component({
   selector: 'app-vehiculos',
   templateUrl: './vehiculos.component.html',
   styleUrls: ['./vehiculos.component.css']
 })
+
 export class VehiculosComponent implements OnInit {
 
   mapa?:mapboxgl.Map;
-  lugares: Vehiculo[] = [{
-    id :'1',
-    nombre:'Julio cesar',
-    id_vehiculo:'1',
-    vehiculo:'vehiculo 1',
-    lng:-74.562492,
-    lat:-8.362674,
-    color:'#dd8fee'
-},
-{
-  id :'2',
-  nombre:'Juanito perez',
-  id_vehiculo:'2',
-  vehiculo:'vehiculo 2',
-  lng:-74.588585,
-  lat:-8.383223,
-  color:'#790af0'
-},
-{
-  id :'3',
-  nombre:'Pedro suarez',
-  id_vehiculo:'3',
-  vehiculo:'vehiculo 3',
-  lng:-74.58292,
-  lat:-8.411074,
-  color:'#19884b'
-}];
-  constructor() { }
+  //lugares: Vehiculo[] = [];
+  lugares:RespVehiculo={};
+  markersMapbox: {[key:string]:mapboxgl.Marker}={};
+  constructor(
+    private vehiculoService:VehiculosService,
+    private wsService:WebsocketService
+  ) { }
 
   ngOnInit(): void {
-    this.crearMapa();
+    this.mostrarVehiculos();
+    this.escucharSocket();
+  }
+
+  mostrarVehiculos(){
+    this.vehiculoService.mostrarVehiculos().subscribe(
+      (data:RespVehiculo)=>{
+        this.lugares =data;
+        this.crearMapa();
+      },
+      error=>{
+        console.log(error);
+
+      }
+    )
   }
 
   crearMapa() {
@@ -50,19 +52,52 @@ export class VehiculosComponent implements OnInit {
       center: [-74.544522, -8.38887],
       zoom:12
     });
-    for(const marcador of this.lugares){
+    for(const [key,marcador] of Object.entries(this.lugares)){
       this.agregarVehiculo(marcador);
     }
   }
+  escucharSocket(){
+    //Marcador - Nuevo
+    this.wsService.listen('vehiculo-nuevo').subscribe(
+      (data:any)=>{
+        console.log(data);
+        this.agregarVehiculo(data)
+      }
+    )
+    //Marcado - Mover
+    this.wsService.listen('vehiculo-mover').subscribe(
+      (data:any)=>{
+        this.markersMapbox[data.id].setLngLat([data.lng,data.lat]);
+      }
+    )
+    //Marcado - Borrar
+    this.wsService.listen('vehiculo-borrar').subscribe(
+      (data:any)=>{
+        this.markersMapbox[data].remove();
+        delete this.markersMapbox[data];
+      }
+    )
+
+
+  }
   agregarVehiculo(marcador:Vehiculo){
-    const html= `<h6>Conductor: <strong>${marcador.nombre}</strong></h6>
+    /* const html= `<h6>Conductor: <strong>${marcador.nombre}</strong></h6>
                         <br>
                         <h6>Vehiculo: <strong>${marcador.vehiculo}</strong></h6>
-    `;
+    `; */
+
+    const h2 = document.createElement('h2');
+    h2.innerText=marcador.nombre;
+
+    const btnBorrar= document.createElement('button');
+    btnBorrar.innerText='Borrar';
+
+    const div= document.createElement('div');
+    div.append(h2,btnBorrar);
     const customPopup = new mapboxgl.Popup({
       offset:25,
       closeOnClick:true,
-    }).setHTML(html);
+    }).setDOMContent(div  )
 
     const marker = new mapboxgl.Marker({
       draggable:true,
@@ -71,5 +106,39 @@ export class VehiculosComponent implements OnInit {
     .setLngLat([marcador.lng,marcador.lat])
     .setPopup(customPopup)
     .addTo(this.mapa!)
+
+    marker.on('drag',()=>{
+      const lngLat=marker.getLngLat();
+      //TODO: crear evento para emitir coordenadas;
+      const nuevoMarcador={
+        id:marcador.id,
+        ...lngLat
+      }
+      this.wsService.emit('vehiculo-mover',nuevoMarcador);
+    });
+    btnBorrar.addEventListener('click',()=>{
+      marker.remove();
+      this.wsService.emit('vehiculo-borrar',marcador.id);
+      //TODO:Eliminar el marcador por sockets
+
+
+
+    })
+    this.markersMapbox[marcador.id]=marker;
+    console.log(this.markersMapbox);
+
+  }
+  crearMarcador(){
+    const customMarker:Vehiculo={
+      color:'#' + Math.floor(Math.random()*16777215).toString(16),
+      id:new Date().toISOString(),
+      lat:-8.38887,
+      lng:-74.544522,
+      vehiculo:'sin-vehiculo',
+      nombre:'sin-nombre',
+      id_vehiculo:new Date().toISOString()
+    }
+    this.agregarVehiculo(customMarker);
+    this.wsService.emit('vehiculo-nuevo',customMarker);
   }
 }
