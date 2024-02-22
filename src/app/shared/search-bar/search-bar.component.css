@@ -1,17 +1,19 @@
 .search-container{
   position: fixed;
   top: 80px;
-  left: 100px;
   background-color: white;
   padding: 5px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 400px;
+}
+.minimizar{
+  left: 250px;
 }
 @media (max-width:1024px){
   .search-container{
-    left: 80px!important;
+    left: 480px!important;
   }
 }
 @media (max-width:375px){

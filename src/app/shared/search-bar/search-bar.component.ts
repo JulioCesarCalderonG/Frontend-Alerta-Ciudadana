@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResultUsuarios, Usuario } from 'src/app/interface/usuario';
 import { AlertaService } from 'src/app/services/alerta.service';
@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 import { TipoAlertaService } from 'src/app/services/tipo-alerta.service';
 import { ResultTipoAlertas, Tipoalerta } from 'src/app/interface/tipo-alerta';
 import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
+import { MinimizarService } from 'src/app/services/minimizar.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -18,6 +19,7 @@ import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service'
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
+   
   private debounceTimer?: NodeJS.Timeout;
   public isCargaDatos: boolean = false;
   public listUsuario: Usuario[] = [];
@@ -35,6 +37,7 @@ export class SearchBarComponent implements OnInit {
   }
   listTipoAlerta?:Tipoalerta[];
   idAlerta?:number;
+  minimizar?:boolean;
   constructor(
     private alertaService: AlertaService,
     private usuarioService: UsuarioService,
@@ -43,7 +46,8 @@ export class SearchBarComponent implements OnInit {
     private alertaDerivada: AlertaDerivadaService,
     private fb: FormBuilder,
     private ws: WebsocketService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private minimizarService:MinimizarService
   ) {
     this.serenoForm = this.fb.group({
       sereno: ['', Validators.required],
@@ -51,6 +55,10 @@ export class SearchBarComponent implements OnInit {
     this.alertaForm = this.fb.group({
       descripcion:['',Validators.required],
       tipo_alerta:['',Validators.required]
+    });
+    this.minimizarService.minimizarCurrent.subscribe((event)=>{
+      this.minimizar=event;
+            
     })
   }
 

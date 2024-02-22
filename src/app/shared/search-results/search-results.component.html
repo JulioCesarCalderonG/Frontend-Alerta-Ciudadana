@@ -1,48 +1,83 @@
-<div *ngIf="isLoadingAlertas"
-class="alert alert-primary mt-2 text-center">
+<div *ngIf="isLoadingAlertas" class="alert alert-primary mt-2 text-center">
   <h6>Cargando</h6>
   <span>Espere por favor....</span>
 </div>
 
-<ul class="list-group mt-2" *ngIf="alertaFiltro.length>0" >
-  <li *ngFor="let alertas of alertaFiltro"
-  class="list-group-item list-group-item-action pointer"
-  [class.active]="alertas.id === selectId"
+<ul class="list-group mt-2" *ngIf="alertaFiltro.length > 0">
+  <li
+    *ngFor="let alertas of alertaFiltro"
+    class="list-group-item list-group-item-action pointer"
+    [class.active]="alertas.id === selectId"
     (click)="flyTo(alertas)"
   >
-    <h6>CIUDADANO: {{alertas.ciudadano}}</h6>
-
-    <p style="margin-bottom: -3px;">
-      Fecha: {{alertas.fecha}}
-    </p>
-    <p>
-      Hora: {{alertas.hora}}
-    </p>
+    <p class="ciudadano">CIUDADANO: {{ alertas.ciudadano }}</p>
+    <p style="margin-bottom: -3px">Fecha: {{ alertas.fecha }}</p>
+    <p>Hora: {{ alertas.hora }}</p>
     <button
-      class="btn btn-sm btn-outline-primary ml-2 mb-2"
-      (click)="mostrarRuta(alertas)"
+      class="btn btn-sm btn-danger ml-2 mb-2 atendido"
+      data-toggle="modal"
+      data-target="#modalVer"
+      data-whatever="@mdo"
     >
-      Direcciones
-    </button><br>
-    <button class="btn btn-sm btn-outline-warning ml-2 mb-2"
-    (click)="codigoAlerta(alertas.id)"
-    data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
-    >
-      Derivar
-    </button><br>
-    <button class="btn btn-sm btn-outline-warning ml-2 mb-2"
-    (click)="registrarAlerta(alertas.id)"
-    data-toggle="modal" data-target="#modalRegistrar" data-whatever="@mdo"
-    >
-      Registrar
-    </button><br>
-    <button class="btn btn-sm btn-outline-success ml-2 mb-2"
-    (click)="codigoIdAlerta(alertas.id)"
-    data-toggle="modal" data-target="#modalVer" data-whatever="@mdo"
-    >
-    <i class="fa fa-eye"></i>
+      <i class="fa fa-solid fa-check"></i>
     </button>
+    <button
+      class="btn btn-sm btn-success ml-2 mb-2 ver"
+      (click)="codigoIdAlerta(alertas.id)"
+      data-toggle="modal"
+      data-target="#modalVer"
+      data-whatever="@mdo"
+    >
+     <i class="fa fa-eye"></i>
+    </button>
+    <div class="row">
+      <div class="col-lg-6">
+        <button
+          class="btn btn-block btn-primary mb-2"
+          (click)="mostrarRuta(alertas)"
+        >
+          Ruta
+          <i class="fa fa-solid fa-location-arrow"></i>
+        </button>
+      </div>
+      <div class="col-lg-6">
+        <button
+          class="btn btn-block btn-warning mb-2"
+          (click)="codigoAlerta(alertas.id)"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-whatever="@mdo"
+        >
+          Derivar
+          <i class="fa fa-solid fa-file-export"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <button
+          class="btn btn-block btn-secondary mb-2"
+          (click)="registrarAlerta(alertas.id)"
+          data-toggle="modal"
+          data-target="#modalRegistrar"
+          data-whatever="@mdo"
+        >
+          Registrar
+          <i class="fa fa-solid fa-pen"></i>
+        </button>
+      </div>
+      <div class="col-lg-6">
+        <button
+          class="btn btn-block btn-secondary mb-2"
+          (click)="registrarAlerta(alertas.id)"
+          data-toggle="modal"
+          data-target="#modalRegistrar"
+          data-whatever="@mdo"
+        >
+          Span
+          <i class="fa fa-solid fa-virus-slash"></i>
+        </button>
+      </div>
+    </div>
   </li>
 </ul>
-
-

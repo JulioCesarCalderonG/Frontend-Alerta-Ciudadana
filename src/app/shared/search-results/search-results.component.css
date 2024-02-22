@@ -22,3 +22,18 @@ p{
     height: 540px!important;
   }
 }
+.ciudadano{
+  width: 70%;
+  font-size: 13px;
+}
+.atendido{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  flex-direction: row;
+}
+.ver{
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
