@@ -5,14 +5,16 @@
 
         </div>
     </div>
-    <div class="col-md-3 scroll mt-3">
+    <div class="col-md-3 scroll mt-3"
+        
+    >
         <div class="row">
             <div class="col-md-12" *ngFor="let alerta of listAlerta">
                 <div class="card card-outline-info">
                     <div class="card-header" [ngStyle]="{'background-color':'#'+alerta.color}">
                         <h4 class="m-b-0 text-white">{{alerta.tipo_alerta}}</h4></div>
                     <div class="card-body">
-                        <h5 class="card-title">Ciudadano: {{alerta.nombre}} {{alerta.apellido}}</h5>
+                        <h5 class="card-title" >Ciudadano: {{alerta.nombre}} {{alerta.apellido}}</h5>
                         <h5>DNI: {{alerta.dni}}</h5>
                         <h5>Fecha: {{alerta.fecha}}</h5>
                         <h5>Hora: {{alerta.hora}}</h5>

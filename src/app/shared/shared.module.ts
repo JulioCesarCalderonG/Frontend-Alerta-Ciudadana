@@ -18,6 +18,7 @@ import { SidebarSerenazgoComponent } from './sidebar-serenazgo/sidebar-serenazgo
 import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.component';
 import { SearchBarSerenoComponent } from './search-bar-sereno/search-bar-sereno.component';
 import { SearchResultsSerenoComponent } from './search-results-sereno/search-results-sereno.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -60,7 +61,8 @@ import { SearchResultsSerenoComponent } from './search-results-sereno/search-res
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastrModule
+    ToastrModule,
+    HttpClientModule,
   ]
 })
 export class SharedModule { }

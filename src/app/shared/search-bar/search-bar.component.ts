@@ -217,4 +217,34 @@ export class SearchBarComponent implements OnInit {
       }
     )
   }
+  codigoAtendido(event:number){
+    console.log(event);
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "la alerta se marcara como atendido!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, atender!',
+      cancelButtonText:'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.alertaService.putAtenderAlerta(event).subscribe(
+          (data) => {
+            this.mostrarAlerta();
+            Swal.fire({
+              title: 'Atendido!',
+              text: data.msg,
+              icon: 'success',
+            });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+        
+      }
+    });
+  }
 }

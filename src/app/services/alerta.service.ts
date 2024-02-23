@@ -37,5 +37,8 @@ export class AlertaService {
       }
     )
   }
+  putAtenderAlerta(id:number):Observable<any>{
+    return this.http.put(`${this.url}/atencion/${id}`,{});
+  }
 
 }

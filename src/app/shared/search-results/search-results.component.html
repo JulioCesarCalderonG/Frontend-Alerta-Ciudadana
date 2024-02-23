@@ -8,25 +8,23 @@
     *ngFor="let alertas of alertaFiltro"
     class="list-group-item list-group-item-action pointer"
     [class.active]="alertas.id === selectId"
-    (click)="flyTo(alertas)"
   >
     <p class="ciudadano">CIUDADANO: {{ alertas.ciudadano }}</p>
+    <p style="margin-bottom: -3px" class="celular">Celular: {{ alertas.celular }}</p>
+    <p class="correo">Correo: {{ alertas.correo }}</p>
     <p style="margin-bottom: -3px">Fecha: {{ alertas.fecha }}</p>
     <p>Hora: {{ alertas.hora }}</p>
     <button
       class="btn btn-sm btn-danger ml-2 mb-2 atendido"
-      data-toggle="modal"
-      data-target="#modalVer"
-      data-whatever="@mdo"
+      [ngClass]="alertas.atendido==0 ? 'inactivo': 'activo'"
+      (click)="atender(alertas.id)"
     >
       <i class="fa fa-solid fa-check"></i>
     </button>
     <button
       class="btn btn-sm btn-success ml-2 mb-2 ver"
-      (click)="codigoIdAlerta(alertas.id)"
-      data-toggle="modal"
-      data-target="#modalVer"
-      data-whatever="@mdo"
+      (click)="flyTo(alertas)"
+      
     >
      <i class="fa fa-eye"></i>
     </button>

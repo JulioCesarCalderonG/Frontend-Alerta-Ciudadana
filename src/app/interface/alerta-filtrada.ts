@@ -20,4 +20,5 @@ export interface Alerta {
   celular:    string;
   correo:     string;
   Ciudadano:  null;
+  atendido:   number;
 }
