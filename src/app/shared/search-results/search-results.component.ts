@@ -16,6 +16,8 @@ export class SearchResultsComponent {
   @Output('codigoId') codigoEmiterId = new EventEmitter<any>();
   @Output('idAlerta') codigoEmiterAlerta = new EventEmitter<any>();
   @Output('idAtendido') codigoEmiterAtendido = new EventEmitter<number>();
+  @Output('idSpam') codigoEmiterSpam = new EventEmitter<any>();
+
   constructor(
     private alertaService: AlertaService,
     private mapService: MapService,
@@ -51,5 +53,12 @@ export class SearchResultsComponent {
   }
   atender(id: number) {
     this.codigoEmiterAtendido.emit(id);
+  }
+  spam(id:number,spam:number){
+    const data = {
+      id,
+      spam
+    }
+    this.codigoEmiterSpam.emit(data);
   }
 }

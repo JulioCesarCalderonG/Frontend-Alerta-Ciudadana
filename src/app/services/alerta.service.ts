@@ -40,5 +40,7 @@ export class AlertaService {
   putAtenderAlerta(id:number):Observable<any>{
     return this.http.put(`${this.url}/atencion/${id}`,{});
   }
-
+  putSpamAlerta(id:number,data:{spam:number}):Observable<any>{
+    return this.http.put(`${this.url}/spam/${id}`,data);
+  }
 }

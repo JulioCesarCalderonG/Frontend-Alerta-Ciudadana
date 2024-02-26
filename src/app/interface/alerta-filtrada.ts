@@ -21,4 +21,5 @@ export interface Alerta {
   correo:     string;
   Ciudadano:  null;
   atendido:   number;
+  spam:       number;
 }

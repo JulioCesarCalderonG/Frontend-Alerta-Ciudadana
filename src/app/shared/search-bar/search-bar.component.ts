@@ -247,4 +247,34 @@ export class SearchBarComponent implements OnInit {
       }
     });
   }
+  codigoSpam(event:any){
+    console.log(event);
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: (event.spam===1)?"la alerta se desmarcara como spam!":"la alerta se marcara como spam!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: (event.spam===1)?'Si, desmarcar!':'Si, marcar!',
+      cancelButtonText:'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.alertaService.putSpamAlerta(event.id, {spam:event.spam}).subscribe(
+          (data) => {
+            this.mostrarAlerta();
+            Swal.fire({
+              title: 'Spam!',
+              text: data.msg,
+              icon: 'success',
+            });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+        
+      }
+    });
+  }
 }

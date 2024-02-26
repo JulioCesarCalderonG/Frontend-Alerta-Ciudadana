@@ -6,7 +6,7 @@
     #txtQuery
     (keyup)="onQueryChanged(txtQuery.value)"
   >
-  <app-search-results (codigo)="clickEvent($event)" (codigoId)="clickId($event)" (idAlerta)="codigoRegistro($event)" (idAtendido)="codigoAtendido($event)"></app-search-results>
+  <app-search-results (codigo)="clickEvent($event)" (codigoId)="clickId($event)" (idAlerta)="codigoRegistro($event)" (idAtendido)="codigoAtendido($event)" (idSpam)="codigoSpam($event)"></app-search-results>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

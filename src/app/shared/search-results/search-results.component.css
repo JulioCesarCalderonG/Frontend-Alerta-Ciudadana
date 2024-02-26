@@ -48,3 +48,7 @@ p {
 .atender{
   background-color: rgb(200, 203, 206)!important;
 }
+.inactive{
+  background-color: rgb(230, 119, 119) !important;
+  color: white;
+}
