@@ -3,22 +3,22 @@
 export interface ResultAlertas {
     ok:      boolean;
     msg:     string;
-    results?: Alerta[];
+    results: Alerta[];
 }
 
 export interface Alerta {
     id:          number;
     descripcion: string;
-    lat:         number;
-    lng:         number;
-    foto:        null | string;
     fecha:       string;
     hora:        string;
-    dni:         string;
-    nombre:      string;
-    apellido:    string;
-    id_tipo:     number;
+    lat:         number;
+    lng:         number;
     tipo_alerta: string;
+    img:         string;
     color:       string;
-    estado:      number
+    ciudadano:   string;
+    correo:      null | string;
+    celular:     string;
+    dni:         number;
+    id_tipo:     number;
 }

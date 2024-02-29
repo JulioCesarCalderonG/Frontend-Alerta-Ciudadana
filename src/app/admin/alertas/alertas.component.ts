@@ -65,7 +65,7 @@ export class AlertasComponent implements OnInit {
           color: `#${resp.color}`,
           fecha: resp.fecha,
           hora: resp.hora,
-          ciudadano: `${resp.nombre} ${resp.apellido}`,
+          ciudadano: `${resp.ciudadano}`,
           foto: `${environment.backendURL}/tipoalerta/mostrar/imagen/${resp.id_tipo}`,
         };
         this.mostrarMarcadores(envioMapa);

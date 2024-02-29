@@ -14,6 +14,7 @@ import { AlertaDerivadaComponent } from './alerta-derivada/alerta-derivada.compo
 import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 import { ControlPersonalComponent } from './control-personal/control-personal.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
+import { AlertaSpamComponent } from './alerta-spam/alerta-spam.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
             { path: 'usuario', component: UsuarioComponent },
             { path: 'ciudadano', component: CiudadanoComponent },
             { path: 'alerta', component: AlertasComponent },
+            { path: 'alerta-spam', component: AlertaSpamComponent },
             { path: 'tipo-alerta', component: TipoAlertaComponent },
             { path: 'alerta-derivada', component: AlertaDerivadaComponent },
             { path: 'tipo-atencion', component: TipoAtencionComponent },

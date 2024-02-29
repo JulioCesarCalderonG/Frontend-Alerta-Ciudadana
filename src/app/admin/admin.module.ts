@@ -22,6 +22,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ChartsModule } from 'ng2-charts';
 import { ControlPersonalComponent } from './control-personal/control-personal.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
+import { AlertaSpamComponent } from './alerta-spam/alerta-spam.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
     AlertaDerivadaComponent,
     TipoAlertaComponent,
     ControlPersonalComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    AlertaSpamComponent
   ],
   exports:[
     DashboardComponent,
