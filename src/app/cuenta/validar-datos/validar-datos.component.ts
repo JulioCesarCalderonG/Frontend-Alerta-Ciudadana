@@ -15,13 +15,14 @@ export class ValidarDatosComponent implements OnInit {
 
   codigoForm:FormGroup;
   carga:boolean=false;
+  fecha=new Date().getFullYear();
   constructor(
     private fb:FormBuilder,
     private codigoService:GenerarCodigoService,
     private router:Router
   ) {
     this.codigoForm=this.fb.group({
-      dni:['',Validators.required],
+      usuario:['',Validators.required],
       correo:['',Validators.required]
     })
   }
@@ -35,14 +36,12 @@ export class ValidarDatosComponent implements OnInit {
       loadData('Cargando Datos!!','Se estan validando los datos ingresados, porfavor espere')
     }
     const formData = new FormData();
-    formData.append('dni',this.codigoForm.get('dni')?.value);
+    formData.append('usuario',this.codigoForm.get('usuario')?.value);
     formData.append('correo',this.codigoForm.get('correo')?.value);
     this.codigoService.postGenerarCodigo(formData).subscribe(
       (data:ResultGenerarCodigo)=>{
-        console.log(data);
         sessionStorage.setItem('id_ciudadano',`${data.ciudadano.id}`);
         sessionStorage.setItem('codigo',data.codigo);
-
         this.carga=false;
         if (!this.carga) {
           closeAlert();
