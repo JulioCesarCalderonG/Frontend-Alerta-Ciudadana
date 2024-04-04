@@ -382,7 +382,7 @@ export class MapViewComponent implements AfterViewInit {
     const map = new Map({
       container: this.mapDivElement.nativeElement, // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.544522, -8.38887], // starting position [lng, lat]
+      center: [-73.758774, -10.728333], // starting position [lng, lat]
       zoom: 14, // starting zoom
     });
     const popup = new Popup().setHTML(`
@@ -399,7 +399,7 @@ export class MapViewComponent implements AfterViewInit {
     div.style.height = `${height}px`;
 
     new Marker(div)
-      .setLngLat([-74.544522, -8.38887])
+      .setLngLat([-73.758774, -10.728333])
       .setPopup(popup)
       .addTo(map);
 
