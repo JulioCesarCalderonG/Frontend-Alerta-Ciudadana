@@ -32,14 +32,18 @@ export class SearchResultsComponent {
   }
   flyTo(alerta: Alerta) {
     this.selectId = alerta.id;
-    const { lat, lng } = alerta;
+    const lat = Number(alerta.lat);
+    const lng = Number(alerta.lng)
     this.mapService.flyTo({ lng, lat });
+    
+    
   }
   mostrarRuta(alerta: Alerta) {
     if (!this.locationService.useLocationAdmin)
       throw Error('No tenemos la localizacion inicializacion');
     const start = this.locationService.useLocationAdmin;
-    const end = [alerta.lng, alerta.lat] as [number, number];
+    const end = [Number(alerta.lng), Number(alerta.lat)] as [number, number];
+    
     this.mapService.getRutaAlerta(start, end);
   }
   codigoAlerta(codigos: any) {

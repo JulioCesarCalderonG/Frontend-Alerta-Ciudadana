@@ -12,7 +12,7 @@ export class SidebarAdminService {
         { titulo: 'Ultimas 24 Horas', url: 'ultimas-24-horas' },
         { titulo: 'Mostrar alertas General', url: 'alerta' },
         /* { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' }, */
-        { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' },
+        /* { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' }, */
       ]
     },
     {

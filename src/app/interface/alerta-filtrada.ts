@@ -8,8 +8,8 @@ export interface AlertaFiltrada {
 
 export interface Alerta {
   id:         number;
-  lat:        number;
-  lng:        number;
+  lat:        string;
+  lng:        string;
   fecha:      string;
   hora:       string;
   ciudadano:  string;

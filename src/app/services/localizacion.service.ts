@@ -24,7 +24,7 @@ export class LocalizacionService {
 
       navigator.geolocation.getCurrentPosition(
         ({coords})=>{
-          this.useLocation = [coords.longitude,coords.latitude];
+          this.useLocation = [-73.758774, -10.728333];
 
           resolve(this.useLocation);
         },
@@ -44,7 +44,7 @@ export class LocalizacionService {
 
       navigator.geolocation.getCurrentPosition(
         ({coords})=>{
-          this.useLocationAdmin = [-74.544522,-8.38887];
+          this.useLocationAdmin = [-73.758774, -10.728333];
 
           resolve(this.useLocationAdmin);
         },

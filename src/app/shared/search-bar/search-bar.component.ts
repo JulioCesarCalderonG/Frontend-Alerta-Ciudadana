@@ -138,7 +138,7 @@ export class SearchBarComponent implements OnInit {
       (data)=>{
         console.log(data);
         Swal.fire(
-          'Derivado!',
+          'Registrado!',
           'La alerta ha sido registrado con exito',
           'success'
         );

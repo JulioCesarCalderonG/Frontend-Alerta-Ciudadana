@@ -54,7 +54,7 @@ export class MapService {
     div.style.width=`${width}px`;
     div.style.height=`${height}px`;
       const newMarker = new Marker(div)
-        .setLngLat([alerta.lng, alerta.lat])
+        .setLngLat([Number(alerta.lng), Number(alerta.lat)])
         .setPopup(popup)
         .addTo(this.map);
       newMakers.push(newMarker);
