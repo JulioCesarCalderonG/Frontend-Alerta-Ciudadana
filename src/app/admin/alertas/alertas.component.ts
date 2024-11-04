@@ -52,7 +52,8 @@ export class AlertasComponent implements OnInit {
       style: 'mapbox://styles/mapbox/streets-v11',
       accessToken:
         'pk.eyJ1IjoidGlnZXIxMjE0IiwiYSI6ImNrcDd0cDl2NTAzM2syeG1zdzV4NWEwaGIifQ.xYnNZjDu30SiuGKjzgh_jg',
-      center: [-73.758774, -10.728333],
+      //center: [-74.96366, -8.640309],
+      center: [-74.544468, -8.388828],
       zoom: 14,
     });
     if (this.listAlerta!.length >= 1) {
@@ -131,7 +132,7 @@ export class AlertasComponent implements OnInit {
       style: 'mapbox://styles/mapbox/streets-v11',
       accessToken:
         'pk.eyJ1IjoidGlnZXIxMjE0IiwiYSI6ImNrcDd0cDl2NTAzM2syeG1zdzV4NWEwaGIifQ.xYnNZjDu30SiuGKjzgh_jg',
-      center: [-73.758774, -10.728333],
+      center: [-74.96366, -8.640309],
       zoom: 15,
     });
   }
