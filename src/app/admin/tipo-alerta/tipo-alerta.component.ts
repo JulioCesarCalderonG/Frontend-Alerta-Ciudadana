@@ -31,7 +31,7 @@ export class TipoAlertaComponent implements OnInit {
   estado: string = '1';
   listTipoAlerta?: Array<Tipoalerta>;
   listOpcionFoto?: Array<OpcionFoto>;
-  titulo = 'Crear Tipo de Alerta';
+  titulo = 'Crear Tipo de Delito';
   loadImage?: string;
   ids?: string;
   tipoAlertaForm: TipoAlertaForm = {
@@ -111,7 +111,7 @@ export class TipoAlertaComponent implements OnInit {
     }
   }
   obtenerDatos(id: number) {
-    this.titulo = 'Editar Tipo de Atencion';
+    this.titulo = 'Editar Tipo de Delito';
     this.tipoAlertaService.getTipoAlerta(id).subscribe(
       ({ tipoalerta }: ResultTipoAlerta) => {
         this.tipoAlertaForm = {
@@ -132,8 +132,8 @@ export class TipoAlertaComponent implements OnInit {
       title: 'Estas seguro?',
       text:
         estado === '1'
-          ? 'Esta tipo de atencion sera desbloqueado!!!'
-          : 'Esta tipo de atencion sera bloqueado!!!',
+          ? 'Esta tipo de delito sera desbloqueado!!!'
+          : 'Esta tipo de delito sera bloqueado!!!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

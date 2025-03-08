@@ -15,6 +15,10 @@ import { TipoAlertaComponent } from './tipo-alerta/tipo-alerta.component';
 import { ControlPersonalComponent } from './control-personal/control-personal.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { AlertaSpamComponent } from './alerta-spam/alerta-spam.component';
+import { ReporteCiudaanoComponent } from './reporte-ciudaano/reporte-ciudaano.component';
+import { ReporteControlSistemaComponent } from './reporte-control-sistema/reporte-control-sistema.component';
+import { ReporteTipoAlertaComponent } from './reporte-tipo-alerta/reporte-tipo-alerta.component';
+import { ReporteAlertasDerivadasComponent } from './reporte-alertas-derivadas/reporte-alertas-derivadas.component';
 
 
 const routes: Routes = [
@@ -35,6 +39,10 @@ const routes: Routes = [
             { path: 'ultimas-24-horas', component: Grafica1Component },
             { path: 'control-personal', component: ControlPersonalComponent },
             { path: 'vehiculos', component: VehiculosComponent },
+            { path: 'reporte-ciudadano', component: ReporteCiudaanoComponent },
+            { path: 'reporte-control', component: ReporteControlSistemaComponent },
+            { path: 'reporte-tipo-alerta', component: ReporteTipoAlertaComponent },
+            { path: 'reporte-alerta-derivada', component: ReporteAlertasDerivadasComponent },
         ],
         canActivateChild: [
             AdminGuard

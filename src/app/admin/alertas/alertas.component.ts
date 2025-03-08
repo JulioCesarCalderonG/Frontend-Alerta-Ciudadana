@@ -4,9 +4,11 @@ import * as mapboxgl from 'mapbox-gl';
 import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
 import { AlertaMapa } from 'src/app/interface/alerta-form';
 import { EnvioAlertGet, FiltroForm } from 'src/app/interface/search-form';
+import { ResultTipoAlertas, Tipoalerta } from 'src/app/interface/tipo-alerta';
 import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
 import { AlertaService } from 'src/app/services/alerta.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
+import { TipoAlertaService } from 'src/app/services/tipo-alerta.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 @Component({
@@ -19,8 +21,10 @@ export class AlertasComponent implements OnInit {
   mapa2?: mapboxgl.Map;
   listAlerta?: Array<Alerta>;
   url=environment.backendURL;
+  listTipoAlerta?:Tipoalerta[];
   constructor(
     private alertaService: AlertaGeneradaService,
+    private tipoAlertaService:TipoAlertaService,
     private renderer2: Renderer2,
     private locationService:LocalizacionService,
     private router:Router
@@ -29,23 +33,34 @@ export class AlertasComponent implements OnInit {
   ngOnInit(): void {
     //this.crearMapa();
     this.mostrarAlerta();
+    this.mostrarTipoAlerta();
     //this.crearMapa2();
   }
-
+  //cambiar al terminar el codigo el 1 por el 4
   mostrarAlerta() {
-    this.alertaService.getAlerta({fechaDos:'',fechaUno:'',tipoAlerta:''},'4').subscribe(
+    this.alertaService.getAlerta({fechaDos:'',fechaUno:'',tipoAlerta:''},'1').subscribe(
       (data)=>{
         //console.log(data);
           this.listAlerta = data.results;
           this.crearMapa();
           console.log(data);
-
       },(error)=>{
         console.log(error);
 
       }
     )
   }
+  mostrarTipoAlerta(){
+      this.tipoAlertaService.getTipoAlertas("1").subscribe(
+        (data:ResultTipoAlertas)=>{
+          this.listTipoAlerta = data.tipoalerta;
+  
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }
   crearMapa() {
     this.mapa = new mapboxgl.Map({
       container: 'mapa',
@@ -138,6 +153,27 @@ export class AlertasComponent implements OnInit {
   }
   mostrarMapa2() {
     //this.crearMapa2()
+  }
+
+  eliminar(){
+    Swal.fire({
+      title: "Estas seguro?",
+      text: "Se eliminara de manera permanente esta alerta registrada!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Eliminar!",
+      cancelButtonText:"Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
   cancelar() {}
 }

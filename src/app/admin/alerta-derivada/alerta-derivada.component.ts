@@ -40,7 +40,11 @@ export class AlertaDerivadaComponent implements OnInit {
   mostrarAlerta(){
     this.alertaDerivadaService.getAlertasDerivadas(this.tipo).subscribe(
       (resp:ResultAlertaDerivadas)=>{
+        
+        
         this.listAlertaDerivada = resp.alertaDerivada;
+        console.log(this.listAlertaDerivada);
+        
       }
     )
   }

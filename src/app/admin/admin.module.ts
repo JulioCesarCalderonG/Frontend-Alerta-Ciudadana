@@ -23,6 +23,10 @@ import { ChartsModule } from 'ng2-charts';
 import { ControlPersonalComponent } from './control-personal/control-personal.component';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { AlertaSpamComponent } from './alerta-spam/alerta-spam.component';
+import { ReporteCiudaanoComponent } from './reporte-ciudaano/reporte-ciudaano.component';
+import { ReporteControlSistemaComponent } from './reporte-control-sistema/reporte-control-sistema.component';
+import { ReporteTipoAlertaComponent } from './reporte-tipo-alerta/reporte-tipo-alerta.component';
+import { ReporteAlertasDerivadasComponent } from './reporte-alertas-derivadas/reporte-alertas-derivadas.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { AlertaSpamComponent } from './alerta-spam/alerta-spam.component';
     TipoAlertaComponent,
     ControlPersonalComponent,
     VehiculosComponent,
-    AlertaSpamComponent
+    AlertaSpamComponent,
+    ReporteCiudaanoComponent,
+    ReporteControlSistemaComponent,
+    ReporteTipoAlertaComponent,
+    ReporteAlertasDerivadasComponent
   ],
   exports:[
     DashboardComponent,

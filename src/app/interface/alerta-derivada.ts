@@ -27,11 +27,18 @@ export interface Alertum {
   lat:         number;
   lng:         number;
   foto:        null;
-  fecha:       string;
   hora:        string;
-  ciudadano:   number;
+  ciudadano:   string;
   tipo_alerta: number;
   derivado:    number;
+  dni:string;
+  fecha:string;
+  correo:string;
+  celular:string;
+  mes:string;
+  atendido:number;
+  registrado:number;
+  spam:number;
   Ciudadano:   Usuario;
 }
 

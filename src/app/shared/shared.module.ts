@@ -19,6 +19,7 @@ import { MapViewSerenoComponent } from './map-view-sereno/map-view-sereno.compon
 import { SearchBarSerenoComponent } from './search-bar-sereno/search-bar-sereno.component';
 import { SearchResultsSerenoComponent } from './search-results-sereno/search-results-sereno.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReportAlertaComponent } from './report-alerta/report-alerta.component';
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarSerenazgoComponent,
     MapViewSerenoComponent,
     SearchBarSerenoComponent,
-    SearchResultsSerenoComponent
+    SearchResultsSerenoComponent,
+    ReportAlertaComponent
   ],
   exports:[
     BreadcrumbsComponent,
@@ -54,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchResultsComponent,
     SidebarSerenazgoComponent,
     MapViewSerenoComponent,
-    SearchBarSerenoComponent
+    SearchBarSerenoComponent,
+    ReportAlertaComponent
   ],
   imports: [
     CommonModule,

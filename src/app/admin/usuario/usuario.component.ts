@@ -210,8 +210,8 @@ export class UsuarioComponent implements OnInit {
       title: 'Estas seguro?',
       text:
         estado === '1'
-          ? 'Esta tipo de atencion sera desbloqueado!!!'
-          : 'Esta tipo de atencion sera bloqueado!!!',
+          ? 'El usuario sera desbloqueado!!!'
+          : 'El usuario sera bloqueado!!!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

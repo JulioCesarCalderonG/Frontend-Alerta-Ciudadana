@@ -14,28 +14,26 @@
             <tr>
                 <th>DNI Ciudadano</th>
                 <th>Ciudadano</th>
-                <th>Descripcion</th>
                 <th>Derivado A:</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let alerta of listAlertaDerivada | paginate: { itemsPerPage: 10, currentPage: p }">
-                <td>{{alerta.Alertum.Ciudadano.dni}}</td>
-                <td>{{alerta.Alertum.Ciudadano.nombre}} {{alerta.Alertum.Ciudadano.apellido}}</td>
-                <td>{{alerta.Alertum.descripcion}}</td>
+                <td>{{alerta.Alertum.dni}}</td>
+                <td>{{alerta.Alertum.ciudadano}}</td>
                 <td>{{alerta.Usuario.nombre}} {{alerta.Usuario.apellido}}</td>
                 <td class="text-nowrap" *ngIf="alerta.atencion === 0">
                   <a class="btn btn-circle btn-warning mr-2"
                   data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
                   (click)="obtenerDatos(alerta.id)"> <i class="fa fa-pencil"></i> </a>
                     <a class="btn btn-circle btn-secondary"
-                        (click)="borraralerta(alerta.id)"> <i class="fas fa-lock"></i>
+                        (click)="borraralerta(alerta.id)"> <i class="fas fa-trash"></i>
                     </a>
                 </td>
                 <td class="text-nowrap" *ngIf="alerta.atencion === 1" disabled="disabled">
                   <a class="btn btn-circle btn-warning mr-2 deshabilitar"> <i class="fa fa-pencil"></i> </a>
-                    <a class="btn btn-circle btn-secondary deshabilitar"> <i class="fas fa-lock"></i>
+                    <a class="btn btn-circle btn-secondary deshabilitar"> <i class="fas fa-trash"></i>
                     </a>
                 </td>
             </tr>
