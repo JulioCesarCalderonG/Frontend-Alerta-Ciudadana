@@ -10,7 +10,6 @@ export interface Ciudadano {
     id:       number;
     dni:      string;
     nombre:   string;
-    apellido: string;
     password: string;
     estado:   number;
 }

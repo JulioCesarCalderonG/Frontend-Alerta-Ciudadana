@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { WebsocketService } from '../socket/websocket.service';
 import { environment } from 'src/environments/environment.prod';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  url = `${environment.backendURL}/authusuario`;
+  url = `${pathUrl}/authusuario`;
   constructor(
     private http: HttpClient,
     private router:Router,

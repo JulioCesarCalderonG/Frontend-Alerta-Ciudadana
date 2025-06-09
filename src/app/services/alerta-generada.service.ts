@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EnvioAlertGet } from '../interface/search-form';
-import { environment } from 'src/environments/environment';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertaGeneradaService {
-  url = `${environment.backendURL}/alertagenerada`;
-  url2 = `${environment.backendURL}/reporte`;
+  url = `${pathUrl}/alertagenerada`;
+  url2 = `${pathUrl}/reporte`;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -21,6 +21,9 @@ export class AlertaGeneradaService {
   }
   postAlertaGenerada(formData:FormData):Observable<any>{
     return this.http.post(this.url,formData);
+  }
+  putAlertaGenerada(formData:FormData, id:number):Observable<any>{
+    return this.http.put(`${this.url}/${id}`,formData);
   }
   postAlertaReporte(data: EnvioAlertGet, tipo: string): Observable<any> {
       return this.http.post(`${this.url2}/alertageneral`, data, { params: { tipo } });

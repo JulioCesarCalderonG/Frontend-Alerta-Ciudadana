@@ -19,7 +19,7 @@ export interface Usuario {
     estado:   number;
     password: string;
     id_cargo: number;
-    Cargo:    Cargo;
+    cargousuario:    Cargo;
 }
 
 export interface Cargo {

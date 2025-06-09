@@ -43,6 +43,7 @@ const routes: Routes = [
             { path: 'reporte-control', component: ReporteControlSistemaComponent },
             { path: 'reporte-tipo-alerta', component: ReporteTipoAlertaComponent },
             { path: 'reporte-alerta-derivada', component: ReporteAlertasDerivadasComponent },
+            {path:'**', component:DashboardComponent}
         ],
         canActivateChild: [
             AdminGuard

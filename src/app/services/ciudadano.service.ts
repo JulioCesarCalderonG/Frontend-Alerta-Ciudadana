@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CiudadanoService {
-  url = `${environment.backendURL}/ciudadano`;
+  url = `${pathUrl}/ciudadano`;
   constructor(private http: HttpClient, private router:Router) { }
 
   getCiudadanos(estado:string, buscar:string):Observable<any>{

@@ -17,7 +17,6 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
                 <th>dni</th>
                 <th>Acciones</th>
             </tr>
@@ -26,7 +25,6 @@
             <tr *ngFor="let ciudadano of listCiudadano! | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td>{{ciudadano.id}}</td>
                 <td>{{ciudadano.nombre}}</td>
-                <td>{{ciudadano.apellido}}</td>
                 <td>{{ciudadano.dni}}</td>
                 <td>
                     <a class="btn btn-circle btn-secondary" *ngIf="ciudadano.estado === 1"

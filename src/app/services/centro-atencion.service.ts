@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CentroAtencionService {
-  url = `${environment.backendURL}/centroatencion`;
+  url = `${pathUrl}/centroatencion`;
   constructor(private http: HttpClient, private router:Router) { }
   
   getCentroAtenciones(estado:string):Observable<any>{

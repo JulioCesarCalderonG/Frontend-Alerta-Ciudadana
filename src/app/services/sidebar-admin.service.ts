@@ -78,5 +78,41 @@ export class SidebarAdminService {
       ]
     }
   ];
+  menu2:any[]=[
+    {
+      titulo: 'Alerta Ciudadana',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Ultimas 24 Horas', url: 'ultimas-24-horas' },
+        /* { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' }, */
+        /* { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' }, */
+      ]
+    },
+    {
+      titulo: 'Alerta Derivada',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Alerta Derivada', url: 'alerta-derivada' },
+        /* { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' }, */
+        /* { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' }, */
+      ]
+    },
+    {
+      titulo: 'Tipo de Alerta',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Mostrar alertas General', url: 'alerta' },
+        /* { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' }, */
+        /* { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' }, */
+      ]
+    },
+    {
+      titulo: 'Vehiculos',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Vehiculos Activos', url: 'vehiculos' },
+      ]
+    }
+  ]
   constructor() { }
 }

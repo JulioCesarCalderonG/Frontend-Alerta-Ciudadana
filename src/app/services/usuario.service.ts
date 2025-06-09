@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  url = `${environment.backendURL}/usuarios`;
+  url = `${pathUrl}/usuarios`;
   constructor(private http: HttpClient, private router:Router) {
   }
 

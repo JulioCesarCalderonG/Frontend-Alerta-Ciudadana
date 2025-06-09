@@ -13,7 +13,13 @@ export class SidebarComponent implements OnInit {
   menuItems?: any[];
   usuario?:string;
   constructor(private sidebarService: SidebarAdminService, private loginService: LoginService) {
-    this.menuItems = this.sidebarService.menu;
+    const cargo = sessionStorage.getItem('cargo')!;
+    if (cargo=='UA') {
+      this.menuItems = this.sidebarService.menu;
+    }else{
+      this.menuItems = this.sidebarService.menu2;
+    }
+    
     this.usuario = sessionStorage.getItem('usuario')!;
   }
 

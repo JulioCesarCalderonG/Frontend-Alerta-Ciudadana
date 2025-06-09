@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraficaService {
-  url = `${environment.backendURL}/grafica`;
+  url = `${pathUrl}/grafica`;
   constructor(private http: HttpClient, private router:Router) { }
 
   getAlertas():Observable<any>{

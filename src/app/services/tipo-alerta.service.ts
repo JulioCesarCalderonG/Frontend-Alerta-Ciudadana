@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TipoAlertaService {
-  url = `${environment.backendURL}/tipoalerta`;
-  url2 = `${environment.backendURL}/uploadgeneral`;
+  url = `${pathUrl}/tipoalerta`;
+  url2 = `${pathUrl}/uploadgeneral`;
   constructor(private http: HttpClient, private router:Router) { }
   getTipoAlertas(estado:string):Observable<any>{
     return this.http.get(this.url,{params:{estado}});

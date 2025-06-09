@@ -44,11 +44,12 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('rol', String(data.usuario.id_cargo));
         sessionStorage.setItem('id_usuario',String(data.usuario.id));
         sessionStorage.setItem('id_control',String(data.id_control));
+        sessionStorage.setItem('cargo',String(data.usuario.cargousuario.cargo));
         this.ws.emit('inicio-sesion');
-        if (data.usuario.Cargo.cargo==='UN') {
-          this.router.navigateByUrl('/serenazgo');
+        if (data.usuario.cargousuario.cargo==='UO') {
+          this.router.navigateByUrl('/admin');
          }
-        if (data.usuario.Cargo.cargo==='UA') {
+        if (data.usuario.cargousuario.cargo==='UA') {
           this.router.navigateByUrl('/admin');
          }
        }

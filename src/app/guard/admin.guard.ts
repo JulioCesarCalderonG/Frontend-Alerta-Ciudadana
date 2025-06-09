@@ -3,10 +3,25 @@ import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot }
 import jwtDecode from 'jwt-decode';
 import { LoginService } from '../services/login.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AdminGuard implements CanActivateChild {
+   private rutasBloqueadas = [
+    'usuario',
+    'ciudadano',
+    'tipo-atencion',
+    'centro-atencion',
+    'control-personal',
+    'reporte-ciudadano',
+    'reporte-control',
+    'reporte-tipo-alerta',
+    'reporte-alerta-derivada',
+    'tipo-alerta'
+  ];
+
   constructor(private authService: LoginService, private router: Router){
   }
   canActivateChild(next: ActivatedRouteSnapshot,
@@ -18,17 +33,20 @@ export class AdminGuard implements CanActivateChild {
       if (dataDecode.exp < date.getTime() / 1000) {
         return this.redirect();
       }
-      if (dataDecode.cargo !== 'UA') {
+      if (dataDecode.cargo !== 'UA' && dataDecode.cargo !=='UO') {
         return this.redirect();
+      }
+      // Si es UO, restringir ciertas rutas
+      if (dataDecode.cargo === 'UO') {
+        const url = state.url.toLowerCase();
+        const estaBloqueada = this.rutasBloqueadas.some(ruta => url.includes(ruta));
+        if (estaBloqueada) {
+          return this.redirectDashboard();
+        }
       }
       return true;
     }
     return this.redirect();
-    /* if (this.authService.loggedIn()) {
-    return true;
-  }
-  this.router.navigate(['/login']);
-  return false; */
   }
   redirect() {
     this.router.navigate(['/']);
@@ -37,5 +55,8 @@ export class AdminGuard implements CanActivateChild {
   decodeToken() {
     return jwtDecode(`${this.authService.getToken()}`);
   }
-  
+  private redirectDashboard(): boolean {
+    this.router.navigate(['/admin']);
+    return false;
+  }
 }

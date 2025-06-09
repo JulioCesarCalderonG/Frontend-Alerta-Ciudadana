@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
 import { AlertaDerivada, ResultFiltroDerivada } from '../interface/alerta-derivada-filtrada';
 import { MapService } from './map.service';
 import { LocalizacionService } from './localizacion.service';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertaDerivadaService {
-  url = `${environment.backendURL}/alertaderivada`;
+  url = `${pathUrl}/alertaderivada`;
   public isCargaDatos:boolean=true;
   public listAlerta:AlertaDerivada[]=[];
   constructor(

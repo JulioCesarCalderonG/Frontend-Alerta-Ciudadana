@@ -35,26 +35,7 @@ export class VehiculosComponent implements OnInit {
   mostrarVehiculos() {
     this.vehiculoService.mostrarVehiculos().subscribe(
       (data: RespVehiculo) => {
-        this.lugares = {
-          '1': {
-            color: '#acff33',
-            id: '1',
-            id_vehiculo: '1',
-            lat: -8.395705,
-            lng: -74.590645,
-            nombre: 'Serenazgo: Carlos Calderon Luna',
-            vehiculo: 'vehiculo 01'
-          },
-          '2': {
-            color: '#ff7433',
-            id: '2',
-            id_vehiculo: '2',
-            lat: -8.36641,
-            lng: -74.552021,
-            nombre: 'Serenazgo: Henrry Bardales Ferreira',
-            vehiculo: 'vehiculo 02'
-          }
-        };
+        this.lugares = data;
         this.crearMapa();
       },
       error => {
@@ -122,7 +103,7 @@ export class VehiculosComponent implements OnInit {
     }).setDOMContent(div)
  
     const marker = new mapboxgl.Marker({
-      draggable: true,
+      draggable: false,
       color: marcador.color,
     })
       .setLngLat([marcador.lng, marcador.lat])

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: environment.backendURL2, options: {} };
+const config: SocketIoConfig = { url: pathSocket, options: {} };
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import { SerenazgoGuard } from './guard/serenazgo.guard';
 import { ChartsModule } from 'ng2-charts';
 import { environment } from 'src/environments/environment.prod';
 import { CuentaModule } from './cuenta/cuenta.module';
+import { pathSocket } from './api/api';
 @NgModule({
   declarations: [
     AppComponent,

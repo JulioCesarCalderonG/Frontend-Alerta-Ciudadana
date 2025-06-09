@@ -7,12 +7,13 @@ import { EnvioAlertGet } from '../interface/search-form';
 import { Alerta, AlertaFiltrada } from '../interface/alerta-filtrada';
 import { MapService } from './map.service';
 import { LocalizacionService } from './localizacion.service';
+import { pathUrl } from '../api/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertaService {
-  url = `${environment.backendURL}/alerta`;
+  url = `${pathUrl}/alerta`;
   public isCargaDatos:boolean=false;
   public listAlertas: Alerta[]=[];
   constructor(

@@ -1,8 +1,10 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
 import { AlertaMapa } from 'src/app/interface/alerta-form';
+import { AlertaGenerada, ResultAlertaGenerada } from 'src/app/interface/alerta-generada';
 import { EnvioAlertGet, FiltroForm } from 'src/app/interface/search-form';
 import { ResultTipoAlertas, Tipoalerta } from 'src/app/interface/tipo-alerta';
 import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
@@ -19,16 +21,24 @@ import Swal from 'sweetalert2';
 export class AlertasComponent implements OnInit {
   mapa?: mapboxgl.Map;
   mapa2?: mapboxgl.Map;
-  listAlerta?: Array<Alerta>;
+  listAlerta?: AlertaGenerada[];
   url=environment.backendURL;
   listTipoAlerta?:Tipoalerta[];
+  id:number=0;
+  formAlertaGe:FormGroup;
   constructor(
     private alertaService: AlertaGeneradaService,
     private tipoAlertaService:TipoAlertaService,
     private renderer2: Renderer2,
     private locationService:LocalizacionService,
-    private router:Router
-  ) {}
+    private router:Router,
+    private fb:FormBuilder
+  ) {
+    this.formAlertaGe=this.fb.group({
+      descripcion:['',Validators.required],
+      tipo_alerta:['',Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     //this.crearMapa();
@@ -43,9 +53,8 @@ export class AlertasComponent implements OnInit {
         //console.log(data);
           this.listAlerta = data.results;
           this.crearMapa();
-          console.log(data);
+          console.log(data,'aca');
       },(error)=>{
-        console.log(error);
 
       }
     )
@@ -54,10 +63,8 @@ export class AlertasComponent implements OnInit {
       this.tipoAlertaService.getTipoAlertas("1").subscribe(
         (data:ResultTipoAlertas)=>{
           this.listTipoAlerta = data.tipoalerta;
-  
         },
         (error)=>{
-          console.log(error);
         }
       )
     }
@@ -75,8 +82,8 @@ export class AlertasComponent implements OnInit {
       this.listAlerta?.map((resp) => {
         const envioMapa: AlertaMapa = {
           id: resp.id,
-          lat: resp.lat,
-          lng: resp.lng,
+          lat: +resp.lat,
+          lng: +resp.lng,
           descripcion: resp.descripcion,
           color: `#${resp.color}`,
           fecha: resp.fecha,
@@ -113,7 +120,7 @@ export class AlertasComponent implements OnInit {
       tipoAlerta: data.datoTipo,
     };
     this.alertaService.getAlerta(envio, data.tipo).subscribe(
-      (data: ResultAlertas) => {
+      (data: ResultAlertaGenerada) => {
         //console.log(data);
         this.listAlerta = data.results;
         this.crearMapa();
@@ -140,7 +147,9 @@ export class AlertasComponent implements OnInit {
       }
     )
   }
-  buscar() {}
+  buscar(id:number) {
+    this.id=id;
+  }
   crearMapa2() {
     this.mapa2 = new mapboxgl.Map({
       container: 'mapa2',
@@ -150,9 +159,6 @@ export class AlertasComponent implements OnInit {
       center: [-74.96366, -8.640309],
       zoom: 15,
     });
-  }
-  mostrarMapa2() {
-    //this.crearMapa2()
   }
 
   eliminar(){
@@ -175,5 +181,7 @@ export class AlertasComponent implements OnInit {
       }
     });
   }
-  cancelar() {}
+  cancelar() {
+    
+  }
 }

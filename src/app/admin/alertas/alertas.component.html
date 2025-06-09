@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body row">
                         <div class="col-lg-6">
-                            <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#modalRegistrar"
+                            <button class="btn btn-block btn-warning" data-toggle="modal" data-target="#modalRegistrar" (click)="buscar(alerta.id)"
                                 data-whatever="@mdo"><i class="fa fa-pen"></i> </button>
                         </div>
                         <div class="col-lg-6">
@@ -37,25 +37,6 @@
     </div>
 </div>
 
-
-<!-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Ubicacion</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-              <div id="mapa2"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
- -->
-
 <div class="modal fade" id="modalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -66,16 +47,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="formAlertaGe">
                     <div class="form-group">
                         <label class="control-label">Ingrese una descripcion</label>
-                        <textarea class="form-control" rows="5" formControlName="descripcion"
-                            value="Incendio en el jr. carmen cabrejos"></textarea>
+                        <textarea class="form-control" rows="5"
+                            value="Incendio en el jr. carmen cabrejos" formControlName="descripcion"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Selecciona el Tipo de Alerta</label>
-                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1"
-                            formControlName="tipo_alerta">
+                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="tipo_alerta">
                             <option value="">Seleccionar</option>
                             <option *ngFor="let tipoalerta of listTipoAlerta" value={{tipoalerta.id}}>
                                 {{tipoalerta.nombre}}</option>

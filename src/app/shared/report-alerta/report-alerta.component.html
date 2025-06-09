@@ -1,5 +1,5 @@
 <div class="row mb-3">
-    <div class="col-lg-4">
+    <div class="col-lg">
         <label class="control-label">Ingrese una opcion</label>
         <select class="form-control" id="exampleFormControlSelect1" [formControl]="tipo">
             <option value="">Seleccionar una opcion</option>
@@ -8,7 +8,7 @@
             <option value="3">Tipo Alerta</option>
         </select>
     </div>
-    <div #divFecha class="col-lg-4" style="display: none;" id="divFecha">
+    <div #divFecha class="col-lg" style="display: none;" id="divFecha">
         <div class="row">
             <div class="col-lg-6">
                 <label class="control-label">Fecha de Inicio</label>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div #divTipoAlerta class="col-lg-4" style="display: none;" id="divTipoAlerta">
+    <div #divTipoAlerta class="col-lg" style="display: none;" id="divTipoAlerta">
         <div class="col-lg-12">
             <label class="control-label">Seleccione tipo de alerta</label>
             <select class="form-control" id="exampleFormControlSelect1" [formControl]="datoTipo">
@@ -29,7 +29,7 @@
             </select>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg">
       <label class="control-label">Generar Reporte</label>
       <button type="button" class="btn waves-effect waves-light btn-block btn-info"
           (click)="generarReporte()">Generar Reporte</button>

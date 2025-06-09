@@ -116,6 +116,8 @@ export class UsuarioComponent implements OnInit {
     this.usuarioService.getUsuarios(this.estado).subscribe(
       (data: ResultUsuarios) => {
         this.listUsuario = data.usuario;
+        console.log(data.usuario);
+        
       },
       (error) => {
         console.log(error);

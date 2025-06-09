@@ -30,10 +30,13 @@
                 <td>{{usuario.dni}}</td>
                 <td>{{usuario.nombre}}</td>
                 <td>{{usuario.apellido}}</td>
-                <td *ngIf="usuario.Cargo.cargo === 'UN'">
-                    <div class="label label-table label-warning">Usuario Normal</div>
+                 <td *ngIf="usuario.cargousuario.cargo === 'UO'">
+                    <div class="label label-table label-warning">Usuario Cabina</div>
                 </td>
-                <td *ngIf="usuario.Cargo.cargo === 'UA'">
+                <td *ngIf="usuario.cargousuario.cargo === 'US'">
+                    <div class="label label-table label-danger">Usuario Serenazgo</div>
+                </td>
+                <td *ngIf="usuario.cargousuario.cargo === 'UA'">
                     <div class="label label-table label-info">Usuario Administrador</div>
                 </td>
                 <td *ngIf="usuario.estado === 0">
