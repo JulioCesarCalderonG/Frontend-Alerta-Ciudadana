@@ -17,8 +17,8 @@ export interface AlertaDerivada {
   id_alerta:  number;
   id_usuario: number;
   atencion:   number;
-  Alertum:    Alertum;
-  Usuario:    Usuario;
+  derivadaalerta:    Alertum;
+  derivadausuario:    Usuario;
 }
 
 export interface Alertum {

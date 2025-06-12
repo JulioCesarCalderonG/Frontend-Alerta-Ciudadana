@@ -20,9 +20,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let alerta of listAlertaDerivada | paginate: { itemsPerPage: 10, currentPage: p }">
-                <td>{{alerta.Alertum.dni}}</td>
-                <td>{{alerta.Alertum.ciudadano}}</td>
-                <td>{{alerta.Usuario.nombre}} {{alerta.Usuario.apellido}}</td>
+                <td>{{alerta.derivadaalerta.dni}}</td>
+                <td>{{alerta.derivadaalerta.ciudadano}}</td>
+                <td>{{alerta.derivadausuario.nombre}} {{alerta.derivadausuario.apellido}}</td>
                 <td class="text-nowrap" *ngIf="alerta.atencion === 0">
                   <a class="btn btn-circle btn-warning mr-2"
                   data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"

@@ -13,7 +13,7 @@ export interface Resp {
   horaingreso:  string;
   fechasalida:  null | string;
   horasalida:   null | string;
-  Usuario:      Usuario;
+  usuario:      Usuario;
 }
 
 export interface Usuario {
@@ -25,7 +25,7 @@ export interface Usuario {
   password:   string;
   id_cargo:   number;
   disponible: number;
-  Cargo:      Cargo;
+  cargousuario:      Cargo;
 }
 
 export interface Cargo {

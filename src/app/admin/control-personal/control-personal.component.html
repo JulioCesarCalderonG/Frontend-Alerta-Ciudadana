@@ -13,8 +13,8 @@
       </thead>
       <tbody>
           <tr *ngFor="let control of listControlPersonal! | paginate: { itemsPerPage: 10, currentPage: p }">
-             <td>{{control.Usuario.nombre}} {{control.Usuario.apellido}} </td>
-             <td>{{control.Usuario.Cargo.descripcion}}</td>
+             <td>{{control.usuario.nombre}} {{control.usuario.apellido}} </td>
+             <td>{{control.usuario.cargousuario.descripcion}}</td>
              <td>{{control.fechaingreso}}</td>
              <td>{{control.horaingreso}}</td>
              <td>{{control.fechasalida}}</td>

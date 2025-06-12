@@ -125,6 +125,8 @@ export class SearchBarComponent implements OnInit {
         });
       },
       (error) => {
+        console.log(error);
+        
         Swal.fire('Ya derivado!', error.error.errors[0].msg, 'error');
       }
     );

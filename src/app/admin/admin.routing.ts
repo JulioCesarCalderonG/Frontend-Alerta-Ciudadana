@@ -19,6 +19,8 @@ import { ReporteCiudaanoComponent } from './reporte-ciudaano/reporte-ciudaano.co
 import { ReporteControlSistemaComponent } from './reporte-control-sistema/reporte-control-sistema.component';
 import { ReporteTipoAlertaComponent } from './reporte-tipo-alerta/reporte-tipo-alerta.component';
 import { ReporteAlertasDerivadasComponent } from './reporte-alertas-derivadas/reporte-alertas-derivadas.component';
+import { PostVehiculoComponent } from './post-vehiculo/post-vehiculo.component';
+import { SpamComponent } from './spam/spam.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,8 @@ const routes: Routes = [
             { path: 'ultimas-24-horas', component: Grafica1Component },
             { path: 'control-personal', component: ControlPersonalComponent },
             { path: 'vehiculos', component: VehiculosComponent },
+            { path: 'post-vehiculos', component: PostVehiculoComponent },
+            { path: 'spam', component: SpamComponent },
             { path: 'reporte-ciudadano', component: ReporteCiudaanoComponent },
             { path: 'reporte-control', component: ReporteControlSistemaComponent },
             { path: 'reporte-tipo-alerta', component: ReporteTipoAlertaComponent },

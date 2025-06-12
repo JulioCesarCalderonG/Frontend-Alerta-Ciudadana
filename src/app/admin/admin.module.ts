@@ -27,6 +27,8 @@ import { ReporteCiudaanoComponent } from './reporte-ciudaano/reporte-ciudaano.co
 import { ReporteControlSistemaComponent } from './reporte-control-sistema/reporte-control-sistema.component';
 import { ReporteTipoAlertaComponent } from './reporte-tipo-alerta/reporte-tipo-alerta.component';
 import { ReporteAlertasDerivadasComponent } from './reporte-alertas-derivadas/reporte-alertas-derivadas.component';
+import { PostVehiculoComponent } from './post-vehiculo/post-vehiculo.component';
+import { SpamComponent } from './spam/spam.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ReporteAlertasDerivadasComponent } from './reporte-alertas-derivadas/re
     ReporteCiudaanoComponent,
     ReporteControlSistemaComponent,
     ReporteTipoAlertaComponent,
-    ReporteAlertasDerivadasComponent
+    ReporteAlertasDerivadasComponent,
+    PostVehiculoComponent,
+    SpamComponent
   ],
   exports:[
     DashboardComponent,

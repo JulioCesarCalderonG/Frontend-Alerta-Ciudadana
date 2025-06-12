@@ -10,7 +10,7 @@ export class SidebarAdminService {
       icono: 'mdi mdi-alert-octagram',
       submenu: [
         { titulo: 'Ultimas 24 Horas', url: 'ultimas-24-horas' },
-        /* { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' }, */
+        { titulo: 'Mostrar alertas Spam', url: 'alerta-spam' },
         /* { titulo: 'Mostrar alertas derivadas', url: 'alerta-derivada' }, */
       ]
     },
@@ -37,6 +37,13 @@ export class SidebarAdminService {
       icono: 'mdi mdi-alert-octagram',
       submenu: [
         { titulo: 'Vehiculos Activos', url: 'vehiculos' },
+      ]
+    },
+    {
+      titulo: 'Administrar Vehiculos',
+      icono: 'mdi mdi-alert-octagram',
+      submenu: [
+        { titulo: 'Administrar Vehiculos', url: 'post-vehiculos' },
       ]
     },
     {

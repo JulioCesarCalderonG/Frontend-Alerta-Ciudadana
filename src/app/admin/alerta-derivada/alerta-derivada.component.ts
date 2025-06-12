@@ -43,7 +43,6 @@ export class AlertaDerivadaComponent implements OnInit {
         
         
         this.listAlertaDerivada = resp.alertaDerivada;
-        console.log(this.listAlertaDerivada);
         
       }
     )

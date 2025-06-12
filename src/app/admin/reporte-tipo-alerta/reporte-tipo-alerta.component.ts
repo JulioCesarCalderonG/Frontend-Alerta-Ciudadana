@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { pathUrl } from 'src/app/api/api';
 import { Alerta, ResultAlertas } from 'src/app/interface/alerta';
 import { EnvioAlertGet, FiltroForm } from 'src/app/interface/search-form';
 import { AlertaGeneradaService } from 'src/app/services/alerta-generada.service';
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ReporteTipoAlertaComponent implements OnInit {
 listAlerta?: Array<Alerta>;
-url=environment.backendURL;
+url=pathUrl;
   constructor(
     private alertaService: AlertaGeneradaService,
   ) { }

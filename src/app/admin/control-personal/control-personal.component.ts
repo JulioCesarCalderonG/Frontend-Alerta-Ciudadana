@@ -20,11 +20,11 @@ export class ControlPersonalComponent implements OnInit {
   }
   mostrarPersonal(){
     this.controlPersonalService.getControlPersonal().subscribe(
-      (data:ResultControlPersonal)=>{
+      (data:ResultControlPersonal)=>{        
         this.listControlPersonal = data.resp;
       },(error)=>{
         console.log(error);
-
+        
       }
     )
   }

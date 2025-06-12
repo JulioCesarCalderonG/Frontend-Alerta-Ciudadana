@@ -1,0 +1,92 @@
+<div class="row justify-content-end">
+    <div class="col-lg-4 text-right">
+        <select class="form-control btn-sm" id="exampleFormControlSelect1" (change)="ShowSelected($event)">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+        </select>
+    </div>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"><i
+                class="fa fa-plus-square"></i> Crear</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehiculo of listVehiculo! | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{vehiculo.nombre}}</td>
+                
+                <td *ngIf="vehiculo.estado === 0">
+                    <div class="label label-table label-danger">Inactivo</div>
+                </td>
+                <td *ngIf="vehiculo.estado === 1">
+                    <div class="label label-table label-success">Activo</div>
+                </td>
+                <td class="text-nowrap">
+                    <a class="btn btn-circle btn-warning mr-2" data-toggle="modal" data-target="#exampleModalEdit"
+                        (click)="obtenerDatos(vehiculo)"> <i class="fa fa-pencil"></i> </a>
+                    <a class="btn btn-circle btn-secondary" *ngIf="vehiculo.estado === 1"
+                        (click)="borrarvehiculo(vehiculo.id, '0')"> <i class="fas fa-trash"></i>
+                    </a>
+                    <!-- <a class="btn btn-circle btn-secondary" *ngIf="vehiculo.estado === 0"
+                        (click)="borrarvehiculo(vehiculo.id, '1')"> <i class="fas fa-lock-open"></i>
+                    </a> -->
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Guardar Vehiculo</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="vehiculoForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="nombre"
+                            formControlName="nombre" name="dni" autocomplete="off" #dniInput>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="vehiculoForm.invalid" (click)="agregarVehiculo()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel1">Editar Vehiculo</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancelar()"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="vehiculoEditForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="nombre"
+                            formControlName="nombre" name="dni" autocomplete="off" #dniInput>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="vehiculoEditForm.invalid" (click)="actualizarVehiculo()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>
