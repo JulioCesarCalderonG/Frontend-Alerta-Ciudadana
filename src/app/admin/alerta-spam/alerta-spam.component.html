@@ -1,1 +1,31 @@
 
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ciudadano</th>
+                <th>DNI</th>
+                <th>Celular</th>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Fecha</th>
+                <th>Mes</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let spam of listSpam! | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{spam.ciudadano}}</td>
+                <td>{{spam.dni}}</td>
+                <td>{{spam.celular}}</td>
+                <td>{{spam.lat}}</td>
+                <td>{{spam.lng}}</td>
+                <td>{{spam.fecha}}</td>
+                <td>{{spam.mes}}</td>
+                <td>{{spam.hora}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="text-right mt-3" (pageChange)="p = $event"></pagination-controls>
+</div>
